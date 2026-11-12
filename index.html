@@ -153,7 +153,6 @@ input,select{padding:13px 14px;border-radius:8px;border:1.5px solid var(--line);
 .slist .live2{margin-left:8px;background:var(--live);color:#fff;font-weight:700;font-size:10.5px;letter-spacing:.08em;padding:2px 7px;border-radius:4px;text-transform:uppercase;vertical-align:2px}
 @media(max-width:560px){.slist li{grid-template-columns:52px minmax(0,1fr)}.slist img,.slist .ph{display:none}}
 .zones.one{grid-template-columns:1fr!important}
-.bhead{align-items:end;margin-bottom:24px}
 .bmap{margin:0;background:#fff;border-radius:20px;padding:14px;box-shadow:0 20px 44px rgba(10,58,65,.18)}
 .bmap-in{position:relative}
 .bmap-in img{display:block;width:100%;height:auto;border-radius:10px}
@@ -377,22 +376,20 @@ dialog#planner::backdrop{background:rgba(5,35,40,.62)}
 
 
 
-  <section id="booth" class="light boothband"><div class="wrap">
-    <div class="grid2 bhead">
-      <div>
-        <span class="pill" data-t="visit">Visit us</span>
-        <h2 style="margin-top:12px" data-t="boothH">Booth N214 · Level 2</h2>
-        <p class="lead" data-t="boothP">Open all three days.</p>
-        <button class="giftline dark" type="button" data-plan><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 7h-2.2A3 3 0 0 0 12 3.8 3 3 0 0 0 6.2 7H4a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-8h1a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1Zm-5-2a1 1 0 1 1 0 2h-2a2 2 0 0 1 2-2Zm-6 0a2 2 0 0 1 2 2H9a1 1 0 1 1 0-2Zm2 15H7v-8h4Zm0-10H5V9h6Zm6 10h-4v-8h4Zm2-10h-6V9h6Z"/></svg><span><b data-t="gH">Collect your exclusive gift at Booth N214</b><span data-t="gP">Plan your visit, get your Sphere Card and show it at the booth to collect your gift.</span></span></button>
-      </div>
-      <div class="zones" id="zones"></div>
-    </div>
+  <section id="booth" class="light boothband"><div class="wrap grid2">
     <figure class="bmap">
       <div class="bmap-in"><img src="img/booth_map.svg" alt="Floor map: the BioScience booth N214 on Level 2, next to Room Maillot, between the two escalators">
         <span class="mpin" aria-hidden="true"><i></i><b>N214</b></span>
       </div>
       <figcaption><span data-t="mapC1">Level 2 · next to Room Maillot</span><span data-t="mapC2">Take the escalators up to Level 2</span></figcaption>
     </figure>
+    <div>
+      <span class="pill" data-t="visit">Visit us</span>
+      <h2 style="margin-top:12px" data-t="boothH">Booth N214 · Level 2</h2>
+      <p class="lead" data-t="boothP">Open all three days.</p>
+      <button class="giftline dark" type="button" data-plan><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 7h-2.2A3 3 0 0 0 12 3.8 3 3 0 0 0 6.2 7H4a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-8h1a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1Zm-5-2a1 1 0 1 1 0 2h-2a2 2 0 0 1 2-2Zm-6 0a2 2 0 0 1 2 2H9a1 1 0 1 1 0-2Zm2 15H7v-8h4Zm0-10H5V9h6Zm6 10h-4v-8h4Zm2-10h-6V9h6Z"/></svg><span><b data-t="gH">Collect your exclusive gift at Booth N214</b><span data-t="gP">Plan your visit, get your Sphere Card and show it at the booth to collect your gift.</span></span></button>
+      <div class="zones" id="zones"></div>
+    </div>
   </div></section>
   <section class="sym" id="symposium"><div class="wrap">
     <div class="shead">
