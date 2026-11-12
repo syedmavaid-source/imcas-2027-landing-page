@@ -153,6 +153,17 @@ input,select{padding:13px 14px;border-radius:8px;border:1.5px solid var(--line);
 .slist .live2{margin-left:8px;background:var(--live);color:#fff;font-weight:700;font-size:10.5px;letter-spacing:.08em;padding:2px 7px;border-radius:4px;text-transform:uppercase;vertical-align:2px}
 @media(max-width:560px){.slist li{grid-template-columns:52px minmax(0,1fr)}.slist img,.slist .ph{display:none}}
 .zones.one{grid-template-columns:1fr!important}
+.bhead{align-items:end;margin-bottom:24px}
+.bmap{margin:0;background:#fff;border-radius:20px;padding:14px;box-shadow:0 20px 44px rgba(10,58,65,.18)}
+.bmap-in{position:relative}
+.bmap-in img{display:block;width:100%;height:auto;border-radius:10px}
+.mpin{position:absolute;left:51.9%;top:56.5%;transform:translate(-50%,-100%);display:flex;flex-direction:column;align-items:center;pointer-events:none}
+.mpin b{order:-1;background:var(--deep);color:#fff;font:700 13px/1 var(--din);letter-spacing:.06em;padding:6px 9px;border-radius:6px;box-shadow:0 6px 14px rgba(0,0,0,.25)}
+.mpin i{width:14px;height:14px;margin-top:4px;border-radius:50%;background:#e8344a;box-shadow:0 0 0 4px rgba(232,52,74,.25);animation:pulse 1.8s ease-out infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(232,52,74,.55)}100%{box-shadow:0 0 0 16px rgba(232,52,74,0)}}
+@media(prefers-reduced-motion:reduce){.mpin i{animation:none}}
+.bmap figcaption{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;margin-top:10px;padding-inline:4px;font-size:14.5px;color:var(--soft)}
+.bmap figcaption span:first-child{font-weight:700;color:var(--ink)}
 .boothband{padding-block:56px;box-shadow:0 -18px 40px rgba(10,58,65,.12)}
 .cimg img{aspect-ratio:4/3;object-fit:cover;object-position:center 35%}
 @media(min-width:900px){.cgrid{grid-template-columns:1fr 1fr}}
@@ -366,15 +377,22 @@ dialog#planner::backdrop{background:rgba(5,35,40,.62)}
 
 
 
-  <section id="booth" class="light boothband"><div class="wrap grid2">
-    <div class="banner"><img src="img/d_brands.jpg" alt="HYAcorp, Genefill DX and Genefill spheres"></div>
-    <div>
-      <span class="pill" data-t="visit">Visit us</span>
-      <h2 style="margin-top:12px" data-t="boothH">Booth N214 · Level 2</h2>
-      <p class="lead" data-t="boothP">Open all three days.</p>
-      <button class="giftline dark" type="button" data-plan><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 7h-2.2A3 3 0 0 0 12 3.8 3 3 0 0 0 6.2 7H4a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-8h1a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1Zm-5-2a1 1 0 1 1 0 2h-2a2 2 0 0 1 2-2Zm-6 0a2 2 0 0 1 2 2H9a1 1 0 1 1 0-2Zm2 15H7v-8h4Zm0-10H5V9h6Zm6 10h-4v-8h4Zm2-10h-6V9h6Z"/></svg><span><b data-t="gH">Collect your exclusive gift at Booth N214</b><span data-t="gP">Plan your visit, get your Sphere Card and show it at the booth to collect your gift.</span></span></button>
+  <section id="booth" class="light boothband"><div class="wrap">
+    <div class="grid2 bhead">
+      <div>
+        <span class="pill" data-t="visit">Visit us</span>
+        <h2 style="margin-top:12px" data-t="boothH">Booth N214 · Level 2</h2>
+        <p class="lead" data-t="boothP">Open all three days.</p>
+        <button class="giftline dark" type="button" data-plan><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 7h-2.2A3 3 0 0 0 12 3.8 3 3 0 0 0 6.2 7H4a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-8h1a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1Zm-5-2a1 1 0 1 1 0 2h-2a2 2 0 0 1 2-2Zm-6 0a2 2 0 0 1 2 2H9a1 1 0 1 1 0-2Zm2 15H7v-8h4Zm0-10H5V9h6Zm6 10h-4v-8h4Zm2-10h-6V9h6Z"/></svg><span><b data-t="gH">Collect your exclusive gift at Booth N214</b><span data-t="gP">Plan your visit, get your Sphere Card and show it at the booth to collect your gift.</span></span></button>
+      </div>
       <div class="zones" id="zones"></div>
     </div>
+    <figure class="bmap">
+      <div class="bmap-in"><img src="img/booth_map.svg" alt="Floor map: the BioScience booth N214 on Level 2, next to Room Maillot, between the two escalators">
+        <span class="mpin" aria-hidden="true"><i></i><b>N214</b></span>
+      </div>
+      <figcaption><span data-t="mapC1">Level 2 · next to Room Maillot</span><span data-t="mapC2">Take the escalators up to Level 2</span></figcaption>
+    </figure>
   </div></section>
   <section class="sym" id="symposium"><div class="wrap">
     <div class="shead">
@@ -524,7 +542,7 @@ const T={en:{},fr:{
  ctaCard:'Recevoir ma Sphere Card',cardNote:'La Sphere Card est la carte BioScience pour votre cadeau au stand. Ce n’est pas une inscription à l’IMCAS.',planH:'Votre programme à Paris',ctaWallet:'Ajouter au Wallet',ctaCal:'Ajouter à l’agenda',
  dxLead:'Genefill DX en direct sur scène : hydratation immédiate, restaure le volume et la structure, stimulation du collagène à long terme.',dxPill:'Innovation esthétique allemande · AH et technologie hybride',
  fcap:'Sept présentations, un mot. Les lettres s’allument pour les présentations de votre programme.',ctaSeat:'Ajouter le symposium à mon programme',symLead:'Présidé par le Dr Frank, avec une démonstration en direct. Lisez les lettres sur le côté.',ligneSub:'La suite · 5 arrêts en 3 jours · ouverte à tous les médecins, sans invitation',direction:'Direction : votre cabinet',termA:'Départ : The Evidence Summit',termB:'Terminus : vos patients · petites salles, vrais cas, du temps pour vos questions',
- boothP:'Ouvert les trois jours.',visit:'RETROUVEZ-NOUS',
+ boothP:'Ouvert les trois jours.',mapC1:'Niveau 2 · à côté de la salle Maillot',mapC2:'Escalators jusqu’au niveau 2',visit:'RETROUVEZ-NOUS',
  now:'EN CE MOMENT DANS LA SUITE',nextH:'Ensuite aujourd’hui',clipsH:'Ce matin',ctaFind:'Trouver le stand N214 · niveau 2',tomorrow:'Sam.',liveBooth:'Aujourd’hui au stand : le coin scientifique, le photo booth et notre équipe. Escalators jusqu’au niveau 2.',
  replayH:'Revoir le symposium',replayP:'Les sept présentations et la démonstration, chapitre par chapitre, gratuitement sur la Digital Academy BioScience.',ctaReplay:'Voir le replay',
  nearEye:'Près de chez vous',nearP:'Votre partenaire BioScience local organise des ateliers pratiques. Touchez ci-dessous, il vous contactera avec la prochaine date.',ctaContact:'Oui, contactez-moi',
@@ -537,7 +555,7 @@ const T={en:{},fr:{
  ctaCard:'Obtener mi Sphere Card',cardNote:'La Sphere Card es la tarjeta de BioScience para su regalo en el stand. No es una inscripción a IMCAS.',planH:'Su plan para París',ctaWallet:'Añadir a Wallet',ctaCal:'Añadir al calendario',
  dxLead:'Genefill DX en directo en el escenario: hidratación inmediata, restaura volumen y estructura, estimulación de colágeno a largo plazo.',dxPill:'Innovación estética alemana · HA y tecnología híbrida',
  fcap:'Siete charlas, una palabra. Las letras se iluminan para las charlas de su plan.',ctaSeat:'Añadir el simposio a mi plan',symLead:'Presidido por el Dr Frank, con una demostración en directo. Lea las letras del lateral.',ligneSub:'La suite · 5 paradas en 3 días · abierta a todos los médicos, sin invitación',direction:'Dirección: su consulta',termA:'Salida: The Evidence Summit',termB:'Final: sus pacientes · salas pequeñas, casos reales, tiempo para sus preguntas',
- boothP:'Abierto los tres días.',visit:'VISÍTENOS',
+ boothP:'Abierto los tres días.',mapC1:'Nivel 2 · junto a la sala Maillot',mapC2:'Suba por las escaleras mecánicas al nivel 2',visit:'VISÍTENOS',
  now:'AHORA EN LA SUITE',nextH:'Después, hoy',clipsH:'Esta mañana',ctaFind:'Ir al stand N214 · nivel 2',tomorrow:'Sáb.',liveBooth:'Hoy en el stand: el rincón científico, el photo booth y nuestro equipo. Suba al nivel 2.',
  replayH:'Vea el simposio',replayP:'Las siete charlas y la demostración, por capítulos, gratis en la Digital Academy de BioScience.',ctaReplay:'Ver el replay',
  nearEye:'Cerca de usted',nearP:'Su distribuidor BioScience local organiza talleres prácticos. Toque abajo y le contactará con la próxima fecha.',ctaContact:'Sí, contáctenme',
