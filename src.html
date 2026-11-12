@@ -1,3 +1,8 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>My Paris Plan</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <style>
@@ -117,7 +122,7 @@ input,select{padding:13px 14px;border-radius:8px;border:1.5px solid var(--line);
 /* programme */
 .sym{background:linear-gradient(180deg,rgba(13,71,80,.95),rgba(10,58,65,.98));color:#fff}
 .shead{display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;justify-content:space-between;margin-bottom:26px}
-.shead h2{margin:14px 0 12px;max-width:16ch}
+.shead h2{margin:14px 0 12px;max-width:26ch;font-size:clamp(30px,4vw,48px)}
 .smeta{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
 .smeta li{background:rgba(255,255,255,.1);color:#e6f6f7;font-weight:500;font-size:15px;padding:6px 12px;border-radius:6px}
 .sbtns{display:flex;flex-wrap:wrap;gap:10px}
@@ -133,6 +138,18 @@ input,select{padding:13px 14px;border-radius:8px;border:1.5px solid var(--line);
 .who2 img{width:52px;height:52px;border-radius:50%;box-shadow:0 0 0 3px #fff}
 .who2 b{display:block;font-size:17px}.who2 span span{display:block;opacity:.85;font-size:14px}
 .cgrid{display:grid;gap:14px}
+.slist{list-style:none;margin:0;padding:0;border-radius:18px;overflow:hidden;background:rgba(255,255,255,.06)}
+.slist li{display:grid;grid-template-columns:62px 44px minmax(0,1fr);gap:14px;align-items:center;padding:12px 16px}
+.slist li+li{border-top:1px solid rgba(255,255,255,.1)}
+.slist time{font-weight:700;font-variant-numeric:tabular-nums;color:#9fe6eb}
+.slist img,.slist .ph{width:44px;height:44px;border-radius:50%;display:block}
+.slist .ph{background:rgba(255,255,255,.14)}
+.slist b{display:block;font-weight:500;font-size:16.5px;line-height:1.3}
+.slist small{color:#a9d6da;font-size:14px}
+.slist .live2{margin-left:8px;background:var(--live);color:#fff;font-weight:700;font-size:10.5px;letter-spacing:.08em;padding:2px 7px;border-radius:4px;text-transform:uppercase;vertical-align:2px}
+@media(max-width:560px){.slist li{grid-template-columns:52px minmax(0,1fr)}.slist img,.slist .ph{display:none}}
+.zones.one{grid-template-columns:1fr!important}
+.cimg img{aspect-ratio:4/3;object-fit:cover;object-position:center 35%}
 @media(min-width:900px){.cgrid{grid-template-columns:1fr 1fr}}
 .opening{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;background:rgba(255,255,255,.06);border-radius:14px;padding:12px 16px}
 .opening time{font-weight:700;color:#9fe6eb;font-variant-numeric:tabular-nums}
@@ -308,8 +325,11 @@ dialog#planner::backdrop{background:rgba(5,35,40,.62)}
 .giftlink{display:inline-flex;align-items:center;gap:8px;margin-top:16px;border:0;background:none;padding:0;color:#fff;font-weight:700;font-size:16px;cursor:pointer;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1.5px}
 .giftlink .gi{width:22px;height:22px;color:#ffd77a}
 @media(min-width:960px){.hero h1{font-size:clamp(48px,5.6vw,72px)}}
+.hlead{font-size:18px;line-height:1.45;margin:4px 0 16px;max-width:46ch;color:#fff}
 @media(max-width:620px){.hide-m{display:none}.liveimg{min-height:200px}}
 </style>
+</head>
+<body>
 
 <header class="top"><div class="wrap">
   <img src="img/logo_color.svg" alt="BioScience">
@@ -329,35 +349,38 @@ dialog#planner::backdrop{background:rgba(5,35,40,.62)}
   <div class="hero"><div class="wrap">
     <div>
       <span class="pill" data-t="join">BioScience at IMCAS Paris 2027</span>
-      <h1>New Frontiers in Aesthetic Science</h1>
+      <h1 data-t="heroH">Step into the Sphere of Beauty</h1>
+      <p class="hlead" data-t="heroP">Three days of science, education and our brands HYAcorp, Genefill and Genefill DX at IMCAS Paris 2027.</p>
       <p class="when"><span data-t="hWhen">Symposium · Fri 29 January · 14:00 · Room 252</span><span data-t="hBooth">Booth N214 · Level 2</span></p>
       <div class="ctas"><button class="cta teal" type="button" data-plan data-t="ctaPlan">Plan my visit</button><button class="cta line" type="button" data-toast="cal" data-t="ctaCalSym">Add to my calendar</button></div>
-      <button class="giftlink" type="button" data-plan><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 7h-2.2A3 3 0 0 0 12 3.8 3 3 0 0 0 6.2 7H4a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-8h1a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1Zm-5-2a1 1 0 1 1 0 2h-2a2 2 0 0 1 2-2Zm-6 0a2 2 0 0 1 2 2H9a1 1 0 1 1 0-2Zm2 15H7v-8h4Zm0-10H5V9h6Zm6 10h-4v-8h4Zm2-10h-6V9h6Z"/></svg><span data-t="gLink">Free gift at the booth with your Sphere Card</span></button>
+      <button class="giftlink" type="button" data-plan><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 7h-2.2A3 3 0 0 0 12 3.8 3 3 0 0 0 6.2 7H4a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-8h1a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1Zm-5-2a1 1 0 1 1 0 2h-2a2 2 0 0 1 2-2Zm-6 0a2 2 0 0 1 2 2H9a1 1 0 1 1 0-2Zm2 15H7v-8h4Zm0-10H5V9h6Zm6 10h-4v-8h4Zm2-10h-6V9h6Z"/></svg><span data-t="gLink">Collect your exclusive gift at the booth with your Sphere Card</span></button>
     </div>
     <div class="sphere-hero" role="img" aria-label="Campaign model inside the glass sphere"></div>
   </div></div>
 
+
+
+
+  <section id="booth" class="on-aqua"><div class="wrap grid2">
+    <div class="banner"><img src="img/d_brands.jpg" alt="HYAcorp, Genefill DX and Genefill spheres"></div>
+    <div>
+      <h2 data-t="boothH">Booth N214 · Level 2</h2>
+      <p class="lead" data-t="boothP">Open all three days.</p>
+      <button class="giftline dark" type="button" data-plan><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 7h-2.2A3 3 0 0 0 12 3.8 3 3 0 0 0 6.2 7H4a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-8h1a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1Zm-5-2a1 1 0 1 1 0 2h-2a2 2 0 0 1 2-2Zm-6 0a2 2 0 0 1 2 2H9a1 1 0 1 1 0-2Zm2 15H7v-8h4Zm0-10H5V9h6Zm6 10h-4v-8h4Zm2-10h-6V9h6Z"/></svg><span><b data-t="gH">Collect your exclusive gift at Booth N214</b><span data-t="gP">Plan your visit, get your Sphere Card and show it at the booth to collect your gift.</span></span></button>
+      <div class="zones" id="zones"></div>
+    </div>
+  </div></section>
   <section class="sym" id="symposium"><div class="wrap">
     <div class="shead">
       <div>
         <span class="pill" data-t="symPill">BioScience Symposium · 90 minutes</span>
-        <h2 class="white" data-t="symH">The programme</h2>
+        <h2 class="white">New Frontiers in Face, Body and Intimate Aesthetics</h2>
         <ul class="smeta"><li data-t="smDay">Friday 29 January</li><li>14:00–15:30</li><li data-t="smRoom">Room 252 · Level 2</li><li data-t="smChair">Chair: Dr Frank</li></ul>
       </div>
-      <div class="sbtns"><button class="cta teal" type="button" data-toast="cal" data-t="ctaCalSym">Add to my calendar</button><button class="cta line hide-m" type="button" data-plan data-t="ctaPlan">Plan my visit</button></div>
+      <div class="sbtns"><button class="cta teal" type="button" data-toast="cal" data-t="ctaCalSym">Add to my calendar</button></div>
     </div>
-    <div class="live">
-      <div class="liveimg" role="img" aria-label="Genefill DX campaign models inside the sphere"></div>
-      <div class="livetxt">
-        <span class="lv" data-t="liveTag">Live on stage</span>
-        <h3 data-t="liveH">Genefill DX, injected in front of you</h3>
-        <p data-t="liveP">Real-time facial biostimulation, explained step by step as it happens.</p>
-        <div class="who2"><img src="img/sp_ruiz.png" alt=""><span><b>Dr Ruiz</b><span>14:15–14:30</span></span></div>
-      </div>
-    </div>
-    <div class="cgrid" id="agenda"></div>
+    <ol class="slist" id="agenda"></ol>
   </div></section>
-
   <section id="suite" class="light"><div class="wrap">
     <div class="suhead">
       <div><span class="pill" data-t="suPill">Hospitality suite · Thu 28 – Sat 30</span>
@@ -367,17 +390,15 @@ dialog#planner::backdrop{background:rgba(5,35,40,.62)}
     </div>
     <div class="tt" id="metro"></div>
   </div></section>
-
-  <section id="booth" class="on-aqua"><div class="wrap grid2">
-    <div class="banner"><img src="img/d_brands.jpg" alt="HYAcorp, Genefill DX and Genefill spheres"></div>
+  <section id="corner" class="on-aqua"><div class="wrap grid2">
+    <div class="banner cimg"><img src="img/corner.jpg" alt="The BioScience Scientific Corner at the booth"></div>
     <div>
-      <h2 data-t="boothH">Booth N214 · Level 2</h2>
-      <p class="lead" data-t="boothP">Open all three days.</p>
-      <button class="giftline dark" type="button" data-plan><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 7h-2.2A3 3 0 0 0 12 3.8 3 3 0 0 0 6.2 7H4a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-8h1a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1Zm-5-2a1 1 0 1 1 0 2h-2a2 2 0 0 1 2-2Zm-6 0a2 2 0 0 1 2 2H9a1 1 0 1 1 0-2Zm2 15H7v-8h4Zm0-10H5V9h6Zm6 10h-4v-8h4Zm2-10h-6V9h6Z"/></svg><span><b data-t="gH">Free gift at Booth N214</b><span data-t="gP">Plan your visit, get your Sphere Card and show it at the booth to collect your gift.</span></span></button>
-      <div class="zones" id="zones"></div>
+      <span class="pill" data-t="scPill">At the booth · all three days</span>
+      <h2 data-t="scH">Scientific Corner</h2>
+      <p class="lead" data-t="scP">The science behind our gels, at Booth N214.</p>
+      <div class="zones one" id="czones"></div>
     </div>
   </div></section>
-
 </main>
 
 <dialog id="planner" aria-labelledby="dlgT">
@@ -385,7 +406,7 @@ dialog#planner::backdrop{background:rgba(5,35,40,.62)}
   <ol class="stepper" aria-label="Progress"><li data-s="1"><i>1</i><span data-t="sp1">Choose</span></li><li data-s="2"><i>2</i><span data-t="sp2">Your card</span></li><li data-s="3"><i>3</i><span data-t="sp3">Done</span></li></ol>
   <button class="dlg-x" type="button" aria-label="Close" data-close>×</button></div>
  <div class="dlg-body" id="dlgBody">
-  <div class="giftstrip"><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 7h-2.2A3 3 0 0 0 12 3.8 3 3 0 0 0 6.2 7H4a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-8h1a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1Zm-5-2a1 1 0 1 1 0 2h-2a2 2 0 0 1 2-2Zm-6 0a2 2 0 0 1 2 2H9a1 1 0 1 1 0-2Zm2 15H7v-8h4Zm0-10H5V9h6Zm6 10h-4v-8h4Zm2-10h-6V9h6Z"/></svg><span><b data-t="gH2">Free gift at Booth N214</b> <span data-t="gS">Show your Sphere Card at the booth to collect it.</span></span></div>
+  <div class="giftstrip"><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 7h-2.2A3 3 0 0 0 12 3.8 3 3 0 0 0 6.2 7H4a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-8h1a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1Zm-5-2a1 1 0 1 1 0 2h-2a2 2 0 0 1 2-2Zm-6 0a2 2 0 0 1 2 2H9a1 1 0 1 1 0-2Zm2 15H7v-8h4Zm0-10H5V9h6Zm6 10h-4v-8h4Zm2-10h-6V9h6Z"/></svg><span><b data-t="gH2">Collect your exclusive gift at Booth N214</b> <span data-t="gS">Show your Sphere Card at the booth to collect it.</span></span></div>
   <div class="pgrid" id="pgrid">
    <div class="pmain">
     <div data-step="1">
@@ -416,7 +437,7 @@ dialog#planner::backdrop{background:rgba(5,35,40,.62)}
     <div data-step="3" hidden>
      <h3 class="q" data-t="doneH">Your Sphere Card is ready</h3>
      <p class="pintro"><span data-t="p3">We have emailed your plan and card to</span> <b id="sentTo"></b>.</p>
-     <p class="giftnote"><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 7h-2.2A3 3 0 0 0 12 3.8 3 3 0 0 0 6.2 7H4a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-8h1a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1Zm-5-2a1 1 0 1 1 0 2h-2a2 2 0 0 1 2-2Zm-6 0a2 2 0 0 1 2 2H9a1 1 0 1 1 0-2Zm2 15H7v-8h4Zm0-10H5V9h6Zm6 10h-4v-8h4Zm2-10h-6V9h6Z"/></svg><span data-t="gDone">Show this card at Booth N214, Level 2 to collect your free gift.</span></p>
+     <p class="giftnote"><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 7h-2.2A3 3 0 0 0 12 3.8 3 3 0 0 0 6.2 7H4a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-8h1a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1Zm-5-2a1 1 0 1 1 0 2h-2a2 2 0 0 1 2-2Zm-6 0a2 2 0 0 1 2 2H9a1 1 0 1 1 0-2Zm2 15H7v-8h4Zm0-10H5V9h6Zm6 10h-4v-8h4Zm2-10h-6V9h6Z"/></svg><span data-t="gDone">Show this card at Booth N214, Level 2 to collect your exclusive gift.</span></p>
      <div class="actions">
       <button class="cta dark" type="button" data-toast="wallet" data-t="ctaWallet">Add to Wallet</button>
       <button class="cta ghost" type="button" data-toast="cal" data-t="ctaCal">Add to calendar</button>
@@ -489,7 +510,7 @@ dialog#planner::backdrop{background:rgba(5,35,40,.62)}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
 const T={en:{},fr:{
- suPill:'Suite · jeu. 28 – sam. 30',suiteH:'Sessions en suite',suiteP:'Petites salles, vrais cas et du temps pour vos questions.',sf1:'Ouvert à tous les médecins',sf1s:'Sans invitation',sf2:'Petits groupes',sf2s:'Vrais cas, questions en direct',sf3s:'Niveau [x] · Palais des Congrès',symPill:'Symposium BioScience · 90 minutes',symH:'Le programme',smDay:'Vendredi 29 janvier',smRoom:'Salle 252 · niveau 2',smChair:'Présidé par le Dr Frank',liveTag:'En direct sur scène',liveH:'Genefill DX, injecté devant vous',liveP:'Biostimulation faciale en temps réel, expliquée étape par étape.',hWhen:'Symposium · ven. 29 janvier · 14:00 · salle 252',hBooth:'Stand N214 · niveau 2',gLink:'Cadeau offert au stand avec votre Sphere Card',sp1:'Choisir',sp2:'Votre carte',sp3:'Terminé',gS:'Montrez votre Sphere Card au stand pour le retirer.',p2:'Nous vous envoyons votre programme et votre Sphere Card. Votre nom figure sur la carte.',p3:'Nous avons envoyé votre programme et votre carte à',s1:'Qu’est-ce qui vous intéresse ?',s2:'Où envoyer votre carte ?',pP:'Cochez tout ce qui vous intéresse. Votre programme et votre carte se mettent à jour.',doneH:'Votre Sphere Card est prête',gH2:'Cadeau offert au stand N214',gH:'Cadeau offert au stand N214',gP:'Planifiez votre visite, recevez votre Sphere Card et montrez-la au stand pour retirer votre cadeau.',gP2:'Planifiez votre visite ci-dessous. Nous vous envoyons votre Sphere Card. Montrez-la au stand et retirez votre cadeau.',gDone:'Montrez cette carte au stand N214, niveau 2, pour retirer votre cadeau.',ctaSend:'Recevoir mon programme et ma Sphere Card',dlgSub:'Une minute · votre programme et votre cadeau',pH:'Planifiez votre visite',sLang:'Afficher aussi les sessions dans ma langue',opt:'facultatif',ctaPlan:'Planifier ma visite',ctaProg:'Voir le programme',ctaCalSym:'Ajouter à mon agenda',join:'BioScience à l’IMCAS Paris 2027',heroSub:'Notre symposium visage, corps et esthétique intime, avec une démonstration Genefill DX en direct.',kSym:'Symposium',vSym:'Vendredi 29 janvier · 14:00–15:30',kBooth:'Stand',vBooth:'Jeudi 28 – samedi 30 janvier',kSuite:'Sessions en suite',waysH:'Trois façons de nous retrouver',w1k:'Ven. 29 · 14:00–15:30',w1p:'7 experts, 90 minutes, démonstration en direct. Salle 252.',w1a:'Voir le programme →',w2k:'Jeu. 28 – sam. 30',w2p:'5 sessions en petit groupe, dont une en français et une en espagnol. Sans invitation.',w2a:'Voir les sessions →',w3k:'Jeu. 28 – sam. 30',w3p:'Stand N214, niveau 2. Rencontrez l’équipe, découvrez la science, retirez votre cadeau.',w3a:'Découvrir le stand →',progH:'Programme',symSub:'14:00–15:30 · Salle 252, niveau 2 · Présidé par le Dr Frank.',boothH:'Stand N214 · niveau 2',bandH:'Planifiez votre visite en une minute',bandP:'Choisissez ce qui vous intéresse. Nous vous envoyons votre programme par e-mail avec votre Sphere Card pour le cadeau au stand.',
+ suPill:'Suite · jeu. 28 – sam. 30',suiteH:'Sessions en suite',suiteP:'Petites salles, vrais cas et du temps pour vos questions.',sf1:'Ouvert à tous les médecins',sf1s:'Sans invitation',sf2:'Petits groupes',sf2s:'Vrais cas, questions en direct',sf3s:'Niveau [x] · Palais des Congrès',symPill:'Symposium BioScience · 90 minutes',symH:'Le programme',smDay:'Vendredi 29 janvier',smRoom:'Salle 252 · niveau 2',smChair:'Présidé par le Dr Frank',liveTag:'En direct sur scène',liveH:'Genefill DX, injecté devant vous',liveP:'Biostimulation faciale en temps réel, expliquée étape par étape.',hWhen:'Symposium · ven. 29 janvier · 14:00 · salle 252',hBooth:'Stand N214 · niveau 2',gLink:'Retirez votre cadeau exclusif au stand avec votre Sphere Card',sp1:'Choisir',sp2:'Votre carte',sp3:'Terminé',gS:'Montrez votre Sphere Card au stand pour le retirer.',p2:'Nous vous envoyons votre programme et votre Sphere Card. Votre nom figure sur la carte.',p3:'Nous avons envoyé votre programme et votre carte à',s1:'Qu’est-ce qui vous intéresse ?',s2:'Où envoyer votre carte ?',pP:'Cochez tout ce qui vous intéresse. Votre programme et votre carte se mettent à jour.',doneH:'Votre Sphere Card est prête',gH2:'Retirez votre cadeau exclusif au stand N214',gH:'Retirez votre cadeau exclusif au stand N214',gP:'Planifiez votre visite, recevez votre Sphere Card et montrez-la au stand pour retirer votre cadeau exclusif.',gP2:'Planifiez votre visite ci-dessous. Nous vous envoyons votre Sphere Card. Montrez-la au stand et retirez votre cadeau.',gDone:'Montrez cette carte au stand N214, niveau 2, pour retirer votre cadeau exclusif.',ctaSend:'Recevoir mon programme et ma Sphere Card',dlgSub:'Une minute · votre programme et votre cadeau',pH:'Planifiez votre visite',sLang:'Afficher aussi les sessions dans ma langue',opt:'facultatif',ctaPlan:'Planifier ma visite',ctaProg:'Voir le programme',ctaCalSym:'Ajouter à mon agenda',join:'BioScience à l’IMCAS Paris 2027',heroH:'Entrez dans la Sphere of Beauty',heroP:'Trois jours de science, de formation et de nos marques HYAcorp, Genefill et Genefill DX à l’IMCAS Paris 2027.',scH:'Scientific Corner',scP:'La science derrière nos gels, au stand N214.',scPill:'Au stand · les trois jours',symNote:'Animé par le Dr Frank',heroSub:'Notre symposium visage, corps et esthétique intime, avec une démonstration Genefill DX en direct.',kSym:'Symposium',vSym:'Vendredi 29 janvier · 14:00–15:30',kBooth:'Stand',vBooth:'Jeudi 28 – samedi 30 janvier',kSuite:'Sessions en suite',waysH:'Trois façons de nous retrouver',w1k:'Ven. 29 · 14:00–15:30',w1p:'7 experts, 90 minutes, démonstration en direct. Salle 252.',w1a:'Voir le programme →',w2k:'Jeu. 28 – sam. 30',w2p:'5 sessions en petit groupe, dont une en français et une en espagnol. Sans invitation.',w2a:'Voir les sessions →',w3k:'Jeu. 28 – sam. 30',w3p:'Stand N214, niveau 2. Rencontrez l’équipe, découvrez la science, retirez votre cadeau.',w3a:'Découvrir le stand →',progH:'Programme',symSub:'14:00–15:30 · Salle 252, niveau 2 · Présidé par le Dr Frank.',boothH:'Stand N214 · niveau 2',bandH:'Planifiez votre visite en une minute',bandP:'Choisissez ce qui vous intéresse. Nous vous envoyons votre programme par e-mail avec votre Sphere Card pour le cadeau au stand.',
  
  preview:'Aperçu :',mBefore:'Avant Paris',mDuring:'Pendant',mAfter:'Après',mockNote:'Maquette · la page change selon la date',day:'Vendredi 29 janvier',ctaBuild:'Créer mon programme à Paris',
  st1:'1 · Choisir',st2:'2 · Vos coordonnées',st3:'3 · Votre Sphere Card',buildH:'Que voulez-vous voir à Paris ?',buildP:'Touchez tout ce qui vous intéresse. Votre programme se crée au fur et à mesure.',
@@ -502,7 +523,7 @@ const T={en:{},fr:{
  replayH:'Revoir le symposium',replayP:'Les sept présentations et la démonstration, chapitre par chapitre, gratuitement sur la Digital Academy BioScience.',ctaReplay:'Voir le replay',
  nearEye:'Près de chez vous',nearP:'Votre partenaire BioScience local organise des ateliers pratiques. Touchez ci-dessous, il vous contactera avec la prochaine date.',ctaContact:'Oui, contactez-moi',
  merci:'Merci, Paris. Merci à tous ceux qui nous ont rejoints au symposium, dans la suite et au stand N214.',foot:'Réservé aux professionnels de santé. Contenu clinique validé par les Affaires médicales BioScience.'},
- es:{suPill:'Suite · jue. 28 – sáb. 30',suiteH:'Sesiones en la suite',suiteP:'Salas pequeñas, casos reales y tiempo para sus preguntas.',sf1:'Abierto a todos los médicos',sf1s:'Sin invitación',sf2:'Grupos reducidos',sf2s:'Casos reales, preguntas en directo',sf3s:'Nivel [x] · Palais des Congrès',symPill:'Simposio BioScience · 90 minutos',symH:'El programa',smDay:'Viernes 29 de enero',smRoom:'Sala 252 · nivel 2',smChair:'Preside: Dr Frank',liveTag:'En directo en el escenario',liveH:'Genefill DX, inyectado delante de usted',liveP:'Bioestimulación facial en tiempo real, explicada paso a paso.',hWhen:'Simposio · vie. 29 de enero · 14:00 · sala 252',hBooth:'Stand N214 · nivel 2',gLink:'Regalo en el stand con su Sphere Card',sp1:'Elegir',sp2:'Su tarjeta',sp3:'Listo',gS:'Muestre su Sphere Card en el stand para recogerlo.',p2:'Le enviamos su plan y su Sphere Card. Su nombre aparece en la tarjeta.',p3:'Hemos enviado su plan y su tarjeta a',s1:'¿Qué le interesa?',s2:'¿Dónde enviamos su tarjeta?',pP:'Marque todo lo que le interese. Su plan y su tarjeta se actualizan.',doneH:'Su Sphere Card está lista',gH2:'Regalo en el stand N214',gH:'Regalo en el stand N214',gP:'Planifique su visita, reciba su Sphere Card y muéstrela en el stand para recoger su regalo.',gP2:'Planifique su visita abajo. Le enviamos su Sphere Card. Muéstrela en el stand y recoja su regalo.',gDone:'Muestre esta tarjeta en el stand N214, nivel 2, para recoger su regalo.',ctaSend:'Enviarme mi plan y mi Sphere Card',dlgSub:'Un minuto · su plan y su regalo',pH:'Planifique su visita',sLang:'Mostrar también sesiones en mi idioma',opt:'opcional',ctaPlan:'Planificar mi visita',ctaProg:'Ver el programa',ctaCalSym:'Añadir a mi calendario',join:'BioScience en IMCAS París 2027',heroSub:'Nuestro simposio sobre rostro, cuerpo y estética íntima, con una demostración de Genefill DX en directo.',kSym:'Simposio',vSym:'Viernes 29 de enero · 14:00–15:30',kBooth:'Stand',vBooth:'Jueves 28 – sábado 30 de enero',kSuite:'Sesiones en la suite',waysH:'Tres formas de encontrarnos',w1k:'Vie. 29 · 14:00–15:30',w1p:'7 expertos, 90 minutos, demostración en directo. Sala 252.',w1a:'Ver el programa →',w2k:'Jue. 28 – sáb. 30',w2p:'5 sesiones en grupo reducido, una en francés y otra en español. Sin invitación.',w2a:'Ver las sesiones →',w3k:'Jue. 28 – sáb. 30',w3p:'Stand N214, nivel 2. Conozca al equipo, vea la ciencia y recoja su regalo.',w3a:'Qué hay en el stand →',progH:'Programa',symSub:'14:00–15:30 · Sala 252, nivel 2 · Presidido por el Dr Frank.',boothH:'Stand N214 · nivel 2',bandH:'Planifique su visita en un minuto',bandP:'Elija lo que le interesa. Le enviamos su plan por correo con su Sphere Card para el regalo en el stand.',
+ es:{suPill:'Suite · jue. 28 – sáb. 30',suiteH:'Sesiones en la suite',suiteP:'Salas pequeñas, casos reales y tiempo para sus preguntas.',sf1:'Abierto a todos los médicos',sf1s:'Sin invitación',sf2:'Grupos reducidos',sf2s:'Casos reales, preguntas en directo',sf3s:'Nivel [x] · Palais des Congrès',symPill:'Simposio BioScience · 90 minutos',symH:'El programa',smDay:'Viernes 29 de enero',smRoom:'Sala 252 · nivel 2',smChair:'Preside: Dr Frank',liveTag:'En directo en el escenario',liveH:'Genefill DX, inyectado delante de usted',liveP:'Bioestimulación facial en tiempo real, explicada paso a paso.',hWhen:'Simposio · vie. 29 de enero · 14:00 · sala 252',hBooth:'Stand N214 · nivel 2',gLink:'Recoja su regalo exclusivo en el stand con su Sphere Card',sp1:'Elegir',sp2:'Su tarjeta',sp3:'Listo',gS:'Muestre su Sphere Card en el stand para recogerlo.',p2:'Le enviamos su plan y su Sphere Card. Su nombre aparece en la tarjeta.',p3:'Hemos enviado su plan y su tarjeta a',s1:'¿Qué le interesa?',s2:'¿Dónde enviamos su tarjeta?',pP:'Marque todo lo que le interese. Su plan y su tarjeta se actualizan.',doneH:'Su Sphere Card está lista',gH2:'Recoja su regalo exclusivo en el stand N214',gH:'Recoja su regalo exclusivo en el stand N214',gP:'Planifique su visita, reciba su Sphere Card y muéstrela en el stand para recoger su regalo exclusivo.',gP2:'Planifique su visita abajo. Le enviamos su Sphere Card. Muéstrela en el stand y recoja su regalo.',gDone:'Muestre esta tarjeta en el stand N214, nivel 2, para recoger su regalo exclusivo.',ctaSend:'Enviarme mi plan y mi Sphere Card',dlgSub:'Un minuto · su plan y su regalo',pH:'Planifique su visita',sLang:'Mostrar también sesiones en mi idioma',opt:'opcional',ctaPlan:'Planificar mi visita',ctaProg:'Ver el programa',ctaCalSym:'Añadir a mi calendario',join:'BioScience en IMCAS París 2027',heroH:'Entre en la Sphere of Beauty',heroP:'Tres días de ciencia, formación y nuestras marcas HYAcorp, Genefill y Genefill DX en IMCAS París 2027.',scH:'Scientific Corner',scP:'La ciencia detrás de nuestros geles, en el stand N214.',scPill:'En el stand · los tres días',symNote:'Moderado por el Dr Frank',heroSub:'Nuestro simposio sobre rostro, cuerpo y estética íntima, con una demostración de Genefill DX en directo.',kSym:'Simposio',vSym:'Viernes 29 de enero · 14:00–15:30',kBooth:'Stand',vBooth:'Jueves 28 – sábado 30 de enero',kSuite:'Sesiones en la suite',waysH:'Tres formas de encontrarnos',w1k:'Vie. 29 · 14:00–15:30',w1p:'7 expertos, 90 minutos, demostración en directo. Sala 252.',w1a:'Ver el programa →',w2k:'Jue. 28 – sáb. 30',w2p:'5 sesiones en grupo reducido, una en francés y otra en español. Sin invitación.',w2a:'Ver las sesiones →',w3k:'Jue. 28 – sáb. 30',w3p:'Stand N214, nivel 2. Conozca al equipo, vea la ciencia y recoja su regalo.',w3a:'Qué hay en el stand →',progH:'Programa',symSub:'14:00–15:30 · Sala 252, nivel 2 · Presidido por el Dr Frank.',boothH:'Stand N214 · nivel 2',bandH:'Planifique su visita en un minuto',bandP:'Elija lo que le interesa. Le enviamos su plan por correo con su Sphere Card para el regalo en el stand.',
  
  preview:'Vista previa:',mBefore:'Antes de París',mDuring:'Durante',mAfter:'Después',mockNote:'Maqueta · la página cambia según la fecha',day:'Viernes 29 de enero',ctaBuild:'Crear mi plan en París',
  st1:'1 · Elegir',st2:'2 · Sus datos',st3:'3 · Su Sphere Card',buildH:'¿Qué quiere ver en París?',buildP:'Toque todo lo que le interese. Su plan se crea sobre la marcha.',
@@ -521,9 +542,9 @@ const TOPICS={en:[['face','Face','Biostimulation · Genefill DX live demo'],['bo
  fr:[['face','Visage','Biostimulation · démo Genefill DX en direct'],['body','Corps','Consensus AH corps · étude UltraButt'],['intimate','Intime','Nouvelles données cliniques'],['us','Échographie & anatomie','Échographie en direct · injecter en sécurité']],
  es:[['face','Rostro','Bioestimulación · demo Genefill DX en directo'],['body','Cuerpo','Consenso HA corporal · estudio UltraButt'],['intimate','Íntimo','Nuevos datos clínicos'],['us','Ecografía y anatomía','Ecografía en directo · inyectar con seguridad']]};
 const LANGS=[['fr','Session en français','Sat 30 · Afternoon'],['es','Sesión en español','Sat 30 · Morning']];
-const W={en:{wd:['Thursday','Friday','Saturday'],symRoom:'Room 252 · Level 2',symLine:'7 experts and a live Genefill DX demo on stage',everyPlan:'Included in every plan',seeProg:'See the programme',session:'session',sessions:'sessions',addPlan:'+ Add to my plan',added:'✓ In your plan',addedT:'Added to your plan. Open “Plan my visit” to get your Sphere Card.',viaTopic:'This session is in your plan because of a topic you picked.',inPlan:'In your plan',faculty:'All<br>faculty',allFac:'All faculty',liveDemo:'Live demo',chFace:'Face',chFaceS:'Biostimulation and a live demo',chBody:'Body',chBodyS:'Consensus, combinations, trial evidence',chInt:'Intimate',chIntS:'New clinical data',chClose:'Closing',chCloseS:'Round table and your questions',next1:'Next: get my Sphere Card →',next2:'Send my plan and card',next3:'Done',back:'← Back',stops:'stops in your plan',yourName:'Your name',qrAfter:'Your QR appears after sending',giftR:'Free gift · Booth N214',none:'Pick a topic, or continue with the symposium and the booth.',thu:'Thursday 28 January',fri:'Friday 29 January',sat:'Saturday 30 January',all:'All three days',sym:'BioScience Symposium',symS:'Room 252 · Level 2 · 7 experts, live demo',forYou:'For you',suite:'Suite session',booth:'Booth N214 · Level 2',boothS:'Show your Sphere Card · collect your free gift',hint:'Choose a topic above to add suite sessions and see the talks for you.',am:'Morning',pm:'Afternoon',daily:'Open daily'},
- fr:{wd:['Jeudi','Vendredi','Samedi'],symRoom:'Salle 252 · niveau 2',symLine:'7 experts et une démo Genefill DX en direct sur scène',everyPlan:'Inclus dans chaque programme',seeProg:'Voir le programme',session:'session',sessions:'sessions',addPlan:'+ Ajouter à mon programme',added:'✓ Dans votre programme',addedT:'Ajouté à votre programme. Ouvrez « Planifier ma visite » pour votre Sphere Card.',viaTopic:'Cette session est dans votre programme grâce à un thème choisi.',inPlan:'Dans votre programme',faculty:'Tous les<br>experts',allFac:'Tous les experts',liveDemo:'Démo en direct',chFace:'Visage',chFaceS:'Biostimulation et démo en direct',chBody:'Corps',chBodyS:'Consensus, combinaisons, preuves cliniques',chInt:'Intime',chIntS:'Nouvelles données cliniques',chClose:'Clôture',chCloseS:'Table ronde et vos questions',next1:'Suivant : ma Sphere Card →',next2:'Envoyer mon programme et ma carte',next3:'Terminé',back:'← Retour',stops:'étapes dans votre programme',yourName:'Votre nom',qrAfter:'Votre QR apparaît après l’envoi',giftR:'Cadeau offert · stand N214',none:'Choisissez un thème ou continuez avec le symposium et le stand.',thu:'Jeudi 28 janvier',fri:'Vendredi 29 janvier',sat:'Samedi 30 janvier',all:'Les trois jours',sym:'Symposium BioScience',symS:'Salle 252 · niveau 2 · 7 experts, démo en direct',forYou:'Pour vous',suite:'Session en suite',booth:'Stand N214 · niveau 2',boothS:'Rencontrez l’équipe · votre cadeau avec la Sphere Card',hint:'Choisissez un thème pour ajouter des sessions et voir les présentations pour vous.',am:'Matin',pm:'Après-midi',daily:'Tous les jours'},
- es:{wd:['Jueves','Viernes','Sábado'],symRoom:'Sala 252 · nivel 2',symLine:'7 expertos y una demo de Genefill DX en directo',everyPlan:'Incluido en todos los planes',seeProg:'Ver el programa',session:'sesión',sessions:'sesiones',addPlan:'+ Añadir a mi plan',added:'✓ En su plan',addedT:'Añadido a su plan. Abra «Planificar mi visita» para su Sphere Card.',viaTopic:'Esta sesión está en su plan por un tema elegido.',inPlan:'En su plan',faculty:'Todos los<br>expertos',allFac:'Todos los expertos',liveDemo:'Demo en directo',chFace:'Rostro',chFaceS:'Bioestimulación y demo en directo',chBody:'Cuerpo',chBodyS:'Consenso, combinaciones, evidencia clínica',chInt:'Íntimo',chIntS:'Nuevos datos clínicos',chClose:'Cierre',chCloseS:'Mesa redonda y sus preguntas',next1:'Siguiente: mi Sphere Card →',next2:'Enviar mi plan y mi tarjeta',next3:'Listo',back:'← Atrás',stops:'paradas en su plan',yourName:'Su nombre',qrAfter:'Su QR aparece tras el envío',giftR:'Regalo · stand N214',none:'Elija un tema o continúe con el simposio y el stand.',thu:'Jueves 28 de enero',fri:'Viernes 29 de enero',sat:'Sábado 30 de enero',all:'Los tres días',sym:'Simposio BioScience',symS:'Sala 252 · nivel 2 · 7 expertos, demo en directo',forYou:'Para usted',suite:'Sesión en la suite',booth:'Stand N214 · nivel 2',boothS:'Conozca al equipo · su regalo con la Sphere Card',hint:'Elija un tema para añadir sesiones y ver las charlas para usted.',am:'Mañana',pm:'Tarde',daily:'Cada día'}};
+const W={en:{wd:['Thursday','Friday','Saturday'],symRoom:'Room 252 · Level 2',symLine:'7 experts and a live Genefill DX demo on stage',everyPlan:'Included in every plan',seeProg:'See the programme',session:'session',sessions:'sessions',addPlan:'+ Add to my plan',added:'✓ In your plan',addedT:'Added to your plan. Open “Plan my visit” to get your Sphere Card.',viaTopic:'This session is in your plan because of a topic you picked.',inPlan:'In your plan',faculty:'All<br>faculty',allFac:'All faculty',liveDemo:'Live demo',chFace:'Face',chFaceS:'Biostimulation and a live demo',chBody:'Body',chBodyS:'Consensus, combinations, trial evidence',chInt:'Intimate',chIntS:'New clinical data',chClose:'Closing',chCloseS:'Round table and your questions',next1:'Next: get my Sphere Card →',next2:'Send my plan and card',next3:'Done',back:'← Back',stops:'stops in your plan',yourName:'Your name',qrAfter:'Your QR appears after sending',giftR:'Exclusive gift · Booth N214',none:'Pick a topic, or continue with the symposium and the booth.',thu:'Thursday 28 January',fri:'Friday 29 January',sat:'Saturday 30 January',all:'All three days',sym:'BioScience Symposium',symS:'Room 252 · Level 2 · 7 experts, live demo',forYou:'For you',suite:'Suite session',booth:'Booth N214 · Level 2',boothS:'Show your Sphere Card · collect your exclusive gift',hint:'Choose a topic above to add suite sessions and see the talks for you.',am:'Morning',pm:'Afternoon',daily:'Open daily'},
+ fr:{wd:['Jeudi','Vendredi','Samedi'],symRoom:'Salle 252 · niveau 2',symLine:'7 experts et une démo Genefill DX en direct sur scène',everyPlan:'Inclus dans chaque programme',seeProg:'Voir le programme',session:'session',sessions:'sessions',addPlan:'+ Ajouter à mon programme',added:'✓ Dans votre programme',addedT:'Ajouté à votre programme. Ouvrez « Planifier ma visite » pour votre Sphere Card.',viaTopic:'Cette session est dans votre programme grâce à un thème choisi.',inPlan:'Dans votre programme',faculty:'Tous les<br>experts',allFac:'Tous les experts',liveDemo:'Démo en direct',chFace:'Visage',chFaceS:'Biostimulation et démo en direct',chBody:'Corps',chBodyS:'Consensus, combinaisons, preuves cliniques',chInt:'Intime',chIntS:'Nouvelles données cliniques',chClose:'Clôture',chCloseS:'Table ronde et vos questions',next1:'Suivant : ma Sphere Card →',next2:'Envoyer mon programme et ma carte',next3:'Terminé',back:'← Retour',stops:'étapes dans votre programme',yourName:'Votre nom',qrAfter:'Votre QR apparaît après l’envoi',giftR:'Cadeau exclusif · stand N214',none:'Choisissez un thème ou continuez avec le symposium et le stand.',thu:'Jeudi 28 janvier',fri:'Vendredi 29 janvier',sat:'Samedi 30 janvier',all:'Les trois jours',sym:'Symposium BioScience',symS:'Salle 252 · niveau 2 · 7 experts, démo en direct',forYou:'Pour vous',suite:'Session en suite',booth:'Stand N214 · niveau 2',boothS:'Rencontrez l’équipe · votre cadeau exclusif avec la Sphere Card',hint:'Choisissez un thème pour ajouter des sessions et voir les présentations pour vous.',am:'Matin',pm:'Après-midi',daily:'Tous les jours'},
+ es:{wd:['Jueves','Viernes','Sábado'],symRoom:'Sala 252 · nivel 2',symLine:'7 expertos y una demo de Genefill DX en directo',everyPlan:'Incluido en todos los planes',seeProg:'Ver el programa',session:'sesión',sessions:'sesiones',addPlan:'+ Añadir a mi plan',added:'✓ En su plan',addedT:'Añadido a su plan. Abra «Planificar mi visita» para su Sphere Card.',viaTopic:'Esta sesión está en su plan por un tema elegido.',inPlan:'En su plan',faculty:'Todos los<br>expertos',allFac:'Todos los expertos',liveDemo:'Demo en directo',chFace:'Rostro',chFaceS:'Bioestimulación y demo en directo',chBody:'Cuerpo',chBodyS:'Consenso, combinaciones, evidencia clínica',chInt:'Íntimo',chIntS:'Nuevos datos clínicos',chClose:'Cierre',chCloseS:'Mesa redonda y sus preguntas',next1:'Siguiente: mi Sphere Card →',next2:'Enviar mi plan y mi tarjeta',next3:'Listo',back:'← Atrás',stops:'paradas en su plan',yourName:'Su nombre',qrAfter:'Su QR aparece tras el envío',giftR:'Regalo exclusivo · stand N214',none:'Elija un tema o continúe con el simposio y el stand.',thu:'Jueves 28 de enero',fri:'Viernes 29 de enero',sat:'Sábado 30 de enero',all:'Los tres días',sym:'Simposio BioScience',symS:'Sala 252 · nivel 2 · 7 expertos, demo en directo',forYou:'Para usted',suite:'Sesión en la suite',booth:'Stand N214 · nivel 2',boothS:'Conozca al equipo · su regalo exclusivo con la Sphere Card',hint:'Elija un tema para añadir sesiones y ver las charlas para usted.',am:'Mañana',pm:'Tarde',daily:'Cada día'}};
 const AG=[['00:00','Welcome: New Frontiers in Face, Body and Intimate Aesthetics','frank',[]],
  ['00:05','From Filling to Stimulating: The Science of Advanced Biostimulation','casabona',['face']],
  ['00:15','Real-Time Facial Biostimulation: Genefill DX Live on Stage','ruiz',['face']],
@@ -538,7 +559,8 @@ const SUITE=[['Thu 28 · Morning','The Evidence Summit','New trial readouts: Gen
  ['Fri 29 · Morning','Mastering the Invisible','Anatomy and live ultrasound, face and body: see every plane before you inject','Dr Alfertshofer · Dr Bravo','',['us'],['P','Pairs with the HYAcorp ultrasound pre-course']],
  ['Sat 30 · Morning','The Latin Booty & Beyond','Gluteal sculpting, Genefill DX for the face, and the business of body work','Dr Caicedo · Dr Chacur · Dr Murillo','ES',['es'],['N','Dr Chacur also speaks at the symposium']],
  ['Sat 30 · Afternoon','L’art du remodelage corporel','Subcutaneous vectoring, ultrasound safety and combined protocols','Dr Hannan · Dr Amsellem · Dr Faivre','FR',['fr'],['O','Puts the body HA consensus into practice']]];
-const ZONES=[['1','Scientific Corner','Studies and the gel under the microscope'],['2','Education','Academy, webinars, workshops near you'],['3','Products','HYAcorp, Genefill, Genefill DX'],['4','Photo booth','Your portrait inside the sphere']];
+const ZONES=[['1','Products','HYAcorp, Genefill, Genefill DX'],['2','Education','Academy, webinars, workshops near you'],['3','Photo booth','Your portrait inside the sphere'],['4','Scientific Corner','Studies and the gel under the microscope']];
+const CZONES=[['1','Clinical studies','The latest data on screen'],['2','Under the microscope','See the gel structure for yourself'],['3','Ask our team','Your scientific questions, answered']];
 const sel=new Set(),picked=new Set();
 const PH={'Dr Ruiz':'ruiz','Dr Brambilla':'brambilla','Dr Rosh':'rosh','Dr Chacur':'chacur'};
 const mineS=i=>mine(SUITE[i][5])||picked.has(i);let lang='en',who='';
@@ -561,7 +583,7 @@ function render(){
   +`<div class="day"><b>${w.all}</b><div class="it"><time>${w.daily}</time><div><b>${w.booth}</b><span>${w.boothS}</span></div></div></div>`+(sel.size?'':`<p class="hint">${w.none}</p>`);
  const tk=i=>{const [t,title,sp,tags]=AG[i];const m=mine(tags);return `<div class="tk ${m?'mine':''}">${m?`<span class="inplan">${w.inPlan}</span>`:''}${sp?`<img src="img/sp_${sp}.png" alt="">`:`<span class="ph">${w.faculty}</span>`}<div><div class="t">${esc(title)}</div><div class="m"><time>${clk(t)}</time><span>${esc(SP[sp]||w.allFac)}</span>${i===2?`<span class="live2">${w.liveDemo}</span>`:''}</div></div></div>`};
  const CH=[[w.chFace,w.chFaceS,'14:05–14:30',[1,2]],[w.chBody,w.chBodyS,'14:30–15:00',[3,4,5]],[w.chInt,w.chIntS,'15:00–15:10',[6]],[w.chClose,w.chCloseS,'15:10–15:30',[7,8]]];
- $('agenda').innerHTML=`<div class="opening"><time>14:00</time><img src="img/sp_frank.png" alt=""><b>${esc(AG[0][1])}</b><span>Dr Frank</span></div>`+CH.map(([h,sub,tr,ix])=>`<div class="ccard"><div class="chd"><div><h3>${h}</h3><small>${sub}</small></div><time>${tr}</time></div>${ix.map(tk).join('')}</div>`).join('');
+ $('agenda').innerHTML=AG.map(([t,title,sp],i)=>`<li><time>${clk(t)}</time>${sp?`<img src="img/sp_${sp}.png" alt="">`:'<span class="ph"></span>'}<div><b>${esc(title)}${i===2?`<span class="live2">${w.liveDemo}</span>`:''}</b><small>${esc(SP[sp]||w.allFac)}</small></div></li>`).join('');
  const DN={Thu:w.thu,Fri:w.fri,Sat:w.sat};
  const TL=TOPICS[lang]||TOPICS.en,tl=k=>(TL.find(t=>t[0]===k)||['',''])[1];
  const sx=(i,P)=>{const [wh,n,d,who,lg,tags]=SUITE[i];const m=mineS(i);const ph=who.split(' · ').filter(nm=>PH[nm]);
@@ -571,6 +593,7 @@ function render(){
 }
 function clk(off){const [h,m]=off.split(':').map(Number);const t=14*60+h*60+m;return `${Math.floor(t/60)}:${String(t%60).padStart(2,'0')}`}
 function staticBits(){
+ $('czones').innerHTML=CZONES.map(([n,a,b])=>`<div class="zone"><i>${n}</i><div><b>${a}</b><br><span style="color:var(--soft);font-size:14px">${b}</span></div></div>`).join('');
  $('zones').innerHTML=ZONES.map(([n,a,b])=>`<div class="zone"><i>${n}</i><div><b>${a}</b><br><span style="color:var(--soft);font-size:14px">${b}</span></div></div>`).join('');
  $('chapters').innerHTML=AG.slice(1,7).map(([t,title,sp])=>`<li><em>${esc(title[0])}</em><div><b>${esc(title.split(':')[0])}</b><span>${esc(SP[sp])}</span></div></li>`).join('');
 }
@@ -608,3 +631,5 @@ document.querySelectorAll('.mode').forEach(b=>b.onclick=()=>{setMode(b.dataset.m
 tiles();staticBits();render();setStep(1);
 const h=location.hash.slice(1);setMode(['before','during','after'].includes(h)?h:'before');
 </script>
+</body>
+</html>
