@@ -555,6 +555,19 @@ section{padding-block:clamp(56px,7vw,92px)}
  -webkit-mask-image:radial-gradient(circle at 50% 50%,#000 62%,transparent 72%);mask-image:radial-gradient(circle at 50% 50%,#000 62%,transparent 72%);animation:float3 7s ease-in-out infinite;opacity:1}
 @keyframes float3{0%,100%{transform:translateY(-50%)}50%{transform:translateY(calc(-50% - 10px))}}
 @media(max-width:959px){.hero .model{width:62%;max-width:420px;top:40px;right:-14vw;transform:none;animation:none;opacity:.55}}
+
+/* v18: pre-course as one compact card */
+.pc2s{padding-block:clamp(44px,5vw,64px)}
+.pcc{display:grid;grid-template-columns:240px minmax(0,1fr);background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 16px 36px rgba(0,0,0,.25);color:var(--ink)}
+.pcph{margin:0;min-height:100%}.pcph img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 25%}
+.pcb{padding:clamp(22px,3vw,34px);display:flex;flex-direction:column;align-items:flex-start;gap:10px;justify-content:center}
+.pcb h2{margin:4px 0 0;color:var(--ink);font-size:clamp(28px,3.4vw,40px)}
+.pcb>p{margin:0;color:var(--soft);font-size:17px;max-width:60ch}
+.pctags{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.pctags li{background:#e3f3f4;color:#0d6f78;font-weight:700;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;padding:5px 11px;border-radius:999px}
+.pctags li.live2{background:linear-gradient(90deg,var(--gold1),var(--gold2));color:var(--goldink);font-size:12.5px;padding:5px 11px;border-radius:999px;vertical-align:baseline}
+.pcwho{margin:2px 0 0;font-size:16px;color:var(--soft)}.pcwho b{color:var(--ink)}
+@media(max-width:700px){.pcc{grid-template-columns:1fr}.pcph img{aspect-ratio:16/11;height:auto;object-position:60% 8%}}
 </style>
 </head>
 <body>
@@ -596,16 +609,18 @@ section{padding-block:clamp(56px,7vw,92px)}
 </div>
 </div></section>
 
-<!-- 3 · PRE-COURSE (dark) -->
-<section class="pc tone-d" id="programme"><div class="wrap grid2">
-  <div>
-    <span class="pill" data-t="pcPill">Pre-course · IMCAS educational programme</span>
-    <h2 data-t="pcH">Body remodelling with HYAcorp</h2>
-    <p class="sub" data-t="pcSub">BioScience in the official IMCAS educational programme: 30 minutes, with a live ultrasound-guided demonstration.</p>
-    <p class="bar" style="margin:0"><span data-t="pcB1">Pre-course · 30 min</span><span data-t="pcB2">Date &amp; room to be announced</span></p>
-    <div class="who"><b>Dr Miguel Bravo</b><span data-t="pcRole">Plastic surgeon</span><span class="live2" data-t="liveDemoUS">Live demo with ultrasound</span></div>
-  </div>
-  <figure class="frame bravo"><img src="img/bravo_stage.jpg" alt="Dr Miguel Bravo speaking on stage at a BioScience lectern" loading="lazy"><figcaption data-t="pcCap">Dr Miguel Bravo on stage with BioScience</figcaption></figure>
+<!-- 3 · PRE-COURSE (compact card) -->
+<section class="pc2s tone-d" id="programme"><div class="wrap">
+  <article class="pcc">
+    <figure class="pcph"><img src="img/bravo_stage.jpg" alt="Dr Miguel Bravo speaking on stage at a BioScience lectern" loading="lazy"></figure>
+    <div class="pcb">
+      <span class="pill" data-t="pcPill">Pre-course · IMCAS educational programme</span>
+      <h2 data-t="pcH">Body remodelling with HYAcorp</h2>
+      <p data-t="pcSub2">A 30-minute course in the official IMCAS programme, with a live ultrasound-guided demonstration.</p>
+      <ul class="pctags"><li data-t="pcT1">30 min</li><li class="live2" data-t="liveDemoUS">Live demo with ultrasound</li><li data-t="pcB2">Date &amp; room to be announced</li></ul>
+      <p class="pcwho"><b>Dr Miguel Bravo</b> · <span data-t="pcRole">Plastic surgeon</span></p>
+    </div>
+  </article>
 </div></section>
 
 <!-- 4 · SCIENTIFIC SYMPOSIUM (light) -->
@@ -735,7 +750,7 @@ const T={en:{},fr:{
  dxPill:'Innovation à l’honneur · Genefill DX',dxSub:'Le premier filler hybride à biostimulation d’origine naturelle, appuyé par des études cliniques et in vitro. Innovation esthétique allemande en AH et technologie de filler hybride.',
  dx1:'Hydratation',dx1s:'Hydratation immédiate de la peau',dx2:'Volume & structure',dx2s:'Restaure le volume et la structure',dx3:'Collagène',dx3s:'Stimulation du collagène à long terme',
  liveDemo:'Démo en direct',dxLiveT:'Genefill DX en direct sur scène',dxLiveW:'Dr Ruiz · vendredi 29 janvier · 14:15 · salle 252',ctaDxSym:'À voir en direct au symposium',ctaDxBooth:'Découvrir DX au stand N214',
- pcPill:'Pré-cours · programme de formation IMCAS',pcH:'Remodelage corporel avec HYAcorp',pcSub:'BioScience dans le programme de formation officiel de l’IMCAS : 30 minutes, avec une démonstration en direct guidée par échographie.',pcB1:'Pré-cours · 30 min',pcB2:'Date et salle à confirmer',liveDemoUS:'Démo en direct sous échographie',pcCap:'Le Dr Miguel Bravo sur scène avec BioScience',
+ pcPill:'Pré-cours · programme de formation IMCAS',pcH:'Remodelage corporel avec HYAcorp',pcSub:'BioScience dans le programme de formation officiel de l’IMCAS : 30 minutes, avec une démonstration en direct guidée par échographie.',pcB1:'Pré-cours · 30 min',pcB2:'Date et salle à confirmer',pcSub2:'Un cours de 30 minutes dans le programme officiel de l’IMCAS, avec une démonstration en direct guidée par échographie.',pcT1:'30 min',liveDemoUS:'Démo en direct sous échographie',pcCap:'Le Dr Miguel Bravo sur scène avec BioScience',
  symPill:'Symposium BioScience · 90 minutes',smDay:'Vendredi 29 janvier 2027',smWhere:'14:00–15:30 · salle 252 · niveau 2',smChair:'Présidé par le Dr Frank',ctaCalSym:'Ajouter à mon agenda',
  suPill:'BioScience Hospitality Suite',suiteH:'Sessions d’experts',suiteP:'Échanges ciblés, preuves cliniques et cas réels.',suDays:'Jeudi 28 – samedi 30 janvier',suWhere:'Suite [no.] · niveau [x] · Palais des Congrès',
  afH:'Après chaque session : buffet et animation',svPill:'La suite l’an dernier · IMCAS 2026',svP:'Interventions d’experts et cas réels, puis buffet, boissons et animation avec les intervenants et vos confrères.',afP2:'Restez pour rencontrer les intervenants et vos confrères.',afP:'Restez après chaque session pour un verre, un buffet et du temps avec les intervenants et vos confrères.',af1:'Interventions d’experts',af2:'Buffet & boissons',af3:'Rencontrez les experts',
@@ -752,7 +767,7 @@ const T={en:{},fr:{
  dxPill:'Innovación destacada · Genefill DX',dxSub:'El primer relleno híbrido con bioestimulación de origen natural, respaldado por estudios clínicos e in vitro. Innovación estética alemana en HA y tecnología de relleno híbrido.',
  dx1:'Hidratación',dx1s:'Hidratación inmediata de la piel',dx2:'Volumen y estructura',dx2s:'Restaura volumen y estructura',dx3:'Colágeno',dx3s:'Estimulación de colágeno a largo plazo',
  liveDemo:'Demo en directo',dxLiveT:'Genefill DX en directo en el escenario',dxLiveW:'Dr Ruiz · viernes 29 de enero · 14:15 · sala 252',ctaDxSym:'Véalo en directo en el simposio',ctaDxBooth:'Descubra DX en el stand N214',
- pcPill:'Precurso · programa formativo de IMCAS',pcH:'Remodelación corporal con HYAcorp',pcSub:'BioScience en el programa formativo oficial de IMCAS: 30 minutos, con una demostración en directo guiada por ecografía.',pcB1:'Precurso · 30 min',pcB2:'Fecha y sala por confirmar',liveDemoUS:'Demo en directo con ecografía',pcCap:'El Dr Miguel Bravo en el escenario con BioScience',
+ pcPill:'Precurso · programa formativo de IMCAS',pcH:'Remodelación corporal con HYAcorp',pcSub:'BioScience en el programa formativo oficial de IMCAS: 30 minutos, con una demostración en directo guiada por ecografía.',pcB1:'Precurso · 30 min',pcB2:'Fecha y sala por confirmar',pcSub2:'Un curso de 30 minutos en el programa oficial de IMCAS, con una demostración en directo guiada por ecografía.',pcT1:'30 min',liveDemoUS:'Demo en directo con ecografía',pcCap:'El Dr Miguel Bravo en el escenario con BioScience',
  symPill:'Simposio BioScience · 90 minutos',smDay:'Viernes 29 de enero de 2027',smWhere:'14:00–15:30 · sala 252 · nivel 2',smChair:'Preside el Dr Frank',ctaCalSym:'Añadir a mi calendario',
  suPill:'BioScience Hospitality Suite',suiteH:'Sesiones de expertos',suiteP:'Debates enfocados, evidencia clínica y casos reales.',suDays:'Jueves 28 – sábado 30 de enero',suWhere:'Suite [no.] · nivel [x] · Palais des Congrès',
  afH:'Después de cada sesión: catering y entretenimiento',svPill:'La suite el año pasado · IMCAS 2026',svP:'Charlas de expertos y casos reales, y después comida, bebidas y entretenimiento con los ponentes y colegas.',afP2:'Quédese para conocer a los ponentes y colegas.',afP:'Quédese después de cada sesión para comer, tomar algo y conversar con los ponentes y colegas.',af1:'Charlas de expertos',af2:'Catering y bebidas',af3:'Conozca a los expertos',
