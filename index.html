@@ -421,6 +421,25 @@ section{padding-block:clamp(56px,7vw,92px)}
 @media(max-width:600px){.dxw .wrap.dxw-in{margin-inline:12px;border-radius:22px;padding-inline:18px}}
 .pc.tone-d .who b{color:#fff}
 @media(min-width:900px){.dxw-h{font-size:clamp(28px,3.1vw,44px)}.dxw-h .l1{white-space:nowrap}.dxw-h .l2{font-size:.6em}}
+
+/* ---- v7 (19 Nov): DX section follows the revised ground-screen design (Ground Screen - IMCAS - Final 4) ---- */
+.dxw-in{background:linear-gradient(180deg,rgba(39,90,105,.94) 0%,rgba(33,96,113,.86) 50%,rgba(26,110,131,.72) 100%),url(img/kv_water.jpg) center 70%/cover;text-align:center}
+.dxw-in::before{display:none}
+.dxw-sph{background-image:url(img/dx_sphere_v2.webp);filter:drop-shadow(0 0 28px rgba(160,235,245,.25))}
+.dxw-txt{display:flex;flex-direction:column;align-items:center}
+.dxw-logo{height:clamp(96px,10vw,140px);margin:0 0 18px;filter:drop-shadow(0 6px 14px rgba(0,0,0,.25))}
+.dxw-h{text-align:center}
+.dxw-h .l1{font-size:1em}
+.dxw-h .l2{font-weight:500;font-size:.62em;letter-spacing:.06em;margin-top:8px}
+.dxw-h em{color:#f6cd84}
+.dxw-tri2{margin:22px 0 18px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;font-size:clamp(14px,1.5vw,18px);color:#fff}
+.gpill2{display:inline-flex;align-items:center;padding:14px 42px;border-radius:999px;background:linear-gradient(90deg,#2288c9 0%,#3fb0c4 45%,#bdd2b0 62%,#f6cd84 100%);color:#fff;text-decoration:none;font:400 clamp(24px,2.6vw,34px)/1 var(--din);box-shadow:0 12px 26px rgba(5,40,46,.35);text-shadow:0 1px 6px rgba(0,0,0,.18)}
+.gpill2 b{font-weight:700;text-transform:uppercase}
+.dxw-visit{margin:14px 0 0;font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:clamp(14px,1.5vw,18px)}
+.dxw-live{margin:22px 0 0;font-size:14.5px;color:#d9eef0}
+.dxw-live a{color:#fff;font-weight:700}
+@media(min-width:900px){.dxw-h{font-size:clamp(26px,2.9vw,42px)}.dxw-h .l1{white-space:nowrap}}
+@media(max-width:899px){.dxw-txt{text-align:center}.dxw-tri2{letter-spacing:.06em;font-size:13px}.gpill2{padding:13px 30px}}
 </style>
 </head>
 <body>
@@ -452,17 +471,14 @@ section{padding-block:clamp(56px,7vw,92px)}
 <section class="dxw" id="dx"><div class="wrap dxw-in">
   <div class="dxw-sph" role="img" aria-label="Genefill DX campaign model inside the glass sphere"></div>
   <div class="dxw-txt">
-    <img class="dxw-logo" src="img/dx_logo_color.png" alt="Genefill DX">
-    <h2 class="dxw-h"><span class="l1" data-t="dxA">The first hybrid filler</span><span class="l2"><span data-t="dxB">with</span> <em data-t="dxC">natural-origin biostimulation</em></span></h2>
-    <p class="dxw-sub" data-t="dxD">Backed by clinical &amp; in-vitro studies</p>
-    <ul class="dxw-tri"><li data-t="dx1">Hydration</li><li data-t="dx2">Volume &amp; structure</li><li data-t="dx3l">Long-term collagen stimulation</li></ul>
-    <p class="dxw-live"><span class="live2" data-t="liveDemo">Live demo</span> <b data-t="dxLiveT">Genefill DX live on stage</b> · <span data-t="dxLiveW">Dr Ruiz · Friday 29 January · 14:15 · Room 252</span></p>
-    <div class="dxw-pills">
-      <a class="gpill" href="#booth"><b data-t="dxDisc">Discover DX</b><span data-t="dxGift">&amp; collect your exclusive gift</span></a>
-      <a class="opill" href="#booth"><b data-t="boothB1">Booth N214</b> | <span data-t="dxLvl">Level 2</span></a>
-    </div>
-    <a class="dxw-link" href="#symposium"><span data-t="ctaDxSym">See it live at the symposium</span> →</a>
+    <img class="dxw-logo" src="img/dx_logo_v2.png" alt="Genefill DX">
+    <h2 class="dxw-h"><span class="l1"><span data-t="dxA">The first</span> <em data-t="dx31">3-in-1</em> <span data-t="dxA2">hybrid filler</span></span><span class="l2"><span data-t="dxB">with</span> <em data-t="dxC">natural-origin biostimulation</em></span></h2>
+    <p class="dxw-tri2" data-t="dxTri">Hydration | Volumization | Biostimulation</p>
+    <a class="gpill2" href="#booth"><b data-t="dxBooth">Booth</b>&nbsp;<span>N214 | <span data-t="dxLvl">Level 2</span></span></a>
+    <p class="dxw-visit" data-t="dxVisit">Visit us and collect your gift</p>
+    <p class="dxw-live"><span class="live2" data-t="liveDemo">Live demo</span> <b data-t="dxLiveT">Genefill DX live on stage</b> · <span data-t="dxLiveW">Dr Ruiz · Friday 29 January · 14:15 · Room 252</span> · <a href="#symposium" data-t="dxSee">see the symposium →</a></p>
   </div>
+</div>
 </div></section>
 
 <!-- 3 · PRE-COURSE (dark) -->
@@ -610,7 +626,7 @@ section{padding-block:clamp(56px,7vw,92px)}
 const T={en:{},fr:{
  atImcas:'À l’IMCAS Paris 2027',nOv:'Aperçu',nDx:'Découvrir Genefill DX',nProg:'Programme scientifique',nBooth:'Le stand',ctaPlan:'Planifier ma visite',
  h1a:'Entrez dans la',tagline:'Là où la science façonne l’harmonie du visage et du corps.',heroP:'Découvrez l’innovation, les preuves cliniques et nos expériences de formation à l’IMCAS Paris 2027.',
- hfBooth:'Visitez notre stand',hfBoothV:'N214 · niveau 2',hfSym:'Symposium scientifique',hfSymV:'Vendredi 29 janvier 2027 · 14:00–15:30',hfSymR:'Salle 252 · niveau 2',ctaPlanYour:'Planifiez votre visite',dxA:'Le premier filler hybride',dxB:'à',dxC:'biostimulation d’origine naturelle',dxD:'Appuyé par des études cliniques et in vitro',dx3l:'Stimulation du collagène à long terme',dxDisc:'Découvrez DX',dxGift:'& retirez votre cadeau exclusif',dxLvl:'Niveau 2',pcRole:'Chirurgien plasticien',dxH1:'Au-delà du volume.',dxH2:'La science de la biostimulation.',
+ hfBooth:'Visitez notre stand',hfBoothV:'N214 · niveau 2',hfSym:'Symposium scientifique',hfSymV:'Vendredi 29 janvier 2027 · 14:00–15:30',hfSymR:'Salle 252 · niveau 2',ctaPlanYour:'Planifiez votre visite',dxA:'Le premier filler hybride',dx31:'3-en-1',dxA2:'',dxTri:'Hydratation | Volumisation | Biostimulation',dxBooth:'Stand',dxVisit:'Venez nous voir et retirez votre cadeau',dxSee:'voir le symposium →',dxB:'à',dxC:'biostimulation d’origine naturelle',dxD:'Appuyé par des études cliniques et in vitro',dx3l:'Stimulation du collagène à long terme',dxDisc:'Découvrez DX',dxGift:'& retirez votre cadeau exclusif',dxLvl:'Niveau 2',pcRole:'Chirurgien plasticien',dxH1:'Au-delà du volume.',dxH2:'La science de la biostimulation.',
  dxPill:'Innovation à l’honneur · Genefill DX',dxSub:'Le premier filler hybride à biostimulation d’origine naturelle, appuyé par des études cliniques et in vitro. Innovation esthétique allemande en AH et technologie de filler hybride.',
  dx1:'Hydratation',dx1s:'Hydratation immédiate de la peau',dx2:'Volume & structure',dx2s:'Restaure le volume et la structure',dx3:'Collagène',dx3s:'Stimulation du collagène à long terme',
  liveDemo:'Démo en direct',dxLiveT:'Genefill DX en direct sur scène',dxLiveW:'Dr Ruiz · vendredi 29 janvier · 14:15 · salle 252',ctaDxSym:'À voir en direct au symposium',ctaDxBooth:'Découvrir DX au stand N214',
@@ -627,7 +643,7 @@ const T={en:{},fr:{
  es:{
  atImcas:'En IMCAS París 2027',nOv:'Inicio',nDx:'Descubra Genefill DX',nProg:'Programa científico',nBooth:'El stand',ctaPlan:'Planificar mi visita',
  h1a:'Entre en la',tagline:'Donde la ciencia da forma a la armonía del rostro y el cuerpo.',heroP:'Descubra innovación, evidencia clínica y experiencias formativas en IMCAS París 2027.',
- hfBooth:'Visite nuestro stand',hfBoothV:'N214 · nivel 2',hfSym:'Simposio científico',hfSymV:'Viernes 29 de enero de 2027 · 14:00–15:30',hfSymR:'Sala 252 · nivel 2',ctaPlanYour:'Planifique su visita',dxA:'El primer relleno híbrido',dxB:'con',dxC:'bioestimulación de origen natural',dxD:'Respaldado por estudios clínicos e in vitro',dx3l:'Estimulación de colágeno a largo plazo',dxDisc:'Descubra DX',dxGift:'y recoja su regalo exclusivo',dxLvl:'Nivel 2',pcRole:'Cirujano plástico',dxH1:'Más allá del volumen.',dxH2:'La ciencia de la bioestimulación.',
+ hfBooth:'Visite nuestro stand',hfBoothV:'N214 · nivel 2',hfSym:'Simposio científico',hfSymV:'Viernes 29 de enero de 2027 · 14:00–15:30',hfSymR:'Sala 252 · nivel 2',ctaPlanYour:'Planifique su visita',dxA:'El primer relleno híbrido',dx31:'3 en 1',dxA2:'',dxTri:'Hidratación | Volumización | Bioestimulación',dxBooth:'Stand',dxVisit:'Visítenos y recoja su regalo',dxSee:'ver el simposio →',dxB:'con',dxC:'bioestimulación de origen natural',dxD:'Respaldado por estudios clínicos e in vitro',dx3l:'Estimulación de colágeno a largo plazo',dxDisc:'Descubra DX',dxGift:'y recoja su regalo exclusivo',dxLvl:'Nivel 2',pcRole:'Cirujano plástico',dxH1:'Más allá del volumen.',dxH2:'La ciencia de la bioestimulación.',
  dxPill:'Innovación destacada · Genefill DX',dxSub:'El primer relleno híbrido con bioestimulación de origen natural, respaldado por estudios clínicos e in vitro. Innovación estética alemana en HA y tecnología de relleno híbrido.',
  dx1:'Hidratación',dx1s:'Hidratación inmediata de la piel',dx2:'Volumen y estructura',dx2s:'Restaura volumen y estructura',dx3:'Colágeno',dx3s:'Estimulación de colágeno a largo plazo',
  liveDemo:'Demo en directo',dxLiveT:'Genefill DX en directo en el escenario',dxLiveW:'Dr Ruiz · viernes 29 de enero · 14:15 · sala 252',ctaDxSym:'Véalo en directo en el simposio',ctaDxBooth:'Descubra DX en el stand N214',
