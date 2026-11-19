@@ -762,11 +762,15 @@ html[data-phase=before] [data-ph]:not([data-ph~=before]),html[data-phase=during]
 </div>
 
 
-<!-- DURING · now / next (from the programme, Paris time) -->
-<section class="nowbar" id="now" data-ph="during"><div class="wrap nb-in">
-  <div class="nb-now" id="nbNow"></div>
-  <div class="nb-next" id="nbNext"></div>
-  <a class="cta cyan" href="#booth" data-t="ctaFind">Find Booth N214 · Level 2</a>
+<!-- DURING · what is on now (auto from the programme, Paris time) -->
+<section class="nowsec" id="now" data-ph="during"><div class="wrap">
+  <span class="pill" data-t="nowPill">Live at IMCAS Paris</span>
+  <h2 id="nowDay">Today</h2>
+  <div class="now-grid">
+    <article class="now-card" id="nowCard"></article>
+    <div class="today"><h3 data-t="todayH">Today at BioScience</h3><ol class="tl" id="todayList"></ol></div>
+  </div>
+  <div class="now-acts"><a class="cta cyan" href="#booth" data-t="ctaFind">Find Booth N214 · Level 2</a><button class="cta line" type="button" data-plan data-t="ctaMyCard">My Sphere Card</button><a class="cta line" href="#symposium" data-t="ctaFull">Full programme</a></div>
 </div></section>
 
 <!-- AFTER · recap: highlight video + pictures, then the replay on the Academy (same pattern as past events) -->
@@ -1038,17 +1042,22 @@ const nowP=()=>{const t=window.parisNow();return {d:t.slice(0,10),m:mins(t.slice
 function st(D,a,b){if(PH!=='during')return '';const n=nowP(),dd=DAYS[D];if(dd<n.d)return 'ended';if(dd>n.d)return 'later';return n.m>=mins(b)?'ended':n.m>=mins(a)?'live':'later'}
 const chip=s=>s==='live'?`<span class="stc live"><span class="dot"></span>${PT.live}</span>`:s==='ended'?`<span class="stc">${PT.ended}</span>`:'';
 const AGEND=i=>i<7?AG[i+1][0]:'15:30';
-function renderNow(){if(PH!=='during'||!$('nbNow'))return;const L=w(),n=nowP();
+function renderNow(){if(PH!=='during'||!$('nowCard'))return;const L=w(),n=nowP();
  const D=Object.keys(DAYS).find(k=>DAYS[k]===n.d)||'Fri',k=['Thu','Fri','Sat'].indexOf(D);
- const ev=SUITE.filter(x=>x[0]===D).map(x=>{const[a,b]=x[1].split('–');return {a,b,title:x[2],where:PT.suiteW}});
- if(D==='Fri')ev.push({a:'14:00',b:'15:30',title:PT.symT,where:PT.symW,sym:true});
- ev.sort((x,y)=>mins(x.a)-mins(y.a));
- const live=ev.find(e=>n.m>=mins(e.a)&&n.m<mins(e.b)),next=ev.find(e=>n.m<mins(e.a));
- let stage='';if(live&&live.sym){const i=AG.slice(0,8).findIndex((x,j)=>n.m>=mins(x[0])&&n.m<mins(AGEND(j)));if(i>=0)stage=` · ${PT.onStage}: ${AG[i][2]==='*'?PT.faculty:FX[AG[i][2]][1]}`}
- $('nbNow').innerHTML=live?`<span class="nbl live"><span class="dot"></span>${PT.live} · ${PT.until} ${live.b}</span><b>${esc(live.title)}</b><span>${esc(live.where+stage)}</span>`
-  :`<span class="nbl">${PT.today} · ${esc([L.thu,L.fri,L.sat][k])}</span><b>${next?esc(PT.upNext+' at '+next.a):esc(PT.doneH)}</b><span>${next?esc(next.title+' · '+next.where):esc(PT.boothT)}</span>`;
- const nx=live?next:(next?ev[ev.indexOf(next)+1]:null);
- $('nbNext').innerHTML=nx?`<span class="nbl">${PT.next} · ${nx.a}</span><b>${esc(nx.title)}</b><span>${esc(nx.where)}</span>`:`<span class="nbl">${PT.allDay}</span><b>${esc(PT.boothT)}</b><span>${esc(PT.boothS)}</span>`}
+ $('nowDay').textContent=PT.today+' · '+[L.thu,L.fri,L.sat][k];
+ const ev=SUITE.filter(x=>x[0]===D).map(x=>{const[a,b]=x[1].split('–');return {a,b,title:x[2],where:PT.suiteW+(x[5]?' · '+(x[5]==='ES'?L.lgES:L.lgFR):''),who:x[4].map(k=>SN[k]).join(' · '),pics:x[4].map(k=>'img/su_'+k+'.png'),link:'#suite'}});
+ if(D==='Fri')ev.push({a:'14:00',b:'15:30',title:PT.symT,where:PT.symW,who:PT.symS,pics:FAC.slice(0,5).map(f=>'img/fx_'+f[0]+'.png'),link:'#symposium',sym:true});
+ ev.sort((x,y)=>mins(x.a)-mins(y.a));ev.forEach(e=>e.s=n.m>=mins(e.b)?'ended':n.m>=mins(e.a)?'live':'later');
+ const live=ev.find(e=>e.s==='live'),next=ev.find(e=>e.s==='later'),h=live||next;let c='';
+ if(h){const lead=live?`<span class="nowb"><span class="dot"></span>${PT.live} · ${PT.until} ${h.b}</span>`:`<span class="nowb next">${PT.upNext} · ${mins(h.a)-n.m<=120?PT.startsIn+' '+(mins(h.a)-n.m)+' '+PT.min:h.a}</span>`;
+  c=lead+`<h3>${esc(h.title)}</h3><p class="now-meta"><b>${h.a}–${h.b}</b> · ${esc(h.where)}</p><div class="now-faces"><span>${h.pics.map(p=>`<img src="${p}" alt="">`).join('')}</span><small>${esc(h.who)}</small></div>`;
+  if(live&&live.sym){const i=AG.slice(0,8).findIndex((x,j)=>n.m>=mins(x[0])&&n.m<mins(AGEND(j)));if(i>=0){const cur=AG[i],nx=AG[i+1];const pic=x=>x[2]==='*'?'img/fx_frank.png':'img/fx_'+x[2]+'.png',nm=x=>x[2]==='*'?PT.faculty:FX[x[2]][1];
+   c+=`<div class="onstage"><div><img src="${pic(cur)}" alt=""><span><small>${PT.onStage} · ${cur[0]}</small><b>${esc(nm(cur))} · ${esc(cur[1])}</b></span></div>${nx&&i<7?`<div><img src="${pic(nx)}" alt=""><span><small>${PT.upNext} · ${nx[0]}</small><b>${esc(nm(nx))} · ${esc(nx[1])}</b></span></div>`:''}</div>`}}
+  c+=`<a class="cta teal" href="${h.link}">${esc(h.sym?L.sym:L.suite)} →</a>`}
+ else{const nd=['Thu','Fri','Sat'][k+1];c=`<span class="nowb next">${PT.doneH}</span><h3>${nd?PT.doneT:PT.doneLast}</h3><p class="now-meta">${nd?esc([L.thu,L.fri,L.sat][k+1])+' · '+esc(SUITE.find(x=>x[0]===nd)[1].split('–')[0]+' · '+SUITE.find(x=>x[0]===nd)[2]):esc(PT.boothT)}</p>`}
+ $('nowCard').innerHTML=c;
+ const row=(t,b,s,cls,tag)=>`<li class="${cls}"><time>${t}</time><div><b>${esc(b)}</b><span>${esc(s)}</span></div>${tag}</li>`;
+ $('todayList').innerHTML=row(PT.allDay,PT.boothT,PT.boothS,'','')+ev.map(e=>row(e.a+'–'+e.b,e.title,e.where+' · '+e.who,e.s,e===next&&!live?`<span class="stc next">${PT.next}</span>`:chip(e.s))).join('')}
 function renderReplay(){}
 function staticBits(){const L=w();
  const GC={open:'#7aa9ae',face:'#2db3bd',body:'#1f8f99',intimate:'#146b75',close:'#5f8f94'};
