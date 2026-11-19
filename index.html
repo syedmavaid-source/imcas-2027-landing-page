@@ -673,6 +673,38 @@ html[data-phase=before] [data-ph]:not([data-ph~=before]),html[data-phase=during]
 .tl .stc{display:inline-flex}
 .tl .dot{display:inline-block}
 @media(min-width:900px){.rp-video{position:sticky;top:96px}}
+
+/* v23 · simpler during bar + after recap (video, pictures, Academy replay) */
+.nowbar{background:#0a3a41;color:#fff;padding:22px 0}
+.nb-in{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) auto;gap:22px;align-items:center}
+.nb-now,.nb-next{display:grid;gap:3px;min-width:0}
+.nb-next{padding-left:10px}
+.nbl{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#bdf1f4}
+.nbl.live{color:#ff8a96}
+.nowbar b{font:700 20px/1.2 var(--din);text-transform:uppercase}
+.nowbar span:not(.nbl):not(.dot){color:#bfe2e5;font-size:15px}
+@media(max-width:899px){.nb-in{grid-template-columns:1fr;gap:14px}.nb-next{padding-left:0;padding-top:4px}.nowbar .cta{justify-self:start}}
+.recap{padding:64px 0}
+.rc-vid{position:relative;aspect-ratio:16/9;margin-top:26px;border-radius:20px;overflow:hidden;border:3px solid #fff;box-shadow:0 18px 40px rgba(0,0,0,.3);background:#0a3a41}
+.rc-vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.recap .note{color:#a9d6da;margin-top:12px}
+.pics{padding:64px 0}
+.pics-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:16px;margin-bottom:24px}
+.pics-head h2{margin:8px 0 0}
+.pgal{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.pgal figure{margin:0;position:relative;border-radius:16px;overflow:hidden;aspect-ratio:3/4;background:#cfe3e5;box-shadow:0 12px 28px rgba(10,58,65,.14)}
+.pgal img{width:100%;height:100%;object-fit:cover}
+.pgal figcaption{position:absolute;left:0;right:0;bottom:0;padding:34px 14px 12px;color:#fff;font-weight:700;font-size:15px;letter-spacing:.06em;text-transform:uppercase;background:linear-gradient(transparent,rgba(5,40,46,.85))}
+@media(max-width:699px){.pgal{grid-template-columns:1fr 1fr}}
+.pics .note{margin-top:14px}
+.acad{background:linear-gradient(180deg,#0d4750,#0a3a41);color:#fff;padding:60px 0}
+.ac-in{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1fr);gap:34px;align-items:center}
+.ac-img{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:16/10;border:3px solid #fff}
+.ac-img img{width:100%;height:100%;object-fit:cover;object-position:50% 45%}
+.ac-img .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:76px;height:76px;border-radius:50%;background:var(--cyan);color:#05343a;display:grid;place-items:center;font-size:28px;padding-left:5px}
+.acad h2{color:#fff;margin:8px 0 10px}
+.acad p{color:#cfe7e9;font-size:17px;margin:0 0 22px}
+@media(max-width:899px){.ac-in{grid-template-columns:1fr}}
 </style>
 <script>/* event phase: before / during / after, from the date in Paris. Preview: ?phase=during (simulates Fri 29 Jan, 14:20) or ?phase=after; ?now=2027-01-28T10:30 sets a time */
 (function(){var q=new URLSearchParams(location.search),t=q.get('now'),p=q.get('phase');
@@ -685,9 +717,9 @@ html[data-phase=before] [data-ph]:not([data-ph~=before]),html[data-phase=during]
 
 <header class="top" id="top"><div class="wrap">
   <a class="brand" href="#overview"><img src="img/logo.svg" alt="BioScience"><span data-t="atImcas">At IMCAS Paris 2027</span></a>
-  <nav class="menu" aria-label="Sections"><a href="#overview" data-t="nOv" data-ph="before after">Overview</a><a href="#now" data-t="nNow" data-ph="during">Live now</a><a href="#replay" data-t="nReplay" data-ph="after">Symposium replay</a><a href="#dx" data-t="nDx">Discover Genefill DX</a><a href="#programme" data-t="nProg">Scientific Programme</a><a href="#booth" data-t="nBooth" data-ph="before during">Booth Experience</a></nav>
+  <nav class="menu" aria-label="Sections"><a href="#overview" data-t="nOv" data-ph="before after">Overview</a><a href="#now" data-t="nNow" data-ph="during">Live now</a><a href="#recap" data-t="nRecap" data-ph="after">Highlights</a><a href="#dx" data-t="nDx">Discover Genefill DX</a><a href="#programme" data-t="nProg">Scientific Programme</a><a href="#booth" data-t="nBooth" data-ph="before during">Booth Experience</a></nav>
   <nav class="langs" aria-label="Language"><button class="lang" data-l="en" aria-pressed="true">EN</button><button class="lang" data-l="fr" aria-pressed="false">FR</button><button class="lang" data-l="es" aria-pressed="false">ES</button></nav>
-  <button class="cta cyan plan-btn" type="button" data-plan data-t="ctaPlan" data-ph="before during">Plan my visit</button><a class="cta cyan plan-btn" href="#replay" data-t="ctaReplay" data-ph="after">Watch the replay</a>
+  <button class="cta cyan plan-btn" type="button" data-plan data-t="ctaPlan" data-ph="before during">Plan my visit</button><a class="cta cyan plan-btn" href="#recap" data-t="ctaHigh" data-ph="after">Watch the highlights</a>
 </div></header>
 
 <main>
@@ -700,42 +732,56 @@ html[data-phase=before] [data-ph]:not([data-ph~=before]),html[data-phase=during]
     <p class="tag" data-t="tagline">Where science shapes face and body harmony.</p>
     <p class="hp" data-t="heroP" data-ph="before">Discover innovation, clinical evidence and educational experiences at IMCAS Paris 2027.</p>
     <p class="hp" data-t="heroPD" data-ph="during">We are at the Palais des Congrès until Saturday 30 January. See what is on now, find our booth and join the sessions.</p>
-    <p class="hp" data-t="heroPA" data-ph="after">Thank you for joining us at IMCAS Paris 2027. Watch the symposium again and keep learning with BioScience.</p>
+    <p class="hp" data-t="heroPA" data-ph="after">Thank you for joining us at IMCAS Paris 2027. Relive the highlights and watch the symposium replay.</p>
     <ul class="hfacts" data-ph="before during">
       <li><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg><div><b data-t="hfBooth">Visit our booth</b><span data-t="hfBoothV">N214 · Level 2</span></div></li>
       <li><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 5.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Zm-6 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4Zm12 0a2 2 0 1 1 0 4 2 2 0 0 1 0-4ZM12 12c2.8 0 5 1.6 5 3.6V18H7v-2.4C7 13.6 9.2 12 12 12Zm-6 .6c.4 0 .8 0 1.1.1A4.6 4.6 0 0 0 5.6 16v2H2v-2c0-1.9 1.8-3.4 4-3.4Zm12 0c2.2 0 4 1.5 4 3.4v2h-3.6v-2c0-1.3-.6-2.5-1.5-3.3.3-.1.7-.1 1.1-.1Z"/></svg><div><b data-t="hfSym">Scientific symposium</b><span data-t="hfSymV">Friday, 29 January 2027 · 14:00–15:30</span><span data-t="hfSymR">Room 252 · Level 2</span></div></li>
     </ul>
     <ul class="hfacts" data-ph="after">
-      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm-2 14.5v-9l7 4.5-7 4.5Z"/></svg><div><b data-t="hfRep">Symposium replay</b><span data-t="hfRepV">8 talks and the Genefill DX live demo</span><span data-t="hfRepR">Chapter by chapter</span></div></li>
-      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3Zm-6 9.2V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-3.8l-6 3.3-6-3.3Z"/></svg><div><b data-t="hfAcad">BioScience Digital Academy</b><span data-t="hfAcadV">Courses and webinars all year</span></div></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm-2 14.5v-9l7 4.5-7 4.5Z"/></svg><div><b data-t="hfRep">Highlights &amp; pictures</b><span data-t="hfRepV">Booth, symposium and expert sessions</span></div></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3Zm-6 9.2V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-3.8l-6 3.3-6-3.3Z"/></svg><div><b data-t="hfAcad">Symposium replay</b><span data-t="hfAcadV">On the BioScience Digital Academy</span></div></li>
     </ul>
     <button class="cta cyan big" type="button" data-plan data-ph="before"><span data-t="ctaPlanYour">Plan your visit</span> <span aria-hidden="true">→</span></button>
     <a class="cta cyan big" href="#now" data-ph="during"><span data-t="ctaNow">See what is on now</span> <span aria-hidden="true">→</span></a>
-    <a class="cta cyan big" href="#replay" data-ph="after"><span data-t="ctaReplay">Watch the replay</span> <span aria-hidden="true">→</span></a>
+    <a class="cta cyan big" href="#recap" data-ph="after"><span data-t="ctaHigh">Watch the highlights</span> <span aria-hidden="true">→</span></a>
   </div></div>
 </div>
 
 
-<!-- DURING · what is on now (auto from the programme, Paris time) -->
-<section class="nowsec" id="now" data-ph="during"><div class="wrap">
-  <span class="pill" data-t="nowPill">Live at IMCAS Paris</span>
-  <h2 id="nowDay">Today</h2>
-  <div class="now-grid">
-    <article class="now-card" id="nowCard"></article>
-    <div class="today"><h3 data-t="todayH">Today at BioScience</h3><ol class="tl" id="todayList"></ol></div>
-  </div>
-  <div class="now-acts"><a class="cta cyan" href="#booth" data-t="ctaFind">Find Booth N214 · Level 2</a><button class="cta line" type="button" data-plan data-t="ctaMyCard">My Sphere Card</button><a class="cta line" href="#symposium" data-t="ctaFull">Full programme</a></div>
+<!-- DURING · now / next (from the programme, Paris time) -->
+<section class="nowbar" id="now" data-ph="during"><div class="wrap nb-in">
+  <div class="nb-now" id="nbNow"></div>
+  <div class="nb-next" id="nbNext"></div>
+  <a class="cta cyan" href="#booth" data-t="ctaFind">Find Booth N214 · Level 2</a>
 </div></section>
 
-<!-- AFTER · symposium replay -->
-<section class="replay" id="replay" data-ph="after"><div class="wrap rp-grid">
-  <a class="rp-video" href="#" data-toast="replay"><img src="img/stage.jpg" alt="A speaker at the BioScience lectern during the symposium" loading="lazy"><span class="play" aria-hidden="true">▶</span><span class="rp-badge" data-t="rpBadge">Replay · 90 min</span></a>
+<!-- AFTER · recap: highlight video, pictures, replay on the Academy (same pattern as past events) -->
+<section class="recap tone-d" id="recap" data-ph="after"><div class="wrap">
+  <span class="pill" data-t="rcPill">Recap</span>
+  <h2 data-t="rcH">Incredible memories</h2>
+  <p class="sub" data-t="rcP">Thank you to everyone who joined us at Booth N214, the symposium and the expert sessions in Paris.</p>
+  <div class="rc-vid"><iframe src="https://player.vimeo.com/video/1168094222?h=5b8b50a0c9&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" title="BioScience at IMCAS Paris: highlights video" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+  <p class="note" data-t="rcNote">Placeholder: the IMCAS 2026 highlights video, to be replaced with the 2027 video.</p>
+</div></section>
+
+<section class="pics tone-l" id="photos" data-ph="after"><div class="wrap">
+  <div class="pics-head"><div><span class="pill" data-t="pcsPill">Pictures</span><h2 data-t="pcsH">Moments from Paris</h2></div><a class="cta teal" href="https://photos.app.goo.gl/6g313m1XkxFux3e48" target="_blank" rel="noopener" data-t="ctaMore">Check more photos</a></div>
+  <div class="pgal">
+    <figure><img src="img/stage.jpg" alt="Speaker at the BioScience lectern" loading="lazy"><figcaption data-t="pc1">Symposium</figcaption></figure>
+    <figure><img src="img/booth.jpg" alt="Visitors at the BioScience booth" loading="lazy"><figcaption data-t="pc2">Booth</figcaption></figure>
+    <figure><img src="img/suite.jpg" alt="An expert talk in the hospitality suite" loading="lazy"><figcaption data-t="pc3">Expert sessions</figcaption></figure>
+    <figure><img src="img/corner.jpg" alt="The Sphere sculpture at the booth" loading="lazy"><figcaption data-t="pc4">Sphere Experience</figcaption></figure>
+  </div>
+  <p class="note" data-t="pcsNote">Placeholder photos and link from IMCAS 2026, to be replaced with this year's.</p>
+</div></section>
+
+<section class="acad" id="replay" data-ph="after"><div class="wrap ac-in">
+  <div class="ac-img"><img src="img/room.jpg" alt="" loading="lazy"><span class="play" aria-hidden="true">▶</span></div>
   <div>
-    <span class="pill" data-t="rpPill">Symposium replay</span>
-    <h2 style="margin-top:8px">New Frontiers in Aesthetic Science</h2>
-    <p class="sub" data-t="rpSub">All eight talks and the Genefill DX live demo, chapter by chapter, on the BioScience Digital Academy.</p>
-    <ol class="rp-ch" id="rpCh"></ol>
-    <a class="cta cyan" href="#" data-toast="replay" data-t="ctaAcademy">Watch on the Digital Academy →</a>
+    <span class="pill" data-t="acPill">BioScience Digital Academy</span>
+    <h2 data-t="acH">Watch the symposium replay</h2>
+    <p data-t="acP">New Frontiers in Aesthetic Science: all eight talks and the Genefill DX live demo, on the BioScience Digital Academy.</p>
+    <a class="cta cyan" href="https://www.bioscience.academy/" target="_blank" rel="noopener" data-t="ctaWatch">Watch now</a>
   </div>
 </div></section>
 
@@ -748,7 +794,7 @@ html[data-phase=before] [data-ph]:not([data-ph~=before]),html[data-phase=during]
     <p class="dxw-tri2" data-t="dxTri">Hydration | Volumization | Biostimulation</p>
     <a class="gpill2" href="#booth" data-ph="before during"><b data-t="dxBooth">Booth</b>&nbsp;<span>N214 | <span data-t="dxLvl">Level 2</span></span></a>
     <p class="dxw-visit" data-t="dxVisit" data-ph="before during">Visit us and collect your gift</p>
-    <p class="dxw-live" data-ph="after"><span class="live2" data-t="rpTag">Replay</span> <b data-t="dxLiveT">Genefill DX live on stage</b> · <span>Dr Ruiz</span> · <a href="#replay" data-t="dxRep">watch it in the symposium replay →</a></p>
+    <p class="dxw-live" data-ph="after"><span class="live2" data-t="rpTag">Replay</span> <b data-t="dxLiveT">Genefill DX live on stage</b> · <span>Dr Ruiz</span> · <a href="#replay" data-t="dxRep">watch the symposium replay →</a></p>
     <p class="dxw-live" data-ph="before during"><span class="live2" data-t="liveDemo">Live demo</span> <b data-t="dxLiveT">Genefill DX live on stage</b> · <span data-t="dxLiveW">Dr Ruiz · Friday 29 January · 14:15 · Room 252</span> · <a href="#symposium" data-t="dxSee">see the symposium →</a></p>
   </div>
 </div>
@@ -827,34 +873,6 @@ html[data-phase=before] [data-ph]:not([data-ph~=before]),html[data-phase=during]
   </ol>
 </div></section>
 
-<!-- AFTER · moments from Paris -->
-<section class="hl tone-l" id="highlights" data-ph="after"><div class="wrap">
-  <span class="pill" data-t="hlPill">Merci, Paris</span>
-  <h2 data-t="hlH">Moments from IMCAS Paris</h2>
-  <div class="hlg">
-    <figure><img src="img/stage.jpg" alt="Speaker at the BioScience lectern" loading="lazy"><figcaption data-t="hl1">On stage at the symposium</figcaption></figure>
-    <figure><img src="img/room.jpg" alt="A full symposium room" loading="lazy"><figcaption data-t="hl2">A full room</figcaption></figure>
-    <figure><img src="img/suite.jpg" alt="An expert talk in the hospitality suite" loading="lazy"><figcaption data-t="hl3">Expert sessions in the suite</figcaption></figure>
-    <figure><img src="img/booth.jpg" alt="Visitors at the BioScience booth" loading="lazy"><figcaption data-t="hl4">At the BioScience booth</figcaption></figure>
-    <figure><img src="img/corner.jpg" alt="The Sphere sculpture at the booth" loading="lazy"><figcaption data-t="hl5">Inside the Sphere of Beauty</figcaption></figure>
-  </div>
-  <p class="note" data-t="hlNote">Placeholder photos from IMCAS 2026, to be replaced with this year's photos.</p>
-</div></section>
-
-<!-- AFTER · keep learning -->
-<section class="planband" id="connect" data-ph="after"><div class="wrap">
-  <div>
-    <span class="pill" data-t="cnPill">Keep learning with BioScience</span>
-    <h2 data-t="cnH">See you at the next one</h2>
-    <p data-t="cnP">Courses, webinars and hands-on workshops with BioScience experts, all year round.</p>
-    <div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:12px"><a class="cta cyan" href="#" data-toast="academy" data-t="ctaAcad">Explore the Digital Academy</a><button class="cta line" type="button" data-toast="contact" data-t="ctaLocal">Ask about training near me</button></div>
-  </div>
-  <ol class="psteps">
-    <li><i>1</i><div><b data-t="cn1">The Aesthetic EDGE webinars</b><span data-t="cn1s">Live online with our experts</span></div></li>
-    <li><i>2</i><div><b data-t="cn2">BioScience Digital Academy</b><span data-t="cn2s">Courses and replays, whenever you like</span></div></li>
-    <li><i>3</i><div><b data-t="cn3">Workshops near you</b><span data-t="cn3s">Hands-on training with your local BioScience partner</span></div></li>
-  </ol>
-</div></section>
 </main>
 
 <dialog id="planner" aria-labelledby="dlgT">
@@ -1006,30 +1024,24 @@ const nowP=()=>{const t=window.parisNow();return {d:t.slice(0,10),m:mins(t.slice
 function st(D,a,b){if(PH!=='during')return '';const n=nowP(),dd=DAYS[D];if(dd<n.d)return 'ended';if(dd>n.d)return 'later';return n.m>=mins(b)?'ended':n.m>=mins(a)?'live':'later'}
 const chip=s=>s==='live'?`<span class="stc live"><span class="dot"></span>${PT.live}</span>`:s==='ended'?`<span class="stc">${PT.ended}</span>`:'';
 const AGEND=i=>i<7?AG[i+1][0]:'15:30';
-function renderNow(){if(PH!=='during'||!$('nowCard'))return;const L=w(),n=nowP();
+function renderNow(){if(PH!=='during'||!$('nbNow'))return;const L=w(),n=nowP();
  const D=Object.keys(DAYS).find(k=>DAYS[k]===n.d)||'Fri',k=['Thu','Fri','Sat'].indexOf(D);
- $('nowDay').textContent=PT.today+' · '+[L.thu,L.fri,L.sat][k];
- const ev=SUITE.filter(x=>x[0]===D).map(x=>{const[a,b]=x[1].split('–');return {a,b,title:x[2],where:PT.suiteW+(x[5]?' · '+(x[5]==='ES'?L.lgES:L.lgFR):''),who:x[4].map(k=>SN[k]).join(' · '),pics:x[4].map(k=>'img/su_'+k+'.png'),link:'#suite'}});
- if(D==='Fri')ev.push({a:'14:00',b:'15:30',title:PT.symT,where:PT.symW,who:PT.symS,pics:FAC.slice(0,5).map(f=>'img/fx_'+f[0]+'.png'),link:'#symposium',sym:true});
- ev.sort((x,y)=>mins(x.a)-mins(y.a));ev.forEach(e=>e.s=n.m>=mins(e.b)?'ended':n.m>=mins(e.a)?'live':'later');
- const live=ev.find(e=>e.s==='live'),next=ev.find(e=>e.s==='later'),h=live||next;let c='';
- if(h){const lead=live?`<span class="nowb"><span class="dot"></span>${PT.live} · ${PT.until} ${h.b}</span>`:`<span class="nowb next">${PT.upNext} · ${mins(h.a)-n.m<=120?PT.startsIn+' '+(mins(h.a)-n.m)+' '+PT.min:h.a}</span>`;
-  c=lead+`<h3>${esc(h.title)}</h3><p class="now-meta"><b>${h.a}–${h.b}</b> · ${esc(h.where)}</p><div class="now-faces"><span>${h.pics.map(p=>`<img src="${p}" alt="">`).join('')}</span><small>${esc(h.who)}</small></div>`;
-  if(live&&live.sym){const i=AG.slice(0,8).findIndex((x,j)=>n.m>=mins(x[0])&&n.m<mins(AGEND(j)));if(i>=0){const cur=AG[i],nx=AG[i+1];const pic=x=>x[2]==='*'?'img/fx_frank.png':'img/fx_'+x[2]+'.png',nm=x=>x[2]==='*'?PT.faculty:FX[x[2]][1];
-   c+=`<div class="onstage"><div><img src="${pic(cur)}" alt=""><span><small>${PT.onStage} · ${cur[0]}</small><b>${esc(nm(cur))} · ${esc(cur[1])}</b></span></div>${nx&&i<7?`<div><img src="${pic(nx)}" alt=""><span><small>${PT.upNext} · ${nx[0]}</small><b>${esc(nm(nx))} · ${esc(nx[1])}</b></span></div>`:''}</div>`}}
-  c+=`<a class="cta teal" href="${h.link}">${esc(h.sym?L.sym:L.suite)} →</a>`}
- else{const nd=['Thu','Fri','Sat'][k+1];c=`<span class="nowb next">${PT.doneH}</span><h3>${nd?PT.doneT:PT.doneLast}</h3><p class="now-meta">${nd?esc([L.thu,L.fri,L.sat][k+1])+' · '+esc(SUITE.find(x=>x[0]===nd)[1].split('–')[0]+' · '+SUITE.find(x=>x[0]===nd)[2]):esc(PT.boothT)}</p>`}
- $('nowCard').innerHTML=c;
- const row=(t,b,s,cls,tag)=>`<li class="${cls}"><time>${t}</time><div><b>${esc(b)}</b><span>${esc(s)}</span></div>${tag}</li>`;
- $('todayList').innerHTML=row(PT.allDay,PT.boothT,PT.boothS,'','')+ev.map(e=>row(e.a+'–'+e.b,e.title,e.where+' · '+e.who,e.s,e===next&&!live?`<span class="stc next">${PT.next}</span>`:chip(e.s))).join('')}
-function renderReplay(){if(PH!=='after'||!$('rpCh'))return;const L=w();
- $('rpCh').innerHTML=AG.slice(0,8).map((x,i)=>{const off=mins(x[0])-mins('14:00'),rt=x[2]==='*';return `<li><a href="#" data-toast="replay"><time>${String(off).padStart(2,'0')}:00</time><img src="img/fx_${rt?'frank':x[2]}.png" alt=""><span><b>${esc(x[1])}</b><small>${esc(rt?L.allFac:FX[x[2]][1])}</small></span></a></li>`}).join('')}
+ const ev=SUITE.filter(x=>x[0]===D).map(x=>{const[a,b]=x[1].split('–');return {a,b,title:x[2],where:PT.suiteW}});
+ if(D==='Fri')ev.push({a:'14:00',b:'15:30',title:PT.symT,where:PT.symW,sym:true});
+ ev.sort((x,y)=>mins(x.a)-mins(y.a));
+ const live=ev.find(e=>n.m>=mins(e.a)&&n.m<mins(e.b)),next=ev.find(e=>n.m<mins(e.a));
+ let stage='';if(live&&live.sym){const i=AG.slice(0,8).findIndex((x,j)=>n.m>=mins(x[0])&&n.m<mins(AGEND(j)));if(i>=0)stage=` · ${PT.onStage}: ${AG[i][2]==='*'?PT.faculty:FX[AG[i][2]][1]}`}
+ $('nbNow').innerHTML=live?`<span class="nbl live"><span class="dot"></span>${PT.live} · ${PT.until} ${live.b}</span><b>${esc(live.title)}</b><span>${esc(live.where+stage)}</span>`
+  :`<span class="nbl">${PT.today} · ${esc([L.thu,L.fri,L.sat][k])}</span><b>${next?esc(PT.upNext+' at '+next.a):esc(PT.doneH)}</b><span>${next?esc(next.title+' · '+next.where):esc(PT.boothT)}</span>`;
+ const nx=live?next:(next?ev[ev.indexOf(next)+1]:null);
+ $('nbNext').innerHTML=nx?`<span class="nbl">${PT.next} · ${nx.a}</span><b>${esc(nx.title)}</b><span>${esc(nx.where)}</span>`:`<span class="nbl">${PT.allDay}</span><b>${esc(PT.boothT)}</b><span>${esc(PT.boothS)}</span>`}
+function renderReplay(){}
 function staticBits(){const L=w();
  const GC={open:'#7aa9ae',face:'#2db3bd',body:'#1f8f99',intimate:'#146b75',close:'#5f8f94'};
  $('chap').innerHTML='<ol class="lu">'+AG.slice(0,8).map(([t,title,sp,,g],i)=>{const rt=sp==='*';
   const pic=rt?`<div class="lpan">${FAC.map(([k,n,c])=>`<span><img src="img/fx_${k}.png" alt="${esc(n)}">${flag(c)}</span>`).join('')}</div>`:`<div class="lph"><img src="img/fx_${sp}.png" alt="">${flag(FX[sp][2])}</div>`;
-  const s=PH==='after'?'rp':st('Fri',t,AGEND(i));
-  return `<li class="lc${i===2?' live':''}${s?' st-'+s:''}"><div class="lhd" style="background:${GC[g]}"><span>${esc(L.grp[g])}</span><time>${t}</time></div><span class="lno" aria-hidden="true">${i+1}</span>${pic}<div class="lbd"><small>${esc(rt?L.allFac:FX[sp][1])}</small><b>${esc(title)}</b>${rt?`<em>${esc(L.qa)}</em>`:''}${i===2?`<span class="live2">${esc(L.liveDemo)}</span>`:''}${s==='rp'?`<a class="stc rp" href="#replay">${PT.watch} · ${String(mins(t)-840).padStart(2,'0')}:00</a>`:chip(s)}</div></li>`}).join('')+'</ol>';
+  const s=st('Fri',t,AGEND(i));
+  return `<li class="lc${i===2?' live':''}${s?' st-'+s:''}"><div class="lhd" style="background:${GC[g]}"><span>${esc(L.grp[g])}</span><time>${t}</time></div><span class="lno" aria-hidden="true">${i+1}</span>${pic}<div class="lbd"><small>${esc(rt?L.allFac:FX[sp][1])}</small><b>${esc(title)}</b>${rt?`<em>${esc(L.qa)}</em>`:''}${i===2?`<span class="live2">${esc(L.liveDemo)}</span>`:''}${chip(s)}</div></li>`}).join('')+'</ol>';
  $('zones').innerHTML=L.zones.map(([a,b],k)=>`<div class="zone"><i>${k+1}</i><div><b>${esc(a)}</b><span>${esc(b)}</span></div></div>`).join('')+`<div class="zone mini"><i>☕</i><div><b>${esc(L.bar[0])}</b><span>${esc(L.bar[1])}</span></div></div>`;
 }
 function sessions(){const L=w();
@@ -1082,7 +1094,7 @@ function setLang(l){lang=l;document.documentElement.lang=l;document.querySelecto
  document.querySelectorAll('[data-t]').forEach(el=>{const v=(T[l]||{})[el.dataset.t]??T.en[el.dataset.t];if(v!=null)el.textContent=v});tiles();staticBits();sessions();render();renderNow();renderReplay()}
 document.querySelectorAll('.lang').forEach(b=>b.onclick=()=>setLang(b.dataset.l));
 /* header: transparent on the banner, solid once you scroll; menu highlights the current section */
-const top_=$('top'),secs=['overview','now','replay','dx','programme','booth'].map(id=>$(id)).filter(e=>e&&e.offsetParent!==null);
+const top_=$('top'),secs=['overview','recap','dx','programme','booth'].map(id=>$(id)).filter(e=>e&&e.offsetParent!==null);
 function onScroll(){top_.classList.toggle('solid',scrollY>40);let cur='overview';secs.forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id});
  if(['symposium','suite'].some(id=>{const r=$(id).getBoundingClientRect();return r.top<120&&r.bottom>120}))cur='programme';
  document.querySelectorAll('.menu a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur))}
