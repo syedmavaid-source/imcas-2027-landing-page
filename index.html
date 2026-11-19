@@ -705,6 +705,20 @@ html[data-phase=before] [data-ph]:not([data-ph~=before]),html[data-phase=during]
 .acad h2{color:#fff;margin:8px 0 10px}
 .acad p{color:#cfe7e9;font-size:17px;margin:0 0 22px}
 @media(max-width:899px){.ac-in{grid-template-columns:1fr}}
+
+/* v24 · recap: vertical highlight video beside the pictures */
+.rc-grid{display:grid;grid-template-columns:340px minmax(0,1fr);gap:22px;align-items:start;margin-top:26px}
+.recap .rc-vid{width:340px;height:604px;aspect-ratio:auto;margin:0}
+.rc-pics{height:604px;display:flex;flex-direction:column;gap:18px;min-width:0}
+.rc-pics .pgal{flex:1;min-height:0;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr}
+.rc-pics .pgal figure{aspect-ratio:auto;min-height:0;height:100%}
+.rc-pics .pgal img{position:absolute;inset:0}
+.rc-pics .cta{align-self:flex-start}
+@media(max-width:899px){.rc-grid{grid-template-columns:1fr}.recap .rc-vid{width:100%;max-width:360px;height:auto;aspect-ratio:9/16;justify-self:center}.rc-pics{height:auto}.rc-pics .pgal{grid-template-rows:none}.rc-pics .pgal figure{aspect-ratio:3/4;height:auto}}
+.acad{background:#eef7f7;color:var(--ink)}
+.acad h2{color:var(--ink)}
+.acad p{color:var(--soft)}
+.ac-img{box-shadow:0 18px 40px rgba(10,58,65,.2)}
 </style>
 <script>/* event phase: before / during / after, from the date in Paris. Preview: ?phase=during (simulates Fri 29 Jan, 14:20) or ?phase=after; ?now=2027-01-28T10:30 sets a time */
 (function(){var q=new URLSearchParams(location.search),t=q.get('now'),p=q.get('phase');
@@ -755,24 +769,24 @@ html[data-phase=before] [data-ph]:not([data-ph~=before]),html[data-phase=during]
   <a class="cta cyan" href="#booth" data-t="ctaFind">Find Booth N214 · Level 2</a>
 </div></section>
 
-<!-- AFTER · recap: highlight video, pictures, replay on the Academy (same pattern as past events) -->
+<!-- AFTER · recap: highlight video + pictures, then the replay on the Academy (same pattern as past events) -->
 <section class="recap tone-d" id="recap" data-ph="after"><div class="wrap">
   <span class="pill" data-t="rcPill">Recap</span>
   <h2 data-t="rcH">Incredible memories</h2>
   <p class="sub" data-t="rcP">Thank you to everyone who joined us at Booth N214, the symposium and the expert sessions in Paris.</p>
-  <div class="rc-vid"><iframe src="https://player.vimeo.com/video/1168094222?h=5b8b50a0c9&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" title="BioScience at IMCAS Paris: highlights video" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
-  <p class="note" data-t="rcNote">Placeholder: the IMCAS 2026 highlights video, to be replaced with the 2027 video.</p>
-</div></section>
-
-<section class="pics tone-l" id="photos" data-ph="after"><div class="wrap">
-  <div class="pics-head"><div><span class="pill" data-t="pcsPill">Pictures</span><h2 data-t="pcsH">Moments from Paris</h2></div><a class="cta teal" href="https://photos.app.goo.gl/6g313m1XkxFux3e48" target="_blank" rel="noopener" data-t="ctaMore">Check more photos</a></div>
-  <div class="pgal">
-    <figure><img src="img/stage.jpg" alt="Speaker at the BioScience lectern" loading="lazy"><figcaption data-t="pc1">Symposium</figcaption></figure>
-    <figure><img src="img/booth.jpg" alt="Visitors at the BioScience booth" loading="lazy"><figcaption data-t="pc2">Booth</figcaption></figure>
-    <figure><img src="img/suite.jpg" alt="An expert talk in the hospitality suite" loading="lazy"><figcaption data-t="pc3">Expert sessions</figcaption></figure>
-    <figure><img src="img/corner.jpg" alt="The Sphere sculpture at the booth" loading="lazy"><figcaption data-t="pc4">Sphere Experience</figcaption></figure>
+  <div class="rc-grid">
+    <div class="rc-vid"><iframe src="https://player.vimeo.com/video/1168094222?h=5b8b50a0c9&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" title="BioScience at IMCAS Paris: highlights video" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+    <div class="rc-pics" id="photos">
+      <div class="pgal">
+        <figure><img src="img/stage.jpg" alt="Speaker at the BioScience lectern" loading="lazy"><figcaption data-t="pc1">Symposium</figcaption></figure>
+        <figure><img src="img/booth.jpg" alt="Visitors at the BioScience booth" loading="lazy"><figcaption data-t="pc2">Booth</figcaption></figure>
+        <figure><img src="img/suite.jpg" alt="An expert talk in the hospitality suite" loading="lazy"><figcaption data-t="pc3">Expert sessions</figcaption></figure>
+        <figure><img src="img/corner.jpg" alt="The Sphere sculpture at the booth" loading="lazy"><figcaption data-t="pc4">Sphere Experience</figcaption></figure>
+      </div>
+      <a class="cta cyan" href="https://photos.app.goo.gl/6g313m1XkxFux3e48" target="_blank" rel="noopener" data-t="ctaMore">Check more photos</a>
+    </div>
   </div>
-  <p class="note" data-t="pcsNote">Placeholder photos and link from IMCAS 2026, to be replaced with this year's.</p>
+  <p class="note" data-t="rcNote">Placeholders from IMCAS 2026 (video, photos and album link), to be replaced with this year's.</p>
 </div></section>
 
 <section class="acad" id="replay" data-ph="after"><div class="wrap ac-in">
