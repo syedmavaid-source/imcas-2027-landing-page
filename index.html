@@ -440,6 +440,21 @@ section{padding-block:clamp(56px,7vw,92px)}
 .dxw-live a{color:#fff;font-weight:700}
 @media(min-width:900px){.dxw-h{font-size:clamp(26px,2.9vw,42px)}.dxw-h .l1{white-space:nowrap}}
 @media(max-width:899px){.dxw-txt{text-align:center}.dxw-tri2{letter-spacing:.06em;font-size:13px}.gpill2{padding:13px 30px}}
+
+/* v8: symposium boxes fully aligned */
+.shead{margin-bottom:30px}
+.ch3{align-items:stretch}
+.ch{display:flex;flex-direction:column}
+.ch .tks{flex:1}
+.ch>header{min-height:58px;align-items:center}
+.ch.slim>header h3{font-size:26px}
+.tk{grid-template-columns:52px minmax(0,1fr);padding:16px 20px}
+@media(min-width:900px){
+ .ch.slim .tks{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .ch.slim .tk+.tk{border-left:1px solid #e3eeef}
+ .ch.slim .tk.rt{grid-column:span 2}
+}
+@media(min-width:900px){.ch.slim .tks{column-gap:16px}.ch.slim .tk+.tk{padding-left:20px}}
 </style>
 </head>
 <body>
@@ -502,11 +517,9 @@ section{padding-block:clamp(56px,7vw,92px)}
       <h2 style="margin-top:6px">New Frontiers in Aesthetic Science</h2>
       <p class="sub">Advanced Biostimulation, Combination Strategies &amp; Clinical Evidence</p>
       <p class="bar dk" style="margin:0"><span data-t="smDay">Friday 29 January 2027</span><span data-t="smWhere">14:00–15:30 · Room 252 · Level 2</span></p>
-      <p class="small" data-t="smChair">Chaired by Dr Frank</p>
     </div>
     <div><a class="cta teal" href="https://www.biosciencegmbh.com/imcas-symposium" target="_blank" rel="noopener" data-t="ctaCalSym">Add to my calendar</a></div>
   </div>
-  <div class="tline" id="tline" aria-hidden="true"></div>
   <div class="chap" id="chap"></div>
 </div></section>
 
@@ -716,9 +729,8 @@ function chip(k,l,h){return `<button type="button" class="chip" data-k="${k}" ar
 function tiles(){$('topics').innerHTML=(TOPICS[lang]||TOPICS.en).map(([k,l,h])=>chip(k,l,h)).join('');$('langs').innerHTML=LANGS.map(([k,l,h])=>chip(k,l,h)).join('')}
 function staticBits(){const L=w();
  const pf=k=>`<span class="pf"><img src="img/fx_${k}.png" alt="">${flag(FX[k][2])}</span>`;
- const talk=i=>{const [t,title,sp]=AG[i];return `<div class="tk">${sp==='*'?'<span></span>':pf(sp)}<div><time>${t}</time><b>${esc(title)}${i===2?` <span class="live2">${esc(L.liveDemo)}</span>`:''}</b><small>${sp==='*'?esc(L.allFac):esc(FX[sp][1])}</small>${sp==='*'?`<div class="panel">${FAC.map(([k,n,c])=>`<span><img src="img/fx_${k}.png" alt="">${flag(c)}${esc(n.replace('Dr ',''))}</span>`).join('')}</div>`:''}</div></div>`};
+ const talk=i=>{const [t,title,sp]=AG[i];return `<div class="tk${sp==='*'?' rt':''}">${sp==='*'?'<span class="pf"><img src="img/fx_frank.png" alt="" style="visibility:hidden"></span>':pf(sp)}<div><time>${t}</time><b>${esc(title)}${i===2?` <span class="live2">${esc(L.liveDemo)}</span>`:''}</b><small>${sp==='*'?esc(L.allFac):esc(FX[sp][1])}</small>${sp==='*'?`<div class="panel">${FAC.map(([k,n,c])=>`<span><img src="img/fx_${k}.png" alt="">${flag(c)}${esc(n.replace('Dr ',''))}</span>`).join('')}</div>`:''}</div></div>`};
  const CH=[['open','c-open','14:00–14:05',[0],5],['face','c-face','14:05–14:30',[1,2],25],['body','c-body','14:30–15:00',[3,4,5],30],['intimate','c-int','15:00–15:10',[6],10],['close','c-close','15:10–15:30',[7,8],20]];
- $('tline').innerHTML=CH.map(([g,c,tm,,m])=>`<div class="${c}" style="flex:${m} 1 0"><b>${m>5?esc(L.grp[g]):''}</b><span>${m>5?tm:''}</span></div>`).join('');
  const card=([g,c,tm,ix],slim)=>`<article class="ch${slim?' slim':''}"><header class="${c}"><h3>${esc(L.grp[g])}</h3><time>${tm}</time></header><div class="tks">${ix.map(talk).join('')}</div></article>`;
  $('chap').innerHTML=card(CH[0],1)+`<div class="ch3">${CH.slice(1,4).map(c=>card(c)).join('')}</div>`+card(CH[4],1);
  $('zones').innerHTML=L.zones.map(([a,b],k)=>`<div class="zone"><i>${k+1}</i><div><b>${esc(a)}</b><span>${esc(b)}</span></div></div>`).join('')+`<div class="zone mini"><i>☕</i><div><b>${esc(L.bar[0])}</b><span>${esc(L.bar[1])}</span></div></div>`;
