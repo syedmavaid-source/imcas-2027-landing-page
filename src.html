@@ -489,6 +489,31 @@ section{padding-block:clamp(56px,7vw,92px)}
 @media(max-width:640px){.lhd{padding:8px 10px;font-size:11px;letter-spacing:.1em}.lhd time{font-size:16px}.lno{font-size:30px;top:42px;right:10px}
  .lph{padding-top:14px}.lph img{width:84px;height:84px}.lph .flag{width:22px;height:15px}.lbd{padding:4px 10px 14px}.lbd small{font-size:14.5px}.lbd b{font-size:13.5px}
  .lpan{grid-template-columns:repeat(4,auto);gap:5px;padding:12px 6px 4px}.lpan img{width:28px;height:28px}.lpan .flag{width:12px;height:8px}}
+
+/* v11 (19 Nov): expert sessions as a concise 3-day timeline */
+.ht{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:auto auto auto;column-gap:18px}
+.hday{display:grid;grid-row:1/4;grid-template-rows:subgrid}
+.slot{display:flex}.slot.am{align-items:flex-end;padding-bottom:16px}.slot.pm{align-items:flex-start;padding-top:16px}
+.mk{position:relative;display:flex;justify-content:center;align-items:center;height:52px}
+.mk::before{content:"";position:absolute;left:-10px;right:-10px;top:50%;height:3px;margin-top:-1.5px;background:rgba(255,255,255,.3)}
+.hday:first-child .mk::before{left:0}.hday:last-child .mk::before{right:0}
+.mk span{position:relative;display:flex;align-items:baseline;gap:10px;background:#fff;color:var(--deep);border-radius:999px;padding:7px 20px;box-shadow:0 0 0 6px #0c4249;font:700 13px var(--din);letter-spacing:.16em;text-transform:uppercase}
+.mk b{font:700 28px/1 var(--din);letter-spacing:0}
+.tc{width:100%;background:#fff;border-radius:16px;padding:16px 18px;display:flex;flex-direction:column;gap:6px;box-shadow:0 12px 26px rgba(0,0,0,.22);text-decoration:none}
+.tct{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.tc time{font:700 19px var(--din);color:var(--teal)}
+.lgt{background:#f6cd84;color:#3b2805;font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:4px}
+.tc h4{margin:0;font:700 21px/1.06 var(--din);text-transform:uppercase;color:var(--ink)}
+.tc p{margin:0;color:var(--soft);font-size:14.5px;line-height:1.3}
+.tc .fc{display:flex;align-items:center;gap:8px;margin-top:4px}.tc .fc span{display:flex;flex:none}
+.tc .fc img{width:32px;height:32px;border-radius:50%;box-shadow:0 0 0 2px #fff;margin-left:-8px}.tc .fc img:first-child{margin-left:0}
+.tc .fc small{font-size:12.5px;font-weight:500;color:var(--ink);line-height:1.25}
+.tc.sym{background:linear-gradient(135deg,#2db3bd,#146b75)}.tc.sym time,.tc.sym h4{color:#fff}.tc.sym p{color:#e6f6f7}
+@media(max-width:899px){.ht{grid-template-columns:1fr;grid-template-rows:none;row-gap:22px}.hday{grid-row:auto;grid-template-rows:none;display:flex;flex-direction:column;gap:10px}
+ .mk{order:-1;justify-content:flex-start;height:auto}.mk::before{display:none}.slot.am,.slot.pm{padding:0}}
+.after2{display:flex;align-items:center;gap:18px;margin-top:30px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:12px 18px 12px 12px}
+.ph3{display:flex;flex:none}.ph3 img{width:74px;height:56px;object-fit:cover;border-radius:10px;border:3px solid #fff;margin-left:-14px;box-shadow:0 4px 10px rgba(0,0,0,.25)}.ph3 img:first-child{margin-left:0;transform:rotate(-3deg)}.ph3 img:last-child{transform:rotate(3deg)}
+.after2 p{margin:0;color:#cfe7e9;font-size:15px}.after2 b{color:#fff;font-size:17px;margin-right:6px}
+@media(max-width:560px){.after2{flex-direction:column;align-items:flex-start}}
 </style>
 </head>
 <body>
@@ -564,13 +589,9 @@ section{padding-block:clamp(56px,7vw,92px)}
   <p class="sub" data-t="suiteP">Focused discussions, clinical evidence and real cases.</p>
   <p class="bar" style="margin:0 0 28px"><span data-t="suDays">Thursday 28 – Saturday 30 January</span><span data-t="suWhere">Suite [no.] · Level [x] · Palais des Congrès</span></p>
   <div class="days" id="sessions"></div>
-  <div class="after">
-    <div><h3 data-t="afH">After every session: catering &amp; entertainment</h3><p data-t="afP">Stay on after each session for food, drinks and time with the speakers and colleagues.</p></div>
-    <div class="frames">
-      <figure class="frame" style="margin:0"><img src="img/suite.jpg" alt=""><figcaption data-t="af1">Expert talks</figcaption></figure>
-      <figure class="frame" style="margin:0"><img src="img/booth.jpg" alt=""><figcaption data-t="af2">Catering &amp; drinks</figcaption></figure>
-      <figure class="frame" style="margin:0"><img src="img/room.jpg" alt=""><figcaption data-t="af3">Meet the experts</figcaption></figure>
-    </div>
+  <div class="after2">
+    <div class="ph3"><img src="img/suite.jpg" alt=""><img src="img/booth.jpg" alt=""><img src="img/room.jpg" alt=""></div>
+    <p><b data-t="afH">After every session: catering &amp; entertainment</b> <span data-t="afP2">Stay on to meet the speakers and colleagues.</span></p>
   </div>
 </div></section>
 
@@ -680,7 +701,7 @@ const T={en:{},fr:{
  pcPill:'Pré-cours · programme de formation IMCAS',pcH:'Remodelage corporel avec HYAcorp',pcSub:'BioScience dans le programme de formation officiel de l’IMCAS : 30 minutes, avec une démonstration en direct guidée par échographie.',pcB1:'Pré-cours · 30 min',pcB2:'Date et salle à confirmer',liveDemoUS:'Démo en direct sous échographie',pcCap:'Le Dr Miguel Bravo sur scène avec BioScience',
  symPill:'Symposium BioScience · 90 minutes',smDay:'Vendredi 29 janvier 2027',smWhere:'14:00–15:30 · salle 252 · niveau 2',smChair:'Présidé par le Dr Frank',ctaCalSym:'Ajouter à mon agenda',
  suPill:'BioScience Hospitality Suite',suiteH:'Sessions d’experts',suiteP:'Échanges ciblés, preuves cliniques et cas réels.',suDays:'Jeudi 28 – samedi 30 janvier',suWhere:'Suite [no.] · niveau [x] · Palais des Congrès',
- afH:'Après chaque session : buffet et animation',afP:'Restez après chaque session pour un verre, un buffet et du temps avec les intervenants et vos confrères.',af1:'Interventions d’experts',af2:'Buffet & boissons',af3:'Rencontrez les experts',
+ afH:'Après chaque session : buffet et animation',afP2:'Restez pour rencontrer les intervenants et vos confrères.',afP:'Restez après chaque session pour un verre, un buffet et du temps avec les intervenants et vos confrères.',af1:'Interventions d’experts',af2:'Buffet & boissons',af3:'Rencontrez les experts',
  visit:'Retrouvez-nous · jeu. 28 – sam. 30 janvier',boothH:'Explorez l’expérience BioScience',boothB1:'Stand N214',boothB2:'Niveau 2 · ouvert les trois jours',mapC1:'Niveau 2 · à côté de la salle Maillot',mapC2:'Escalators jusqu’au niveau 2',gH:'Votre cadeau exclusif',gP:'Passez au stand N214 et retirez votre cadeau exclusif.',
  plPill:'Votre IMCAS, planifié',plH:'Planifiez votre visite',plP:'Choisissez les sessions qui comptent pour vous. Nous vous envoyons votre programme personnel et votre Sphere Card.',ps1:'Choisissez vos sessions',ps1s:'Symposium, sessions d’experts et stand, dans un seul programme',ps2:'Recevez votre Sphere Card',ps2s:'Envoyée par e-mail avec votre programme',ps3:'Retirez votre cadeau',ps3s:'Montrez votre carte au stand N214 · niveau 2',
  sp1:'Choisir',sp2:'Votre carte',sp3:'Terminé',gH2:'Retirez votre cadeau exclusif au stand N214',gS:'Montrez votre Sphere Card au stand pour le retirer.',s1:'Qu’est-ce qui vous intéresse ?',pP:'Cochez tout ce qui vous intéresse. Votre programme et votre carte se mettent à jour.',sLang:'Afficher aussi les sessions dans ma langue',opt:'facultatif',
@@ -697,7 +718,7 @@ const T={en:{},fr:{
  pcPill:'Precurso · programa formativo de IMCAS',pcH:'Remodelación corporal con HYAcorp',pcSub:'BioScience en el programa formativo oficial de IMCAS: 30 minutos, con una demostración en directo guiada por ecografía.',pcB1:'Precurso · 30 min',pcB2:'Fecha y sala por confirmar',liveDemoUS:'Demo en directo con ecografía',pcCap:'El Dr Miguel Bravo en el escenario con BioScience',
  symPill:'Simposio BioScience · 90 minutos',smDay:'Viernes 29 de enero de 2027',smWhere:'14:00–15:30 · sala 252 · nivel 2',smChair:'Preside el Dr Frank',ctaCalSym:'Añadir a mi calendario',
  suPill:'BioScience Hospitality Suite',suiteH:'Sesiones de expertos',suiteP:'Debates enfocados, evidencia clínica y casos reales.',suDays:'Jueves 28 – sábado 30 de enero',suWhere:'Suite [no.] · nivel [x] · Palais des Congrès',
- afH:'Después de cada sesión: catering y entretenimiento',afP:'Quédese después de cada sesión para comer, tomar algo y conversar con los ponentes y colegas.',af1:'Charlas de expertos',af2:'Catering y bebidas',af3:'Conozca a los expertos',
+ afH:'Después de cada sesión: catering y entretenimiento',afP2:'Quédese para conocer a los ponentes y colegas.',afP:'Quédese después de cada sesión para comer, tomar algo y conversar con los ponentes y colegas.',af1:'Charlas de expertos',af2:'Catering y bebidas',af3:'Conozca a los expertos',
  visit:'Visítenos · jue. 28 – sáb. 30 de enero',boothH:'Explore la experiencia BioScience',boothB1:'Stand N214',boothB2:'Nivel 2 · abierto los tres días',mapC1:'Nivel 2 · junto a la sala Maillot',mapC2:'Suba por las escaleras mecánicas al nivel 2',gH:'Su regalo exclusivo',gP:'Visite el stand N214 y recoja su regalo exclusivo.',
  plPill:'Su IMCAS, planificado',plH:'Planifique su visita',plP:'Elija las sesiones que le interesan. Le enviamos su plan personal y su Sphere Card.',ps1:'Elija sus sesiones',ps1s:'Simposio, sesiones de expertos y stand, en un solo plan',ps2:'Reciba su Sphere Card',ps2s:'Enviada por correo con su plan',ps3:'Recoja su regalo',ps3s:'Muestre su tarjeta en el stand N214 · nivel 2',
  sp1:'Elegir',sp2:'Su tarjeta',sp3:'Listo',gH2:'Recoja su regalo exclusivo en el stand N214',gS:'Muestre su Sphere Card en el stand para recogerlo.',s1:'¿Qué le interesa?',pP:'Marque todo lo que le interese. Su plan y su tarjeta se actualizan.',sLang:'Mostrar también sesiones en mi idioma',opt:'opcional',
@@ -740,17 +761,17 @@ const TOPICS={en:[['face','Face','Biostimulation · Genefill DX live demo'],['bo
 const LANGS=[['fr','Session en français','Sat 30 · 15:00'],['es','Sesión en español','Sat 30 · 10:00']];
 const W={en:{wd:['Thursday','Friday','Saturday'],grp:{open:'Opening',face:'Face',body:'Body',intimate:'Intimate',close:'Closing'},qa:'15:20 · Q&A and closing remarks with Dr Frank',allFac:'All faculty',liveDemo:'Live demo',
   addPlan:'+ Add to my plan',added:'✓ In your plan',addedT:'Added to your plan. Open “Plan my visit” to get your Sphere Card.',viaTopic:'This session is in your plan because of a topic you picked.',
-  lgES:'En español',lgFR:'En français',next1:'Next: get my Sphere Card →',next2:'Send my plan and card',next3:'Done',back:'← Back',stops:'stops in your plan',yourName:'Your name',qrAfter:'Your QR appears after sending',giftR:'Exclusive gift · Booth N214',
+  lgES:'En español',lgFR:'En français',symRoomS:'Room 252 · Level 2 · see the line-up ↑',next1:'Next: get my Sphere Card →',next2:'Send my plan and card',next3:'Done',back:'← Back',stops:'stops in your plan',yourName:'Your name',qrAfter:'Your QR appears after sending',giftR:'Exclusive gift · Booth N214',
   none:'Pick a topic, or continue with the symposium and the booth.',thu:'Thursday 28 January',fri:'Friday 29 January',sat:'Saturday 30 January',all:'All three days',sym:'BioScience Symposium',symS:'Room 252 · Level 2 · 8 experts, live demo',suite:'Expert session',booth:'Booth N214 · Level 2',boothS:'Visit and collect your exclusive gift',daily:'Open daily',
   zones:[['Product Discovery','HYAcorp, Genefill and Genefill DX up close'],['BioScience Academy','Courses, webinars and workshops near you'],['Sphere Experience','Your portrait inside the sphere'],['Scientific Corner','Studies, and the gel under the microscope']],bar:['Catering & Bar Corner','Coffee, drinks and a place to meet']},
  fr:{wd:['Jeudi','Vendredi','Samedi'],grp:{open:'Ouverture',face:'Visage',body:'Corps',intimate:'Intime',close:'Clôture'},qa:'15:20 · Questions-réponses et clôture avec le Dr Frank',allFac:'Tous les experts',liveDemo:'Démo en direct',
   addPlan:'+ Ajouter à mon programme',added:'✓ Dans votre programme',addedT:'Ajouté à votre programme. Ouvrez « Planifier ma visite » pour votre Sphere Card.',viaTopic:'Cette session est dans votre programme grâce à un thème choisi.',
-  lgES:'En espagnol',lgFR:'En français',next1:'Suivant : ma Sphere Card →',next2:'Envoyer mon programme et ma carte',next3:'Terminé',back:'← Retour',stops:'étapes dans votre programme',yourName:'Votre nom',qrAfter:'Votre QR apparaît après l’envoi',giftR:'Cadeau exclusif · stand N214',
+  lgES:'En espagnol',lgFR:'En français',symRoomS:'Salle 252 · niveau 2 · voir le programme ↑',next1:'Suivant : ma Sphere Card →',next2:'Envoyer mon programme et ma carte',next3:'Terminé',back:'← Retour',stops:'étapes dans votre programme',yourName:'Votre nom',qrAfter:'Votre QR apparaît après l’envoi',giftR:'Cadeau exclusif · stand N214',
   none:'Choisissez un thème ou continuez avec le symposium et le stand.',thu:'Jeudi 28 janvier',fri:'Vendredi 29 janvier',sat:'Samedi 30 janvier',all:'Les trois jours',sym:'Symposium BioScience',symS:'Salle 252 · niveau 2 · 8 experts, démo en direct',suite:'Session d’experts',booth:'Stand N214 · niveau 2',boothS:'Passez retirer votre cadeau exclusif',daily:'Tous les jours',
   zones:[['Product Discovery','HYAcorp, Genefill et Genefill DX de près'],['BioScience Academy','Cours, webinaires et ateliers près de chez vous'],['Sphere Experience','Votre portrait dans la sphère'],['Scientific Corner','Études, et le gel au microscope']],bar:['Catering & Bar Corner','Café, boissons et un lieu de rencontre']},
  es:{wd:['Jueves','Viernes','Sábado'],grp:{open:'Apertura',face:'Rostro',body:'Cuerpo',intimate:'Íntimo',close:'Cierre'},qa:'15:20 · Preguntas y cierre con el Dr Frank',allFac:'Todos los expertos',liveDemo:'Demo en directo',
   addPlan:'+ Añadir a mi plan',added:'✓ En su plan',addedT:'Añadido a su plan. Abra «Planificar mi visita» para su Sphere Card.',viaTopic:'Esta sesión está en su plan por un tema elegido.',
-  lgES:'En español',lgFR:'En francés',next1:'Siguiente: mi Sphere Card →',next2:'Enviar mi plan y mi tarjeta',next3:'Listo',back:'← Atrás',stops:'paradas en su plan',yourName:'Su nombre',qrAfter:'Su QR aparece tras el envío',giftR:'Regalo exclusivo · stand N214',
+  lgES:'En español',lgFR:'En francés',symRoomS:'Sala 252 · nivel 2 · ver el programa ↑',next1:'Siguiente: mi Sphere Card →',next2:'Enviar mi plan y mi tarjeta',next3:'Listo',back:'← Atrás',stops:'paradas en su plan',yourName:'Su nombre',qrAfter:'Su QR aparece tras el envío',giftR:'Regalo exclusivo · stand N214',
   none:'Elija un tema o continúe con el simposio y el stand.',thu:'Jueves 28 de enero',fri:'Viernes 29 de enero',sat:'Sábado 30 de enero',all:'Los tres días',sym:'Simposio BioScience',symS:'Sala 252 · nivel 2 · 8 expertos, demo en directo',suite:'Sesión de expertos',booth:'Stand N214 · nivel 2',boothS:'Visítenos y recoja su regalo exclusivo',daily:'Cada día',
   zones:[['Product Discovery','HYAcorp, Genefill y Genefill DX de cerca'],['BioScience Academy','Cursos, webinars y talleres cerca de usted'],['Sphere Experience','Su retrato dentro de la esfera'],['Scientific Corner','Estudios, y el gel al microscopio']],bar:['Catering & Bar Corner','Café, bebidas y un lugar de encuentro']}};
 const sel=new Set(),picked=new Set();let lang='en',who='',step=1,stops=0;
@@ -768,9 +789,12 @@ function staticBits(){const L=w();
   return `<li class="lc${i===2?' live':''}"><div class="lhd" style="background:${GC[g]}"><span>${esc(L.grp[g])}</span><time>${t}</time></div><span class="lno" aria-hidden="true">${i+1}</span>${pic}<div class="lbd"><small>${esc(rt?L.allFac:FX[sp][1])}</small><b>${esc(title)}</b>${rt?`<em>${esc(L.qa)}</em>`:''}${i===2?`<span class="live2">${esc(L.liveDemo)}</span>`:''}</div></li>`}).join('')+'</ol>';
  $('zones').innerHTML=L.zones.map(([a,b],k)=>`<div class="zone"><i>${k+1}</i><div><b>${esc(a)}</b><span>${esc(b)}</span></div></div>`).join('')+`<div class="zone mini"><i>☕</i><div><b>${esc(L.bar[0])}</b><span>${esc(L.bar[1])}</span></div></div>`;
 }
-function sessions(){const L=w(),TL=TOPICS[lang]||TOPICS.en,tl=k=>(TL.find(t=>t[0]===k)||[])[1];
- $('sessions').innerHTML=['Thu','Fri','Sat'].map((D,k)=>`<div class="dayrow"><h3 class="dlab"><b>${28+k}</b><span>${L.wd[k]}</span></h3>${SUITE.map((s,i)=>[s,i]).filter(([s])=>s[0]===D).map(([[,tm,n,d,sp,lg,tags],i])=>{const m=mineS(i);
-  return `<article class="sx ${m?'mine':''}"><div class="tm"><time>${tm}</time>${lg?`<span class="tg lg">${lg==='ES'?L.lgES:L.lgFR}</span>`:''}${tags.filter(tl).map(t=>`<span class="tg">${esc(tl(t))}</span>`).join('')}</div><h4>${esc(n)}</h4><p>${esc(d)}</p><ul class="spk">${sp.map(x=>`<li><img src="img/su_${x}.png" alt="">${esc(SN[x])}</li>`).join('')}</ul><button type="button" class="addp" data-si="${i}" aria-pressed="${m}">${m?L.added:L.addPlan}</button></article>`}).join('')}</div>`).join('')}
+function sessions(){const L=w();
+ const SH={'The Evidence Summit':'New trial data: Genefill DX, hands, intimate','The Regenerative Frontier':'After GLP-1 weight loss · acne scars','Mastering the Invisible':'Live anatomy & ultrasound, face and body','The Latin Booty & Beyond':'Gluteal sculpting & Genefill DX for the face','L’art du remodelage corporel':'Body remodelling: vectoring & combined protocols'};
+ const cardS=([,tm,n,,sp,lg])=>`<article class="tc"><div class="tct"><time>${tm}</time>${lg?`<span class="lgt">${lg==='ES'?L.lgES:L.lgFR}</span>`:''}</div><h4>${esc(n)}</h4><p>${esc(SH[n]||'')}</p><div class="fc"><span>${sp.map(x=>`<img src="img/su_${x}.png" alt="">`).join('')}</span><small>${esc(sp.map(x=>SN[x]).join(' · '))}</small></div></article>`;
+ const SYMC=`<a class="tc sym" href="#symposium"><div class="tct"><time>14:00–15:30</time></div><h4>${esc(L.sym)}</h4><p>${esc(L.symRoomS)}</p></a>`;
+ $('sessions').innerHTML='<div class="ht">'+['Thu','Fri','Sat'].map((D,k)=>{const am=SUITE.find(x=>x[0]===D&&x[1].startsWith('10')),pm=SUITE.find(x=>x[0]===D&&x[1].startsWith('15'));
+  return `<div class="hday"><div class="slot am">${am?cardS(am):''}</div><div class="mk"><span><b>${28+k}</b>${L.wd[k]}</span></div><div class="slot pm">${pm?cardS(pm):SYMC}</div></div>`}).join('')+'</div>'}
 function render(){const L=w(),day={Thu:L.thu,Fri:L.fri,Sat:L.sat},by={Thu:[],Fri:[],Sat:[]};
  SUITE.forEach(([D,tm,n,,sp],si)=>{if(mineS(si))by[D].push([tm,`<div class="it"><time>${tm}</time><div><b>${esc(n)}</b><span>${L.suite} · ${esc(sp.map(x=>SN[x]).join(' · '))}</span></div></div>`])});
  const picks=AG.filter(a=>mine(a[3]));
