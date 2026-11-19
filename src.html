@@ -451,6 +451,22 @@ section{padding-block:clamp(56px,7vw,92px)}
  .ch.slim .tk.rt{grid-column:span 2}
 }
 @media(min-width:900px){.ch.slim .tks{column-gap:16px}.ch.slim .tk+.tk{padding-left:20px}}
+
+/* v9: opening, face, body, intimate, closing in one row */
+.sym .wrap{max-width:1180px}
+@media(min-width:1100px){.ch5{gap:10px}.ch5 .tk{padding:13px 12px}.ch5 .ch>header{padding:12px 14px}}
+.ch5{display:grid;gap:14px;align-items:stretch}
+@media(min-width:760px) and (max-width:1099px){.ch5{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:1100px){.ch5{grid-template-columns:repeat(5,minmax(0,1fr))}
+ .ch5 .ch>header{flex-direction:column;align-items:flex-start;gap:4px;min-height:74px;justify-content:center}
+ .ch5 .ch>header h3{font-size:22px}
+ .ch5 .tk{grid-template-columns:42px minmax(0,1fr);gap:10px;padding:14px}
+ .ch5 .pf img{width:42px;height:42px}.ch5 .pf .flag{width:20px;height:13px}
+ .ch5 .tk b{font-size:15px}
+ .ch5 .tk.rt{grid-template-columns:1fr}.ch5 .tk.rt>.pf{display:none}
+ .ch5 .panel{gap:8px 4px}.ch5 .panel span{min-width:44px;font-size:10.5px}.ch5 .panel img{width:34px;height:34px}
+}
+.ch5 .tk.rt{grid-column:auto}
 </style>
 </head>
 <body>
@@ -728,7 +744,7 @@ function staticBits(){const L=w();
  const talk=i=>{const [t,title,sp]=AG[i];return `<div class="tk${sp==='*'?' rt':''}">${sp==='*'?'<span class="pf"><img src="img/fx_frank.png" alt="" style="visibility:hidden"></span>':pf(sp)}<div><time>${t}</time><b>${esc(title)}${i===2?` <span class="live2">${esc(L.liveDemo)}</span>`:''}</b><small>${sp==='*'?esc(L.allFac):esc(FX[sp][1])}</small>${sp==='*'?`<div class="panel">${FAC.map(([k,n,c])=>`<span><img src="img/fx_${k}.png" alt="">${flag(c)}${esc(n.replace('Dr ',''))}</span>`).join('')}</div>`:''}</div></div>`};
  const CH=[['open','c-open','14:00–14:05',[0],5],['face','c-face','14:05–14:30',[1,2],25],['body','c-body','14:30–15:00',[3,4,5],30],['intimate','c-int','15:00–15:10',[6],10],['close','c-close','15:10–15:30',[7,8],20]];
  const card=([g,c,tm,ix],slim)=>`<article class="ch${slim?' slim':''}"><header class="${c}"><h3>${esc(L.grp[g])}</h3><time>${tm}</time></header><div class="tks">${ix.map(talk).join('')}</div></article>`;
- $('chap').innerHTML=card(CH[0],1)+`<div class="ch3">${CH.slice(1,4).map(c=>card(c)).join('')}</div>`+card(CH[4],1);
+ $('chap').innerHTML=`<div class="ch5">${CH.map(c=>card(c)).join('')}</div>`;
  $('zones').innerHTML=L.zones.map(([a,b],k)=>`<div class="zone"><i>${k+1}</i><div><b>${esc(a)}</b><span>${esc(b)}</span></div></div>`).join('')+`<div class="zone mini"><i>☕</i><div><b>${esc(L.bar[0])}</b><span>${esc(L.bar[1])}</span></div></div>`;
 }
 function sessions(){const L=w(),TL=TOPICS[lang]||TOPICS.en,tl=k=>(TL.find(t=>t[0]===k)||[])[1];
