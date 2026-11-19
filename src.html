@@ -727,7 +727,7 @@ html[data-phase=before] [data-ph]:not([data-ph~=before]),html[data-phase=during]
 
 <header class="top" id="top"><div class="wrap">
   <a class="brand" href="#overview"><img src="img/logo.svg" alt="BioScience"><span data-t="atImcas">At IMCAS Paris 2027</span></a>
-  <nav class="menu" aria-label="Sections"><a href="#overview" data-t="nOv" data-ph="before after">Overview</a><a href="#now" data-t="nNow" data-ph="during">Live now</a><a href="#recap" data-t="nRecap" data-ph="after">Highlights</a><a href="#dx" data-t="nDx">Discover Genefill DX</a><a href="#programme" data-t="nProg">Scientific Programme</a><a href="#booth" data-t="nBooth" data-ph="before during">Booth Experience</a></nav>
+  <nav class="menu" aria-label="Sections"><a href="#overview" data-t="nOv" data-ph="before after">Overview</a><a href="#now" data-t="nNow" data-ph="during">Live now</a><a href="#recap" data-t="nRecap" data-ph="after">Highlights</a><a href="#photos" data-t="nPhotos" data-ph="after">Pictures</a><a href="#replay" data-t="nReplay" data-ph="after">Symposium replay</a><a href="#dx" data-t="nDx" data-ph="before during">Discover Genefill DX</a><a href="#programme" data-t="nProg" data-ph="before during">Scientific Programme</a><a href="#booth" data-t="nBooth" data-ph="before during">Booth Experience</a></nav>
   <nav class="langs" aria-label="Language"><button class="lang" data-l="en" aria-pressed="true">EN</button><button class="lang" data-l="fr" aria-pressed="false">FR</button><button class="lang" data-l="es" aria-pressed="false">ES</button></nav>
   <button class="cta cyan plan-btn" type="button" data-plan data-t="ctaPlan" data-ph="before during">Plan my visit</button><a class="cta cyan plan-btn" href="#recap" data-t="ctaHigh" data-ph="after">Watch the highlights</a>
 </div></header>
@@ -800,7 +800,7 @@ html[data-phase=before] [data-ph]:not([data-ph~=before]),html[data-phase=during]
 </div></section>
 
 <!-- 2 · GENEFILL DX SPOTLIGHT — wide banner in the layout of Ruba's DX design -->
-<section class="dxw" id="dx"><div class="wrap dxw-in">
+<section class="dxw" id="dx" data-ph="before during"><div class="wrap dxw-in">
   <div class="dxw-sph" role="img" aria-label="Genefill DX campaign model inside the glass sphere"></div>
   <div class="dxw-txt">
     <img class="dxw-logo" src="img/dx_logo_v2.png" alt="Genefill DX">
@@ -829,7 +829,7 @@ html[data-phase=before] [data-ph]:not([data-ph~=before]),html[data-phase=during]
 </div></section>
 
 <!-- 4 · SCIENTIFIC SYMPOSIUM (light) -->
-<section class="sym tone-l" id="symposium"><div class="wrap">
+<section class="sym tone-l" id="symposium" data-ph="before during"><div class="wrap">
   <div class="shead">
     <div>
       <span class="pill" data-t="symPill">BioScience Symposium · 90 minutes</span>
@@ -844,7 +844,7 @@ html[data-phase=before] [data-ph]:not([data-ph~=before]),html[data-phase=during]
 </div></section>
 
 <!-- 5 · HOSPITALITY SUITE — EXPERT SESSIONS -->
-<section class="suite tone-d" id="suite"><div class="wrap">
+<section class="suite tone-d" id="suite" data-ph="before during"><div class="wrap">
   <span class="pill" data-t="suPill">BioScience Hospitality Suite</span>
   <h2 data-t="suiteH">Expert Sessions</h2>
   <p class="sub" data-t="suiteP" data-ph="before during">Focused discussions, clinical evidence and real cases.</p><p class="sub" data-t="suitePA" data-ph="after">Thank you to everyone who joined our expert sessions in the suite.</p>
@@ -1113,7 +1113,7 @@ function setLang(l){lang=l;document.documentElement.lang=l;document.querySelecto
  document.querySelectorAll('[data-t]').forEach(el=>{const v=(T[l]||{})[el.dataset.t]??T.en[el.dataset.t];if(v!=null)el.textContent=v});tiles();staticBits();sessions();render();renderNow();renderReplay()}
 document.querySelectorAll('.lang').forEach(b=>b.onclick=()=>setLang(b.dataset.l));
 /* header: transparent on the banner, solid once you scroll; menu highlights the current section */
-const top_=$('top'),secs=['overview','recap','dx','programme','booth'].map(id=>$(id)).filter(e=>e&&e.offsetParent!==null);
+const top_=$('top'),secs=['overview','recap','photos','replay','dx','programme','booth'].map(id=>$(id)).filter(e=>e&&e.offsetParent!==null);
 function onScroll(){top_.classList.toggle('solid',scrollY>40);let cur='overview';secs.forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id});
  if(['symposium','suite'].some(id=>{const r=$(id).getBoundingClientRect();return r.top<120&&r.bottom>120}))cur='programme';
  document.querySelectorAll('.menu a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur))}
