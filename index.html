@@ -585,6 +585,15 @@ dialog#planner{width:min(700px,96vw);height:auto;max-height:92vh}
 .dgrid{display:grid;gap:16px;margin:10px 0}
 @media(min-width:640px){.dgrid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
 #doneV .lnk{margin-top:10px}
+
+/* v20: live Sphere Card beside the single-step form */
+dialog#planner{width:min(980px,96vw)}
+.pfg{display:grid;gap:22px}
+@media(min-width:860px){.pfg{grid-template-columns:minmax(0,1.25fr) minmax(0,.9fr);align-items:start}.pfc{position:sticky;top:0}}
+.pfc{display:grid;gap:10px}
+.pfcn{margin:0;color:var(--soft);font-size:14px}
+.pfc .scard{min-height:200px}
+@media(max-width:859px){.pfc{order:-1}.pfc .note{display:none}.pfc .scard .glass{display:none}}
 </style>
 </head>
 <body>
@@ -703,6 +712,7 @@ dialog#planner{width:min(700px,96vw);height:auto;max-height:92vh}
 <dialog id="planner" aria-labelledby="dlgT">
  <div class="dlg-head"><b id="dlgT" data-t="ctaPlan">Plan my visit</b><button class="dlg-x" type="button" aria-label="Close" data-close>×</button></div>
  <div class="dlg-body" id="dlgBody">
+  <div class="pfg" id="pfg">
   <form id="form" novalidate>
    <div class="giftstrip"><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 7h-2.2A3 3 0 0 0 12 3.8 3 3 0 0 0 6.2 7H4a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-8h1a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1Zm-5-2a1 1 0 1 1 0 2h-2a2 2 0 0 1 2-2Zm-6 0a2 2 0 0 1 2 2H9a1 1 0 1 1 0-2Zm2 15H7v-8h4Zm0-10H5V9h6Zm6 10h-4v-8h4Zm2-10h-6V9h6Z"/></svg><span><b data-t="gH2">Collect your exclusive gift at Booth N214</b> <span data-t="pfLead">Takes 30 seconds. We email your personal plan and your Sphere Card.</span></span></div>
    <p class="q2" data-t="pfQ">What interests you?</p>
@@ -718,8 +728,9 @@ dialog#planner{width:min(700px,96vw);height:auto;max-height:92vh}
    <label class="consent"><input type="checkbox" id="f-consent"><span data-t="consent">Send me my plan and BioScience updates about IMCAS. My local BioScience partner may contact me about training. I can unsubscribe at any time.</span></label>
    <div class="err" id="err" role="alert"></div>
    <button type="submit" class="cta teal big full" data-t="ctaSend">Send me my plan &amp; Sphere Card</button>
-   <p class="note" data-t="cardNote">The Sphere Card is BioScience's own card for your booth gift. It is not an IMCAS registration.</p>
   </form>
+  <aside class="pfc"><div id="cardPrev"></div><p class="pfcn" data-t="pfCardN">Your Sphere Card fills in as you type. Show it at Booth N214 to collect your exclusive gift.</p><p class="note" data-t="cardNote">The Sphere Card is BioScience's own card for your booth gift. It is not an IMCAS registration.</p></aside>
+  </div>
   <div id="doneV" hidden>
    <h3 class="q" data-t="doneH">Your Sphere Card is ready</h3>
    <p class="pintro"><span data-t="p3">We have emailed your plan and card to</span> <b id="sentTo"></b>.</p>
@@ -755,7 +766,7 @@ const T={en:{},fr:{
  afH:'Après chaque session : buffet et animation',svPill:'La suite l’an dernier · IMCAS 2026',svP:'Interventions d’experts et cas réels, puis buffet, boissons et animation avec les intervenants et vos confrères.',afP2:'Restez pour rencontrer les intervenants et vos confrères.',afP:'Restez après chaque session pour un verre, un buffet et du temps avec les intervenants et vos confrères.',af1:'Interventions d’experts',af2:'Buffet & boissons',af3:'Rencontrez les experts',
  visit:'Retrouvez-nous · jeu. 28 – sam. 30 janvier',boothH:'Explorez l’expérience BioScience',boothB1:'Stand N214',boothB2:'Niveau 2 · ouvert les trois jours',mapC1:'Niveau 2 · à côté de la salle Maillot',mapC2:'Escalators jusqu’au niveau 2',gH:'Votre cadeau exclusif',gP:'Passez au stand N214 et retirez votre cadeau exclusif.',
  plPill:'Votre IMCAS, planifié',plH:'Planifiez votre visite',plP:'Choisissez les sessions qui comptent pour vous. Nous vous envoyons votre programme personnel et votre Sphere Card.',ps1:'Choisissez vos sessions',ps1s:'Symposium, sessions d’experts et stand, dans un seul programme',ps2:'Recevez votre Sphere Card',ps2s:'Envoyée par e-mail avec votre programme',ps3:'Retirez votre cadeau',ps3s:'Montrez votre carte au stand N214 · niveau 2',
- pfLead:'30 secondes. Nous vous envoyons votre programme personnel et votre Sphere Card.',pfQ:'Qu’est-ce qui vous intéresse ?',ctaSend:'Recevoir mon programme et ma Sphere Card',pfEdit:'← Modifier mes choix',sp1:'Choisir',sp2:'Votre carte',sp3:'Terminé',gH2:'Retirez votre cadeau exclusif au stand N214',gS:'Montrez votre Sphere Card au stand pour le retirer.',s1:'Qu’est-ce qui vous intéresse ?',pP:'Cochez tout ce qui vous intéresse. Votre programme et votre carte se mettent à jour.',sLang:'Afficher aussi les sessions dans ma langue',opt:'facultatif',
+ pfLead:'30 secondes. Nous vous envoyons votre programme personnel et votre Sphere Card.',pfQ:'Qu’est-ce qui vous intéresse ?',ctaSend:'Recevoir mon programme et ma Sphere Card',pfEdit:'← Modifier mes choix',pfCardN:'Votre Sphere Card se remplit au fur et à mesure. Montrez-la au stand N214 pour retirer votre cadeau exclusif.',sp1:'Choisir',sp2:'Votre carte',sp3:'Terminé',gH2:'Retirez votre cadeau exclusif au stand N214',gS:'Montrez votre Sphere Card au stand pour le retirer.',s1:'Qu’est-ce qui vous intéresse ?',pP:'Cochez tout ce qui vous intéresse. Votre programme et votre carte se mettent à jour.',sLang:'Afficher aussi les sessions dans ma langue',opt:'facultatif',
  s2:'Où envoyer votre carte ?',p2:'Nous vous envoyons votre programme et votre Sphere Card. Votre nom figure sur la carte.',fName:'Nom',fEmail:'E-mail',fCountry:'Pays',fSpec:'Spécialité',consent:'Envoyez-moi mon programme et les nouvelles BioScience sur l’IMCAS. Mon partenaire BioScience local peut me contacter pour une formation. Désinscription possible à tout moment.',
  cardNote:'La Sphere Card est la carte BioScience pour votre cadeau au stand. Ce n’est pas une inscription à l’IMCAS.',doneH:'Votre Sphere Card est prête',p3:'Nous avons envoyé votre programme et votre carte à',gDone:'Montrez cette carte au stand N214, niveau 2, pour retirer votre cadeau exclusif.',ctaWallet:'Ajouter au Wallet',ctaCal:'Ajouter à l’agenda',planH:'Votre programme à Paris',
  foot:'Réservé aux professionnels de santé. Contenu clinique validé par les Affaires médicales BioScience.'},
@@ -772,7 +783,7 @@ const T={en:{},fr:{
  afH:'Después de cada sesión: catering y entretenimiento',svPill:'La suite el año pasado · IMCAS 2026',svP:'Charlas de expertos y casos reales, y después comida, bebidas y entretenimiento con los ponentes y colegas.',afP2:'Quédese para conocer a los ponentes y colegas.',afP:'Quédese después de cada sesión para comer, tomar algo y conversar con los ponentes y colegas.',af1:'Charlas de expertos',af2:'Catering y bebidas',af3:'Conozca a los expertos',
  visit:'Visítenos · jue. 28 – sáb. 30 de enero',boothH:'Explore la experiencia BioScience',boothB1:'Stand N214',boothB2:'Nivel 2 · abierto los tres días',mapC1:'Nivel 2 · junto a la sala Maillot',mapC2:'Suba por las escaleras mecánicas al nivel 2',gH:'Su regalo exclusivo',gP:'Visite el stand N214 y recoja su regalo exclusivo.',
  plPill:'Su IMCAS, planificado',plH:'Planifique su visita',plP:'Elija las sesiones que le interesan. Le enviamos su plan personal y su Sphere Card.',ps1:'Elija sus sesiones',ps1s:'Simposio, sesiones de expertos y stand, en un solo plan',ps2:'Reciba su Sphere Card',ps2s:'Enviada por correo con su plan',ps3:'Recoja su regalo',ps3s:'Muestre su tarjeta en el stand N214 · nivel 2',
- pfLead:'30 segundos. Le enviamos su plan personal y su Sphere Card.',pfQ:'¿Qué le interesa?',ctaSend:'Enviarme mi plan y mi Sphere Card',pfEdit:'← Cambiar mis opciones',sp1:'Elegir',sp2:'Su tarjeta',sp3:'Listo',gH2:'Recoja su regalo exclusivo en el stand N214',gS:'Muestre su Sphere Card en el stand para recogerlo.',s1:'¿Qué le interesa?',pP:'Marque todo lo que le interese. Su plan y su tarjeta se actualizan.',sLang:'Mostrar también sesiones en mi idioma',opt:'opcional',
+ pfLead:'30 segundos. Le enviamos su plan personal y su Sphere Card.',pfQ:'¿Qué le interesa?',ctaSend:'Enviarme mi plan y mi Sphere Card',pfEdit:'← Cambiar mis opciones',pfCardN:'Su Sphere Card se completa mientras escribe. Muéstrela en el stand N214 para recoger su regalo exclusivo.',sp1:'Elegir',sp2:'Su tarjeta',sp3:'Listo',gH2:'Recoja su regalo exclusivo en el stand N214',gS:'Muestre su Sphere Card en el stand para recogerlo.',s1:'¿Qué le interesa?',pP:'Marque todo lo que le interese. Su plan y su tarjeta se actualizan.',sLang:'Mostrar también sesiones en mi idioma',opt:'opcional',
  s2:'¿Dónde enviamos su tarjeta?',p2:'Le enviamos su plan y su Sphere Card. Su nombre aparece en la tarjeta.',fName:'Nombre',fEmail:'Correo',fCountry:'País',fSpec:'Especialidad',consent:'Envíenme mi plan y novedades de BioScience sobre IMCAS. Mi distribuidor BioScience local puede contactarme sobre formación. Puedo darme de baja cuando quiera.',
  cardNote:'La Sphere Card es la tarjeta de BioScience para su regalo en el stand. No es una inscripción a IMCAS.',doneH:'Su Sphere Card está lista',p3:'Hemos enviado su plan y su tarjeta a',gDone:'Muestre esta tarjeta en el stand N214, nivel 2, para recoger su regalo exclusivo.',ctaWallet:'Añadir a Wallet',ctaCal:'Añadir al calendario',planH:'Su plan para París',
  foot:'Solo para profesionales sanitarios. Contenido clínico aprobado por Medical Affairs de BioScience.'}};
@@ -849,25 +860,27 @@ function sessions(){const L=w();
  const SYMC=`<a class="tc sym" href="#symposium"><div class="tct"><time>14:00–15:30</time></div><h4>${esc(L.sym)}</h4><p>${esc(L.symRoomS)}</p></a>`;
  $('sessions').innerHTML='<div class="ht">'+['Thu','Fri','Sat'].map((D,k)=>{const am=SUITE.find(x=>x[0]===D&&x[1].startsWith('10')),pm=SUITE.find(x=>x[0]===D&&x[1].startsWith('15'));
   return `<div class="hday"><div class="slot am">${am?cardS(am):''}</div><div class="mk"><span><b>${28+k}</b>${L.wd[k]}</span></div><div class="slot pm">${pm?cardS(pm):''}</div></div>`}).join('')+`<div class="hvid"><div class="mk vk"><span>${esc(L.vidLab)}</span></div><figure class="vf"><video src="img/suite_2026.mp4" poster="img/suite_2026.jpg" autoplay muted loop playsinline preload="metadata" aria-label="${esc(L.vidAria)}"></video><figcaption>${esc(L.vidCap)}</figcaption></figure></div>`+'</div>'}
-function render(){if(who)done()}
-document.addEventListener('click',e=>{const c=e.target.closest('.tchip');if(!c)return;const k=c.dataset.k;sel.has(k)?sel.delete(k):sel.add(k);tiles()});
+function render(){if(who)done();else if($('cardPrev'))prev()}
+document.addEventListener('click',e=>{const c=e.target.closest('.tchip');if(!c)return;const k=c.dataset.k;sel.has(k)?sel.delete(k):sel.add(k);tiles();prev()});
 function qr(el,txt){el.replaceChildren();if(window.QRCode){new QRCode(el,{text:txt,width:104,height:104,colorDark:'#0f3d44',colorLight:'#ffffff'})}else{el.textContent='QR'}}
 const GIFT=`<svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 7h-2.2A3 3 0 0 0 12 3.8 3 3 0 0 0 6.2 7H4a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-8h1a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1Zm-5-2a1 1 0 1 1 0 2h-2a2 2 0 0 1 2-2Zm-6 0a2 2 0 0 1 2 2H9a1 1 0 1 1 0-2Zm2 15H7v-8h4Zm0-10H5V9h6Zm6 10h-4v-8h4Zm2-10h-6V9h6Z"/></svg>`;
+function sphereCard(name,tl,ready){const L=w();return `<div class="scard${ready?' pop':''}"><img class="glass" src="img/bubble.png" alt=""><div><span class="ribbon">${GIFT}${L.giftR}</span><div class="k">Sphere Card · IMCAS Paris 2027</div><h3 class="${name?'':'ph'}">${esc(name||L.yourName)}</h3><p>${esc(tl||L.sym)}</p><p style="margin-top:8px;opacity:.85">Booth N214 · Level 2</p></div><div class="qr" id="${ready?'qr1':'qr0'}">${ready?'':`<span class="qrph">${L.qrAfter}</span>`}</div></div>`}
+const topicLabels=()=>{const TL=TOPS[lang]||TOPS.en;return [...sel].map(k=>(TL.find(t=>t[0]===k)||['',k])[1]).join(' · ')};
+function prev(){$('cardPrev').innerHTML=sphereCard($('f-name').value.trim(),topicLabels(),false)}
 function done(){const L=w(),lg=LANGC[$('f-country').value],TL=TOPS[lang]||TOPS.en,day={Thu:L.thu,Fri:L.fri,Sat:L.sat},by={Thu:[],Fri:[],Sat:[]};
  SUITE.forEach(([D,tm,n,,sp,l])=>{if((l&&l===lg)||(STAG[n]||[]).some(x=>sel.has(x)))by[D].push([tm,`<div class="it"><time>${tm}</time><div><b>${esc(n)}</b><span>${L.suite} · ${esc(sp.map(x=>SN[x]).join(' · '))}</span></div></div>`])});
  by.Fri.push(['14:00',`<div class="it key"><time>14:00–15:30</time><div><b>${L.sym}</b><span>${L.symS}</span></div></div>`]);
  $('itin').innerHTML=['Thu','Fri','Sat'].filter(D=>by[D].length).map(D=>`<div class="day"><b>${day[D]}</b>${by[D].sort((a,b)=>a[0].localeCompare(b[0])).map(x=>x[1]).join('')}</div>`).join('')
   +`<div class="day"><b>${L.all}</b><div class="it"><time>${L.daily}</time><div><b>${L.booth}</b><span>${L.boothS}</span></div></div></div>`;
- const tl=[...sel].map(k=>(TL.find(t=>t[0]===k)||['',k])[1]).join(' · ');
- $('cardBox').innerHTML=`<div class="scard pop"><img class="glass" src="img/bubble.png" alt=""><div><span class="ribbon">${GIFT}${L.giftR}</span><div class="k">Sphere Card · IMCAS Paris 2027</div><h3>${esc(who)}</h3><p>${esc(tl||L.sym)}</p><p style="margin-top:8px;opacity:.85">Booth N214 · Level 2</p></div><div class="qr" id="qr1"></div></div>`;
+ $('cardBox').innerHTML=sphereCard(who,topicLabels(),true);
  qr($('qr1'),'https://biosciencegmbh.com/imcas?card='+encodeURIComponent(who));
- $('form').hidden=true;$('doneV').hidden=false;$('dlgBody').scrollTop=0}
+ $('pfg').hidden=true;$('doneV').hidden=false;$('dlgBody').scrollTop=0}
 $('form').addEventListener('submit',e=>{e.preventDefault();const n=$('f-name').value.trim(),m=$('f-email').value.trim(),L=w();
  if(!n||!/^\S+@\S+\.\S+$/.test(m)||!$('f-country').value){$('err').textContent=L.errFields;return}
  if(!$('f-consent').checked){$('err').textContent=L.errConsent;return}
  $('err').textContent='';who=n;$('sentTo').textContent=m;done()});
-$('form').addEventListener('input',()=>{$('err').textContent=''});
-$('edit').onclick=()=>{who='';$('doneV').hidden=true;$('form').hidden=false;$('dlgBody').scrollTop=0};
+$('form').addEventListener('input',()=>{$('err').textContent='';prev()});
+$('edit').onclick=()=>{who='';$('doneV').hidden=true;$('pfg').hidden=false;prev();$('dlgBody').scrollTop=0};
 const MSG={wallet:'In the live page this adds your Sphere Card to Apple or Google Wallet.'};
 document.addEventListener('click',e=>{const b=e.target.closest('[data-toast]');if(b)toast(MSG[b.dataset.toast]);
  if(e.target.closest('[data-plan]')){const d=$('planner');if(!d.open)d.showModal();$('dlgBody').scrollTop=0}
@@ -883,7 +896,7 @@ function onScroll(){top_.classList.toggle('solid',scrollY>40);let cur='overview'
  if(['symposium','suite'].some(id=>{const r=$(id).getBoundingClientRect();return r.top<120&&r.bottom>120}))cur='programme';
  document.querySelectorAll('.menu a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur))}
 addEventListener('scroll',onScroll,{passive:true});onScroll();
-tiles();staticBits();sessions();
+tiles();staticBits();sessions();prev();
 </script>
 </body>
 </html>
