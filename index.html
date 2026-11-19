@@ -370,6 +370,45 @@ section{padding-block:clamp(56px,7vw,92px)}
 /* expert sessions on dark */
 .suite .dlab{color:#fff}
 .suite .after{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16)}
+
+/* ---- v5 (19 Nov): wide DX banner (Ruba's DX layout) + re-alternated tones ---- */
+.dxw{position:relative;overflow:hidden;color:#fff;background:#3f8e95 url(img/kv_water.jpg) center 70%/cover;padding-block:clamp(40px,5vw,64px)}
+.dxw::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,70,78,0) 25%,rgba(8,62,70,.55) 60%,rgba(8,62,70,.7))}
+.dxw-in{position:relative;display:grid;gap:12px;align-items:center}
+@media(min-width:900px){.dxw-in{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);min-height:520px}}
+.dxw-sph{aspect-ratio:920/800;width:100%;max-width:600px;margin:0 auto;background:url(img/dx_sphere.webp) center/contain no-repeat;animation:float 8s ease-in-out infinite}
+.dxw-logo{display:block;height:clamp(84px,9vw,124px);width:auto;margin:0 0 10px -6px}
+.dxw-h{margin:0;font:700 clamp(30px,3.8vw,48px)/1.02 var(--din);text-transform:uppercase;color:#fff;letter-spacing:.01em}
+.dxw-h .l1{display:block}
+.dxw-h .l2{display:block;font-weight:500;font-size:.56em;letter-spacing:.04em;margin-top:6px}
+.dxw-h em{font-style:normal;font-weight:700;color:var(--gold1)}
+.dxw-sub{font-style:italic;font-size:clamp(17px,1.8vw,20px);margin:10px 0 18px;color:#e6f6f7}
+.dxw-tri{list-style:none;margin:0 0 18px;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.dxw-tri li{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:6px 14px;font-weight:700;font-size:13.5px;letter-spacing:.06em;text-transform:uppercase;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.dxw-live{margin:0 0 22px;font-size:15.5px;color:#e6f6f7}
+.dxw-pills{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.gpill{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;padding:9px 28px;border-radius:999px;background:linear-gradient(90deg,#2a8fd6,#4cb6c4 45%,#f1cf86);color:#fff;text-decoration:none;box-shadow:0 10px 24px rgba(5,40,46,.3);line-height:1.1}
+.gpill b{font:700 22px/1 var(--din);letter-spacing:.04em;text-transform:uppercase}
+.gpill span{font-size:13px;letter-spacing:.04em;margin-top:3px}
+.opill{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;border:2px solid rgba(255,255,255,.9);color:#fff;text-decoration:none;font:500 19px/1 var(--din);text-transform:uppercase;letter-spacing:.04em}
+.opill b{font-weight:700}
+.dxw-link{display:inline-block;margin-top:18px;color:#fff;font-weight:700;text-decoration:underline;text-underline-offset:4px}
+@media(max-width:899px){.dxw::before{background:linear-gradient(180deg,rgba(8,62,70,0) 0%,rgba(8,62,70,.6) 45%,rgba(8,62,70,.78))}.dxw-sph{max-width:420px}.dxw-txt{text-align:left}}
+/* re-alternated tones */
+.pc.tone-l .who b{color:var(--ink)}.pc.tone-l .who>span:not(.live2){color:var(--soft)}
+.sym.tone-d{background:linear-gradient(180deg,#0d4750,#0a3a41);color:#fff}
+.sym.tone-d .sub{color:#cfe7e9}.sym.tone-d .small{color:#a9d6da}.sym.tone-d .kick{color:#bdf1f4}
+.suite.tone-l .dlab{color:var(--deep)}
+.suite.tone-l .after{background:var(--deep);border:0}
+.boothsec.tone-d .zone.mini{border-color:rgba(255,255,255,.35)}.boothsec.tone-d .zone.mini b{color:#fff}.boothsec.tone-d .zone.mini span{color:#bfe2e5}
+.boothsec.tone-d .gift{background:linear-gradient(120deg,#2db3bd,#1a6f79)}
+.planband.tone-l{background:#eef7f7;color:var(--ink)}
+.planband.tone-l h2{color:var(--ink)}.planband.tone-l p{color:var(--soft)}.planband.tone-l .note{color:var(--soft)}
+.planband.tone-l .psteps li{background:#fff;box-shadow:0 8px 20px rgba(10,58,65,.08)}.planband.tone-l .psteps span{color:var(--soft)}
+.zone b{color:var(--ink)}
+.c-body{background:#1f8f99}.c-int{background:#146b75}
+.sym.tone-d .tline{box-shadow:0 0 0 1px rgba(255,255,255,.18)}
+.sym.tone-d .ch{box-shadow:0 14px 34px rgba(0,0,0,.28)}
 </style>
 </head>
 <body>
@@ -397,25 +436,25 @@ section{padding-block:clamp(56px,7vw,92px)}
   </div></div>
 </div>
 
-<!-- 2 · GENEFILL DX SPOTLIGHT (light) -->
-<section class="dx tone-l" id="dx"><div class="wrap dxg">
-  <figure class="poster"><img src="img/dx_poster.jpg" alt="Genefill DX: the first hybrid filler with natural-origin biostimulation. Discover DX and collect your exclusive gift at Booth N214, Level 2." loading="lazy"></figure>
-  <div>
-    <span class="pill" data-t="dxPill">Featured innovation · Genefill DX</span>
-    <h2><span data-t="dxH1">Beyond volume.</span> <span class="accent" data-t="dxH2">The science of biostimulation.</span></h2>
-    <p class="sub" data-t="dxSub">The first hybrid filler with natural-origin biostimulation, backed by clinical and in-vitro studies. German aesthetic innovation in HA and hybrid filler technology.</p>
-    <div class="pillars">
-      <div><b data-t="dx1">Hydration</b><span data-t="dx1s">Immediate skin hydration</span></div>
-      <div><b data-t="dx2">Volume &amp; structure</b><span data-t="dx2s">Restores volume and structure</span></div>
-      <div><b data-t="dx3">Collagen</b><span data-t="dx3s">Long-term collagen stimulation</span></div>
+<!-- 2 · GENEFILL DX SPOTLIGHT — wide banner in the layout of Ruba's DX design -->
+<section class="dxw" id="dx"><div class="wrap dxw-in">
+  <div class="dxw-sph" role="img" aria-label="Genefill DX campaign model inside the glass sphere"></div>
+  <div class="dxw-txt">
+    <img class="dxw-logo" src="img/dx_logo_color.png" alt="Genefill DX">
+    <h2 class="dxw-h"><span class="l1" data-t="dxA">The first hybrid filler</span><span class="l2"><span data-t="dxB">with</span> <em data-t="dxC">natural-origin biostimulation</em></span></h2>
+    <p class="dxw-sub" data-t="dxD">Backed by clinical &amp; in-vitro studies</p>
+    <ul class="dxw-tri"><li data-t="dx1">Hydration</li><li data-t="dx2">Volume &amp; structure</li><li data-t="dx3l">Long-term collagen stimulation</li></ul>
+    <p class="dxw-live"><span class="live2" data-t="liveDemo">Live demo</span> <b data-t="dxLiveT">Genefill DX live on stage</b> · <span data-t="dxLiveW">Dr Ruiz · Friday 29 January · 14:15 · Room 252</span></p>
+    <div class="dxw-pills">
+      <a class="gpill" href="#booth"><b data-t="dxDisc">Discover DX</b><span data-t="dxGift">&amp; collect your exclusive gift</span></a>
+      <a class="opill" href="#booth"><b data-t="boothB1">Booth N214</b> | <span data-t="dxLvl">Level 2</span></a>
     </div>
-    <p class="dxlive"><span class="live2" data-t="liveDemo">Live demo</span><span><b data-t="dxLiveT">Genefill DX live on stage</b> · <span data-t="dxLiveW">Dr Ruiz · Friday 29 January · 14:15 · Room 252</span></span></p>
-    <div class="ctas"><a class="cta teal" href="#symposium" data-t="ctaDxSym">See it live at the symposium</a><a class="cta ghost" href="#booth" data-t="ctaDxBooth">Discover DX at Booth N214</a></div>
+    <a class="dxw-link" href="#symposium"><span data-t="ctaDxSym">See it live at the symposium</span> →</a>
   </div>
 </div></section>
 
 <!-- 3 · PRE-COURSE (dark) -->
-<section class="pc tone-d" id="programme"><div class="wrap grid2">
+<section class="pc tone-l" id="programme"><div class="wrap grid2">
   <div>
     <span class="pill" data-t="pcPill">Pre-course · IMCAS educational programme</span>
     <h2 data-t="pcH">Body remodelling with HYAcorp</h2>
@@ -427,24 +466,24 @@ section{padding-block:clamp(56px,7vw,92px)}
 </div></section>
 
 <!-- 4 · SCIENTIFIC SYMPOSIUM (light) -->
-<section class="sym tone-l" id="symposium"><div class="wrap">
+<section class="sym tone-d" id="symposium"><div class="wrap">
   <div class="shead">
     <div>
       <span class="pill" data-t="symPill">BioScience Symposium · 90 minutes</span>
       <span class="kick">Face • Body • Intimate</span>
       <h2 style="margin-top:6px">New Frontiers in Aesthetic Science</h2>
       <p class="sub">Advanced Biostimulation, Combination Strategies &amp; Clinical Evidence</p>
-      <p class="bar dk" style="margin:0"><span data-t="smDay">Friday 29 January 2027</span><span data-t="smWhere">14:00–15:30 · Room 252 · Level 2</span></p>
+      <p class="bar" style="margin:0"><span data-t="smDay">Friday 29 January 2027</span><span data-t="smWhere">14:00–15:30 · Room 252 · Level 2</span></p>
       <p class="small" data-t="smChair">Chaired by Dr Frank</p>
     </div>
-    <div><a class="cta teal" href="https://www.biosciencegmbh.com/imcas-symposium" target="_blank" rel="noopener" data-t="ctaCalSym">Add to my calendar</a></div>
+    <div><a class="cta cyan" href="https://www.biosciencegmbh.com/imcas-symposium" target="_blank" rel="noopener" data-t="ctaCalSym">Add to my calendar</a></div>
   </div>
   <div class="tline" id="tline" aria-hidden="true"></div>
   <div class="chap" id="chap"></div>
 </div></section>
 
 <!-- 5 · HOSPITALITY SUITE — EXPERT SESSIONS -->
-<section class="suite tone-d" id="suite"><div class="wrap">
+<section class="suite tone-l" id="suite"><div class="wrap">
   <span class="pill" data-t="suPill">BioScience Hospitality Suite</span>
   <h2 data-t="suiteH">Expert Sessions</h2>
   <p class="sub" data-t="suiteP">Focused discussions, clinical evidence and real cases.</p>
@@ -461,10 +500,10 @@ section{padding-block:clamp(56px,7vw,92px)}
 </div></section>
 
 <!-- 6 · BOOTH -->
-<section class="tone-l" id="booth"><div class="wrap">
+<section class="boothsec tone-d" id="booth"><div class="wrap">
   <span class="pill" data-t="visit">Visit us · Thu 28 – Sat 30 January</span>
   <h2 data-t="boothH">Explore the BioScience Experience</h2>
-  <p class="bar dk" style="margin:0 0 28px"><span data-t="boothB1">Booth N214</span><span data-t="boothB2">Level 2 · open all three days</span></p>
+  <p class="bar" style="margin:0 0 28px"><span data-t="boothB1">Booth N214</span><span data-t="boothB2">Level 2 · open all three days</span></p>
   <div class="grid2" style="align-items:start">
     <figure class="bmap">
       <div class="bmap-in"><img src="img/booth_map.svg" alt="Floor map: the BioScience booth N214 on Level 2, next to Room Maillot, between the two escalators">
@@ -480,7 +519,7 @@ section{padding-block:clamp(56px,7vw,92px)}
 </div></section>
 
 <!-- 7 · PLAN YOUR VISIT -->
-<section class="planband" id="plan"><div class="wrap">
+<section class="planband tone-l" id="plan"><div class="wrap">
   <div>
     <span class="pill" data-t="plPill">Your IMCAS, planned</span>
     <h2 data-t="plH">Plan your visit</h2>
@@ -559,7 +598,7 @@ section{padding-block:clamp(56px,7vw,92px)}
 const T={en:{},fr:{
  atImcas:'À l’IMCAS Paris 2027',nOv:'Aperçu',nDx:'Découvrir Genefill DX',nProg:'Programme scientifique',nBooth:'Le stand',ctaPlan:'Planifier ma visite',
  h1a:'Entrez dans la',tagline:'Là où la science façonne l’harmonie du visage et du corps.',heroP:'Découvrez l’innovation, les preuves cliniques et nos expériences de formation à l’IMCAS Paris 2027.',
- hfBooth:'Visitez notre stand',hfBoothV:'N214 · niveau 2',hfSym:'Symposium scientifique',hfSymV:'Vendredi 29 janvier 2027 · 14:00–15:30',hfSymR:'Salle 252 · niveau 2',ctaPlanYour:'Planifiez votre visite',pcRole:'Chirurgien plasticien',dxH1:'Au-delà du volume.',dxH2:'La science de la biostimulation.',
+ hfBooth:'Visitez notre stand',hfBoothV:'N214 · niveau 2',hfSym:'Symposium scientifique',hfSymV:'Vendredi 29 janvier 2027 · 14:00–15:30',hfSymR:'Salle 252 · niveau 2',ctaPlanYour:'Planifiez votre visite',dxA:'Le premier filler hybride',dxB:'à',dxC:'biostimulation d’origine naturelle',dxD:'Appuyé par des études cliniques et in vitro',dx3l:'Stimulation du collagène à long terme',dxDisc:'Découvrez DX',dxGift:'& retirez votre cadeau exclusif',dxLvl:'Niveau 2',pcRole:'Chirurgien plasticien',dxH1:'Au-delà du volume.',dxH2:'La science de la biostimulation.',
  dxPill:'Innovation à l’honneur · Genefill DX',dxSub:'Le premier filler hybride à biostimulation d’origine naturelle, appuyé par des études cliniques et in vitro. Innovation esthétique allemande en AH et technologie de filler hybride.',
  dx1:'Hydratation',dx1s:'Hydratation immédiate de la peau',dx2:'Volume & structure',dx2s:'Restaure le volume et la structure',dx3:'Collagène',dx3s:'Stimulation du collagène à long terme',
  liveDemo:'Démo en direct',dxLiveT:'Genefill DX en direct sur scène',dxLiveW:'Dr Ruiz · vendredi 29 janvier · 14:15 · salle 252',ctaDxSym:'À voir en direct au symposium',ctaDxBooth:'Découvrir DX au stand N214',
@@ -576,7 +615,7 @@ const T={en:{},fr:{
  es:{
  atImcas:'En IMCAS París 2027',nOv:'Inicio',nDx:'Descubra Genefill DX',nProg:'Programa científico',nBooth:'El stand',ctaPlan:'Planificar mi visita',
  h1a:'Entre en la',tagline:'Donde la ciencia da forma a la armonía del rostro y el cuerpo.',heroP:'Descubra innovación, evidencia clínica y experiencias formativas en IMCAS París 2027.',
- hfBooth:'Visite nuestro stand',hfBoothV:'N214 · nivel 2',hfSym:'Simposio científico',hfSymV:'Viernes 29 de enero de 2027 · 14:00–15:30',hfSymR:'Sala 252 · nivel 2',ctaPlanYour:'Planifique su visita',pcRole:'Cirujano plástico',dxH1:'Más allá del volumen.',dxH2:'La ciencia de la bioestimulación.',
+ hfBooth:'Visite nuestro stand',hfBoothV:'N214 · nivel 2',hfSym:'Simposio científico',hfSymV:'Viernes 29 de enero de 2027 · 14:00–15:30',hfSymR:'Sala 252 · nivel 2',ctaPlanYour:'Planifique su visita',dxA:'El primer relleno híbrido',dxB:'con',dxC:'bioestimulación de origen natural',dxD:'Respaldado por estudios clínicos e in vitro',dx3l:'Estimulación de colágeno a largo plazo',dxDisc:'Descubra DX',dxGift:'y recoja su regalo exclusivo',dxLvl:'Nivel 2',pcRole:'Cirujano plástico',dxH1:'Más allá del volumen.',dxH2:'La ciencia de la bioestimulación.',
  dxPill:'Innovación destacada · Genefill DX',dxSub:'El primer relleno híbrido con bioestimulación de origen natural, respaldado por estudios clínicos e in vitro. Innovación estética alemana en HA y tecnología de relleno híbrido.',
  dx1:'Hidratación',dx1s:'Hidratación inmediata de la piel',dx2:'Volumen y estructura',dx2s:'Restaura volumen y estructura',dx3:'Colágeno',dx3s:'Estimulación de colágeno a largo plazo',
  liveDemo:'Demo en directo',dxLiveT:'Genefill DX en directo en el escenario',dxLiveW:'Dr Ruiz · viernes 29 de enero · 14:15 · sala 252',ctaDxSym:'Véalo en directo en el simposio',ctaDxBooth:'Descubra DX en el stand N214',
