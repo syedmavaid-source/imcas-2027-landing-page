@@ -301,6 +301,71 @@ dialog#planner::backdrop{background:rgba(5,35,40,.62)}
 .giftnote .gi{color:#c48a00}
 @media(max-width:899px){#dlgBody:has(.pgrid.late) .giftstrip{display:none}.pside .scard .glass{display:none}}
 @media(max-width:420px){.ribbon{font-size:10.5px}.pside .scard{padding:18px}.pside .scard h3{font-size:26px}}
+
+/* ---- v4 (19 Nov): roomier banner, alternating light/dark sections, chapter symposium ---- */
+.tone-l{background:#eef7f7;color:var(--ink)}
+.tone-d{background:linear-gradient(180deg,#0d4750,#0a3a41);color:#fff}
+.tone-d h2{color:#fff}.tone-d .sub{color:#cfe7e9}.tone-d .small{color:#a9d6da}
+section{padding-block:clamp(56px,7vw,92px)}
+.hero{min-height:clamp(660px,94svh,880px);display:flex;align-items:center}
+.hero-in{width:100%;padding-top:calc(118px + env(safe-area-inset-top,0px));padding-bottom:84px}
+.hero .model{height:94%;bottom:-2%;right:max(-70px,calc(50% - 720px))}
+.htxt .tag{margin:18px 0 14px}.htxt .hp{margin-bottom:30px}.hfacts{margin-bottom:36px}
+.cta.big{padding:17px 32px;font-size:17px}
+@media(max-width:959px){.hero{min-height:auto}.hero-in{padding-top:calc(104px + env(safe-area-inset-top,0px));padding-bottom:64px}.hero .model{height:auto;bottom:auto}}
+/* DX */
+.dx{background:#eef7f7;color:var(--ink)}
+.dxg{display:grid;gap:clamp(28px,4vw,56px);align-items:center}
+@media(min-width:900px){.dxg{grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr)}}
+.poster{margin:0 auto;max-width:430px;width:100%}
+.poster img{display:block;width:100%;height:auto;border-radius:18px;box-shadow:0 26px 50px rgba(10,58,65,.28)}
+.dx h2{font-size:clamp(30px,4vw,46px)}
+.dx h2 .accent{color:var(--teal)}
+.dx .sub{color:var(--soft);font-style:normal;font-weight:400;font-size:17.5px}
+.dx .pillars div{background:#fff;border:0;box-shadow:0 8px 20px rgba(10,58,65,.08)}
+.dx .pillars b{color:var(--deep)}.dx .pillars span{color:var(--soft)}
+.dx .dxlive{background:var(--deep);color:#fff}
+@media(max-width:899px){.poster{max-width:340px}}
+/* pre-course */
+.pc .who{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin-top:22px}
+.pc .who b{font-size:20px}.pc .who>span:not(.live2){color:#bfe2e5;font-size:15px}
+.frame.bravo{margin:0 auto;max-width:440px;width:100%;transform:rotate(1.5deg)}
+.frame.bravo img{aspect-ratio:4/5;object-position:center 30%}
+/* symposium: timeline + chapters */
+.sym{background:#eef7f7;color:var(--ink)}
+.sym .sub{color:var(--soft)}.sym .small{color:var(--soft)}
+.sym .kick{color:var(--deep)}
+.tline{display:flex;gap:3px;margin:8px 0 22px;border-radius:10px;overflow:hidden}
+.tline div{min-width:0;padding:10px 12px;color:#fff;font-size:13px;line-height:1.2}
+.tline b{display:block;font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tline span{opacity:.85;font-variant-numeric:tabular-nums;white-space:nowrap}
+@media(max-width:699px){.tline{display:none}}
+.c-open,.c-close{background:#7aa9ae}.c-face{background:var(--teal)}.c-body{background:#1d7c86}.c-int{background:var(--deep)}
+.chap{display:grid;gap:16px}
+.ch3{display:grid;gap:16px;align-items:start}
+@media(min-width:900px){.ch3{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.ch{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 12px 30px rgba(10,58,65,.1)}
+.ch>header{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:14px 18px;color:#fff}
+.ch>header h3{margin:0;font:700 26px/1 var(--din);letter-spacing:.1em;text-transform:uppercase}
+.ch>header time{font-weight:700;font-size:14.5px;font-variant-numeric:tabular-nums;opacity:.95;white-space:nowrap}
+.ch.slim>header h3{font-size:18px}
+.tk{display:grid;grid-template-columns:52px minmax(0,1fr);gap:12px;align-items:start;padding:14px 18px}
+.tk+.tk{border-top:1px solid #e3eeef}
+.pf{display:flex;flex-direction:column;align-items:center;gap:5px}
+.pf img{width:52px;height:52px;border-radius:50%;box-shadow:0 0 0 2px #fff,0 3px 8px rgba(10,58,65,.25)}
+.pf .flag{width:22px;height:15px}
+.tk time{display:block;font-weight:700;color:var(--teal);font-size:14px;font-variant-numeric:tabular-nums}
+.tk b{display:block;font-weight:700;font-size:16.5px;line-height:1.25;margin:2px 0 3px;color:var(--ink)}
+.tk small{color:var(--soft);font-size:14px}
+.tk .live2{margin-left:4px}
+@media(min-width:900px){.ch.slim .tks{display:grid;grid-template-columns:1fr 1fr}.ch.slim .tk+.tk{border-top:0;border-left:1px solid #e3eeef}}
+.panel{display:flex;flex-wrap:wrap;gap:10px 8px;margin-top:10px}
+.panel span{display:flex;flex-direction:column;align-items:center;gap:4px;min-width:56px;padding:0 3px;text-align:center;font-size:11px;line-height:1.15;color:var(--soft)}
+.panel img{width:40px;height:40px;border-radius:50%}
+.panel .flag{width:18px;height:12px}
+/* expert sessions on dark */
+.suite .dlab{color:#fff}
+.suite .after{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16)}
 </style>
 </head>
 <body>
@@ -324,59 +389,58 @@ dialog#planner::backdrop{background:rgba(5,35,40,.62)}
       <li><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg><div><b data-t="hfBooth">Visit our booth</b><span data-t="hfBoothV">N214 · Level 2</span></div></li>
       <li><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 5.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Zm-6 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4Zm12 0a2 2 0 1 1 0 4 2 2 0 0 1 0-4ZM12 12c2.8 0 5 1.6 5 3.6V18H7v-2.4C7 13.6 9.2 12 12 12Zm-6 .6c.4 0 .8 0 1.1.1A4.6 4.6 0 0 0 5.6 16v2H2v-2c0-1.9 1.8-3.4 4-3.4Zm12 0c2.2 0 4 1.5 4 3.4v2h-3.6v-2c0-1.3-.6-2.5-1.5-3.3.3-.1.7-.1 1.1-.1Z"/></svg><div><b data-t="hfSym">Scientific symposium</b><span data-t="hfSymV">Friday, 29 January 2027 · 14:00–15:30</span><span data-t="hfSymR">Room 252 · Level 2</span></div></li>
     </ul>
-    <a class="cta cyan" href="#dx"><span data-t="ctaExplore">Explore the IMCAS Experience</span> <span aria-hidden="true">→</span></a>
+    <button class="cta cyan big" type="button" data-plan><span data-t="ctaPlanYour">Plan your visit</span> <span aria-hidden="true">→</span></button>
   </div></div>
 </div>
 
-<!-- 2 · GENEFILL DX SPOTLIGHT -->
-<section class="dx" id="dx"><div class="wrap grid2">
-  <div class="sph"><img src="img/sph_genefill.png" alt="Genefill DX campaign model inside the glass sphere"></div>
+<!-- 2 · GENEFILL DX SPOTLIGHT (light) -->
+<section class="dx tone-l" id="dx"><div class="wrap dxg">
+  <figure class="poster"><img src="img/dx_poster.jpg" alt="Genefill DX: the first hybrid filler with natural-origin biostimulation. Discover DX and collect your exclusive gift at Booth N214, Level 2." loading="lazy"></figure>
   <div>
-    <span class="pill" data-t="dxPill">Featured innovation</span>
-    <img class="dxlogo" src="img/dx_white.png" alt="Genefill DX">
-    <h2 data-t="dxH">The first hybrid filler with natural-origin biostimulation</h2>
-    <p class="sub" data-t="dxSub">Backed by clinical and in-vitro studies · German aesthetic innovation in HA and hybrid filler technology.</p>
+    <span class="pill" data-t="dxPill">Featured innovation · Genefill DX</span>
+    <h2><span data-t="dxH1">Beyond volume.</span> <span class="accent" data-t="dxH2">The science of biostimulation.</span></h2>
+    <p class="sub" data-t="dxSub">The first hybrid filler with natural-origin biostimulation, backed by clinical and in-vitro studies. German aesthetic innovation in HA and hybrid filler technology.</p>
     <div class="pillars">
       <div><b data-t="dx1">Hydration</b><span data-t="dx1s">Immediate skin hydration</span></div>
       <div><b data-t="dx2">Volume &amp; structure</b><span data-t="dx2s">Restores volume and structure</span></div>
       <div><b data-t="dx3">Collagen</b><span data-t="dx3s">Long-term collagen stimulation</span></div>
     </div>
     <p class="dxlive"><span class="live2" data-t="liveDemo">Live demo</span><span><b data-t="dxLiveT">Genefill DX live on stage</b> · <span data-t="dxLiveW">Dr Ruiz · Friday 29 January · 14:15 · Room 252</span></span></p>
-    <div class="ctas"><a class="cta cyan" href="#symposium" data-t="ctaDxSym">See the symposium</a><a class="cta line" href="#booth" data-t="ctaDxBooth">Discover DX at Booth N214</a></div>
+    <div class="ctas"><a class="cta teal" href="#symposium" data-t="ctaDxSym">See it live at the symposium</a><a class="cta ghost" href="#booth" data-t="ctaDxBooth">Discover DX at Booth N214</a></div>
   </div>
 </div></section>
 
-<!-- 3 · PRE-COURSE -->
-<section class="pc light" id="programme"><div class="wrap grid2">
-  <div class="card">
+<!-- 3 · PRE-COURSE (dark) -->
+<section class="pc tone-d" id="programme"><div class="wrap grid2">
+  <div>
     <span class="pill" data-t="pcPill">Pre-course · IMCAS educational programme</span>
     <h2 data-t="pcH">Body remodelling with HYAcorp</h2>
     <p class="sub" data-t="pcSub">BioScience in the official IMCAS educational programme: 30 minutes, with a live ultrasound-guided demonstration.</p>
-    <p class="bar dk" style="margin:0"><span data-t="pcB1">Pre-course · 30 min</span><span data-t="pcB2">Date &amp; room to be announced</span></p>
-    <div class="who"><img src="img/su_bravo.png" alt=""><div><b>Dr Miguel Bravo</b><span><span class="live2" data-t="liveDemoUS">Live demo with ultrasound</span></span></div></div>
+    <p class="bar" style="margin:0"><span data-t="pcB1">Pre-course · 30 min</span><span data-t="pcB2">Date &amp; room to be announced</span></p>
+    <div class="who"><b>Dr Miguel Bravo</b><span data-t="pcRole">Plastic surgeon</span><span class="live2" data-t="liveDemoUS">Live demo with ultrasound</span></div>
   </div>
-  <figure class="frame" style="margin:0"><img src="img/stage.jpg" alt="A BioScience speaker on stage at IMCAS"><figcaption data-t="pcCap">BioScience at IMCAS Paris</figcaption></figure>
+  <figure class="frame bravo"><img src="img/bravo_stage.jpg" alt="Dr Miguel Bravo speaking on stage at a BioScience lectern" loading="lazy"><figcaption data-t="pcCap">Dr Miguel Bravo on stage with BioScience</figcaption></figure>
 </div></section>
 
-<!-- 4 · SCIENTIFIC SYMPOSIUM -->
-<section class="sym" id="symposium"><div class="wrap">
+<!-- 4 · SCIENTIFIC SYMPOSIUM (light) -->
+<section class="sym tone-l" id="symposium"><div class="wrap">
   <div class="shead">
     <div>
       <span class="pill" data-t="symPill">BioScience Symposium · 90 minutes</span>
       <span class="kick">Face • Body • Intimate</span>
       <h2 style="margin-top:6px">New Frontiers in Aesthetic Science</h2>
       <p class="sub">Advanced Biostimulation, Combination Strategies &amp; Clinical Evidence</p>
-      <p class="bar" style="margin:0"><span data-t="smDay">Friday 29 January 2027</span><span data-t="smWhere">14:00–15:30 · Room 252 · Level 2</span></p>
+      <p class="bar dk" style="margin:0"><span data-t="smDay">Friday 29 January 2027</span><span data-t="smWhere">14:00–15:30 · Room 252 · Level 2</span></p>
       <p class="small" data-t="smChair">Chaired by Dr Frank</p>
     </div>
-    <div><a class="cta cyan" href="https://www.biosciencegmbh.com/imcas-symposium" target="_blank" rel="noopener" data-t="ctaCalSym">Add to my calendar</a></div>
+    <div><a class="cta teal" href="https://www.biosciencegmbh.com/imcas-symposium" target="_blank" rel="noopener" data-t="ctaCalSym">Add to my calendar</a></div>
   </div>
-  <ul class="fac" id="fac" aria-label="Faculty"></ul>
-  <ol class="slist" id="agenda"></ol>
+  <div class="tline" id="tline" aria-hidden="true"></div>
+  <div class="chap" id="chap"></div>
 </div></section>
 
 <!-- 5 · HOSPITALITY SUITE — EXPERT SESSIONS -->
-<section class="light" id="suite"><div class="wrap">
+<section class="suite tone-d" id="suite"><div class="wrap">
   <span class="pill" data-t="suPill">BioScience Hospitality Suite</span>
   <h2 data-t="suiteH">Expert Sessions</h2>
   <p class="sub" data-t="suiteP">Focused discussions, clinical evidence and real cases.</p>
@@ -393,10 +457,10 @@ dialog#planner::backdrop{background:rgba(5,35,40,.62)}
 </div></section>
 
 <!-- 6 · BOOTH -->
-<section class="light" id="booth" style="background:rgba(255,255,255,.55)"><div class="wrap">
+<section class="tone-l" id="booth"><div class="wrap">
   <span class="pill" data-t="visit">Visit us · Thu 28 – Sat 30 January</span>
   <h2 data-t="boothH">Explore the BioScience Experience</h2>
-  <p class="bar" style="margin:0 0 28px"><span data-t="boothB1">Booth N214</span><span data-t="boothB2">Level 2 · open all three days</span></p>
+  <p class="bar dk" style="margin:0 0 28px"><span data-t="boothB1">Booth N214</span><span data-t="boothB2">Level 2 · open all three days</span></p>
   <div class="grid2" style="align-items:start">
     <figure class="bmap">
       <div class="bmap-in"><img src="img/booth_map.svg" alt="Floor map: the BioScience booth N214 on Level 2, next to Room Maillot, between the two escalators">
@@ -491,11 +555,11 @@ dialog#planner::backdrop{background:rgba(5,35,40,.62)}
 const T={en:{},fr:{
  atImcas:'À l’IMCAS Paris 2027',nOv:'Aperçu',nDx:'Découvrir Genefill DX',nProg:'Programme scientifique',nBooth:'Le stand',ctaPlan:'Planifier ma visite',
  h1a:'Entrez dans la',tagline:'Là où la science façonne l’harmonie du visage et du corps.',heroP:'Découvrez l’innovation, les preuves cliniques et nos expériences de formation à l’IMCAS Paris 2027.',
- hfBooth:'Visitez notre stand',hfBoothV:'N214 · niveau 2',hfSym:'Symposium scientifique',hfSymV:'Vendredi 29 janvier 2027 · 14:00–15:30',hfSymR:'Salle 252 · niveau 2',ctaExplore:'Découvrir l’expérience IMCAS',
- dxPill:'Innovation à l’honneur',dxH:'Le premier filler hybride à biostimulation d’origine naturelle',dxSub:'Appuyé par des études cliniques et in vitro · innovation esthétique allemande en AH et technologie de filler hybride.',
+ hfBooth:'Visitez notre stand',hfBoothV:'N214 · niveau 2',hfSym:'Symposium scientifique',hfSymV:'Vendredi 29 janvier 2027 · 14:00–15:30',hfSymR:'Salle 252 · niveau 2',ctaPlanYour:'Planifiez votre visite',pcRole:'Chirurgien plasticien',dxH1:'Au-delà du volume.',dxH2:'La science de la biostimulation.',
+ dxPill:'Innovation à l’honneur · Genefill DX',dxSub:'Le premier filler hybride à biostimulation d’origine naturelle, appuyé par des études cliniques et in vitro. Innovation esthétique allemande en AH et technologie de filler hybride.',
  dx1:'Hydratation',dx1s:'Hydratation immédiate de la peau',dx2:'Volume & structure',dx2s:'Restaure le volume et la structure',dx3:'Collagène',dx3s:'Stimulation du collagène à long terme',
- liveDemo:'Démo en direct',dxLiveT:'Genefill DX en direct sur scène',dxLiveW:'Dr Ruiz · vendredi 29 janvier · 14:15 · salle 252',ctaDxSym:'Voir le symposium',ctaDxBooth:'Découvrir DX au stand N214',
- pcPill:'Pré-cours · programme de formation IMCAS',pcH:'Remodelage corporel avec HYAcorp',pcSub:'BioScience dans le programme de formation officiel de l’IMCAS : 30 minutes, avec une démonstration en direct guidée par échographie.',pcB1:'Pré-cours · 30 min',pcB2:'Date et salle à confirmer',liveDemoUS:'Démo en direct sous échographie',pcCap:'BioScience à l’IMCAS Paris',
+ liveDemo:'Démo en direct',dxLiveT:'Genefill DX en direct sur scène',dxLiveW:'Dr Ruiz · vendredi 29 janvier · 14:15 · salle 252',ctaDxSym:'À voir en direct au symposium',ctaDxBooth:'Découvrir DX au stand N214',
+ pcPill:'Pré-cours · programme de formation IMCAS',pcH:'Remodelage corporel avec HYAcorp',pcSub:'BioScience dans le programme de formation officiel de l’IMCAS : 30 minutes, avec une démonstration en direct guidée par échographie.',pcB1:'Pré-cours · 30 min',pcB2:'Date et salle à confirmer',liveDemoUS:'Démo en direct sous échographie',pcCap:'Le Dr Miguel Bravo sur scène avec BioScience',
  symPill:'Symposium BioScience · 90 minutes',smDay:'Vendredi 29 janvier 2027',smWhere:'14:00–15:30 · salle 252 · niveau 2',smChair:'Présidé par le Dr Frank',ctaCalSym:'Ajouter à mon agenda',
  suPill:'BioScience Hospitality Suite',suiteH:'Sessions d’experts',suiteP:'Échanges ciblés, preuves cliniques et cas réels.',suDays:'Jeudi 28 – samedi 30 janvier',suWhere:'Suite [no.] · niveau [x] · Palais des Congrès',
  afH:'Après chaque session : buffet et animation',afP:'Restez après chaque session pour un verre, un buffet et du temps avec les intervenants et vos confrères.',af1:'Interventions d’experts',af2:'Buffet & boissons',af3:'Rencontrez les experts',
@@ -508,11 +572,11 @@ const T={en:{},fr:{
  es:{
  atImcas:'En IMCAS París 2027',nOv:'Inicio',nDx:'Descubra Genefill DX',nProg:'Programa científico',nBooth:'El stand',ctaPlan:'Planificar mi visita',
  h1a:'Entre en la',tagline:'Donde la ciencia da forma a la armonía del rostro y el cuerpo.',heroP:'Descubra innovación, evidencia clínica y experiencias formativas en IMCAS París 2027.',
- hfBooth:'Visite nuestro stand',hfBoothV:'N214 · nivel 2',hfSym:'Simposio científico',hfSymV:'Viernes 29 de enero de 2027 · 14:00–15:30',hfSymR:'Sala 252 · nivel 2',ctaExplore:'Explore la experiencia IMCAS',
- dxPill:'Innovación destacada',dxH:'El primer relleno híbrido con bioestimulación de origen natural',dxSub:'Respaldado por estudios clínicos e in vitro · innovación estética alemana en HA y tecnología de relleno híbrido.',
+ hfBooth:'Visite nuestro stand',hfBoothV:'N214 · nivel 2',hfSym:'Simposio científico',hfSymV:'Viernes 29 de enero de 2027 · 14:00–15:30',hfSymR:'Sala 252 · nivel 2',ctaPlanYour:'Planifique su visita',pcRole:'Cirujano plástico',dxH1:'Más allá del volumen.',dxH2:'La ciencia de la bioestimulación.',
+ dxPill:'Innovación destacada · Genefill DX',dxSub:'El primer relleno híbrido con bioestimulación de origen natural, respaldado por estudios clínicos e in vitro. Innovación estética alemana en HA y tecnología de relleno híbrido.',
  dx1:'Hidratación',dx1s:'Hidratación inmediata de la piel',dx2:'Volumen y estructura',dx2s:'Restaura volumen y estructura',dx3:'Colágeno',dx3s:'Estimulación de colágeno a largo plazo',
- liveDemo:'Demo en directo',dxLiveT:'Genefill DX en directo en el escenario',dxLiveW:'Dr Ruiz · viernes 29 de enero · 14:15 · sala 252',ctaDxSym:'Ver el simposio',ctaDxBooth:'Descubra DX en el stand N214',
- pcPill:'Precurso · programa formativo de IMCAS',pcH:'Remodelación corporal con HYAcorp',pcSub:'BioScience en el programa formativo oficial de IMCAS: 30 minutos, con una demostración en directo guiada por ecografía.',pcB1:'Precurso · 30 min',pcB2:'Fecha y sala por confirmar',liveDemoUS:'Demo en directo con ecografía',pcCap:'BioScience en IMCAS París',
+ liveDemo:'Demo en directo',dxLiveT:'Genefill DX en directo en el escenario',dxLiveW:'Dr Ruiz · viernes 29 de enero · 14:15 · sala 252',ctaDxSym:'Véalo en directo en el simposio',ctaDxBooth:'Descubra DX en el stand N214',
+ pcPill:'Precurso · programa formativo de IMCAS',pcH:'Remodelación corporal con HYAcorp',pcSub:'BioScience en el programa formativo oficial de IMCAS: 30 minutos, con una demostración en directo guiada por ecografía.',pcB1:'Precurso · 30 min',pcB2:'Fecha y sala por confirmar',liveDemoUS:'Demo en directo con ecografía',pcCap:'El Dr Miguel Bravo en el escenario con BioScience',
  symPill:'Simposio BioScience · 90 minutos',smDay:'Viernes 29 de enero de 2027',smWhere:'14:00–15:30 · sala 252 · nivel 2',smChair:'Preside el Dr Frank',ctaCalSym:'Añadir a mi calendario',
  suPill:'BioScience Hospitality Suite',suiteH:'Sesiones de expertos',suiteP:'Debates enfocados, evidencia clínica y casos reales.',suDays:'Jueves 28 – sábado 30 de enero',suWhere:'Suite [no.] · nivel [x] · Palais des Congrès',
  afH:'Después de cada sesión: catering y entretenimiento',afP:'Quédese después de cada sesión para comer, tomar algo y conversar con los ponentes y colegas.',af1:'Charlas de expertos',af2:'Catering y bebidas',af3:'Conozca a los expertos',
@@ -580,11 +644,12 @@ const mineS=i=>mine(SUITE[i][6])||picked.has(i);
 function chip(k,l,h){return `<button type="button" class="chip" data-k="${k}" aria-pressed="${sel.has(k)}"><i>${sel.has(k)?'✓':''}</i><span><b>${esc(l)}</b><small>${esc(h)}</small></span></button>`}
 function tiles(){$('topics').innerHTML=(TOPICS[lang]||TOPICS.en).map(([k,l,h])=>chip(k,l,h)).join('');$('langs').innerHTML=LANGS.map(([k,l,h])=>chip(k,l,h)).join('')}
 function staticBits(){const L=w();
- $('fac').innerHTML=FAC.map(([k,n,c])=>`<li><img src="img/fx_${k}.png" alt="">${flag(c)}<b>${esc(n)}</b></li>`).join('');
- let g='';$('agenda').innerHTML=AG.map(([t,title,sp,,grp],i)=>{const head=grp!==g?`<li class="grp">${esc(L.grp[grp])}</li>`:'';g=grp;
-  const pic=sp==='*'?`<span class="stack">${FAC.slice(0,3).map(f=>`<img src="img/fx_${f[0]}.png" alt="">`).join('')}</span>`:`<img class="ph1" src="img/fx_${sp}.png" alt="">`;
-  const by=sp==='*'?`<small>${esc(L.allFac)}</small>`:`<small>${flag(FX[sp][2])}${esc(FX[sp][1])}</small>`;
-  return head+`<li><time>${t}</time>${pic}<div><b>${esc(title)}${i===2?` <span class="live2">${esc(L.liveDemo)}</span>`:''}</b>${by}</div></li>`}).join('');
+ const pf=k=>`<span class="pf"><img src="img/fx_${k}.png" alt="">${flag(FX[k][2])}</span>`;
+ const talk=i=>{const [t,title,sp]=AG[i];return `<div class="tk">${sp==='*'?'<span></span>':pf(sp)}<div><time>${t}</time><b>${esc(title)}${i===2?` <span class="live2">${esc(L.liveDemo)}</span>`:''}</b><small>${sp==='*'?esc(L.allFac):esc(FX[sp][1])}</small>${sp==='*'?`<div class="panel">${FAC.map(([k,n,c])=>`<span><img src="img/fx_${k}.png" alt="">${flag(c)}${esc(n.replace('Dr ',''))}</span>`).join('')}</div>`:''}</div></div>`};
+ const CH=[['open','c-open','14:00–14:05',[0],5],['face','c-face','14:05–14:30',[1,2],25],['body','c-body','14:30–15:00',[3,4,5],30],['intimate','c-int','15:00–15:10',[6],10],['close','c-close','15:10–15:30',[7,8],20]];
+ $('tline').innerHTML=CH.map(([g,c,tm,,m])=>`<div class="${c}" style="flex:${m} 1 0"><b>${m>5?esc(L.grp[g]):''}</b><span>${m>5?tm:''}</span></div>`).join('');
+ const card=([g,c,tm,ix],slim)=>`<article class="ch${slim?' slim':''}"><header class="${c}"><h3>${esc(L.grp[g])}</h3><time>${tm}</time></header><div class="tks">${ix.map(talk).join('')}</div></article>`;
+ $('chap').innerHTML=card(CH[0],1)+`<div class="ch3">${CH.slice(1,4).map(c=>card(c)).join('')}</div>`+card(CH[4],1);
  $('zones').innerHTML=L.zones.map(([a,b],k)=>`<div class="zone"><i>${k+1}</i><div><b>${esc(a)}</b><span>${esc(b)}</span></div></div>`).join('')+`<div class="zone mini"><i>☕</i><div><b>${esc(L.bar[0])}</b><span>${esc(L.bar[1])}</span></div></div>`;
 }
 function sessions(){const L=w(),TL=TOPICS[lang]||TOPICS.en,tl=k=>(TL.find(t=>t[0]===k)||[])[1];
