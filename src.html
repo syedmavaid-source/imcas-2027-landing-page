@@ -1084,7 +1084,7 @@ const CARD_API=(new URLSearchParams(location.search).get('api')||'').replace(/\/
 const SKEY={'The Evidence Summit':'evidence','The Regenerative Frontier':'regenerative','Mastering the Invisible':'invisible','The Latin Booty & Beyond':'latin','L’art du remodelage corporel':'remodelage'};
 function applyCard(c){CARD=c;qr($('qr1'),c.url);$('calAll').href=c.webcal;$('myCard').href=c.url;$('myCard').hidden=false}
 async function registerCard(email){if(!CARD_API)return;try{const r=await fetch(CARD_API+'/api/plan',{method:'POST',headers:{'content-type':'application/json'},
- body:JSON.stringify({name:who,email,country:$('f-country').value,specialty:($('f-spec')||{}).value||'',topics:topicLabels(),lang,consent:true,sessions:PLAN.map(e=>e.key).filter(Boolean)})});
+ body:JSON.stringify({name:who,email,country:$('f-country').value,specialty:($('f-spec')||{}).value||'',topics:topicLabels(),lang,consent:true,utm:new URLSearchParams(location.search).get('utm_source')||'',sessions:PLAN.map(e=>e.key).filter(Boolean)})});
  if(r.ok)applyCard(await r.json())}catch(e){}}
 const utc=(D,hm)=>{const [h,m]=hm.split(':').map(Number);return DAYN[D]+'T'+String(h-1).padStart(2,'0')+String(m).padStart(2,'0')+'00Z'};
 const icsEsc=t=>String(t).replace(/\\/g,'\\\\').replace(/[,;]/g,m=>'\\'+m).replace(/\n/g,'\\n');
