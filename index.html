@@ -921,8 +921,8 @@ html[data-phase=before] [data-ph]:not([data-ph~=before]),html[data-phase=during]
    <div class="dgrid"><div id="cardBox"></div><div class="pplan"><h3 class="step"><b data-t="planH">Your plan for Paris</b></h3><div id="itin"></div></div></div>
    <p class="giftnote"><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 7h-2.2A3 3 0 0 0 12 3.8 3 3 0 0 0 6.2 7H4a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-8h1a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1Zm-5-2a1 1 0 1 1 0 2h-2a2 2 0 0 1 2-2Zm-6 0a2 2 0 0 1 2 2H9a1 1 0 1 1 0-2Zm2 15H7v-8h4Zm0-10H5V9h6Zm6 10h-4v-8h4Zm2-10h-6V9h6Z"/></svg><span data-t="gDone">Show this card at Booth N214, Level 2 to collect your exclusive gift.</span></p>
    <div class="actions">
-    <button class="cta dark" type="button" data-toast="wallet" data-t="ctaWallet">Add to Wallet</button>
-    <button class="cta ghost" type="button" id="icsBtn" data-t="ctaCalAll">Add my sessions to calendar</button>
+    <a class="cta dark" id="calAll" href="#" data-t="ctaCalAll">Add all to my calendar</a>
+    <a class="cta ghost" id="myCard" href="#" target="_blank" rel="noopener" hidden data-t="ctaMyCardOpen">Open my card</a>
    </div>
    <div class="gcal" id="gcal"></div>
    <button class="lnk" type="button" id="edit" data-t="pfEdit">← Change my choices</button>
@@ -1082,16 +1082,24 @@ const topicLabels=()=>{const TL=TOPS[lang]||TOPS.en;return [...sel].map(k=>(TL.f
 function prev(){$('cardPrev').innerHTML=sphereCard($('f-name').value.trim(),topicLabels(),false)}
 /* personalised calendar: every planned session as its own event (Paris = CET, UTC+1 in January) */
 const DAYN={Thu:'20270128',Fri:'20270129',Sat:'20270130'};let PLAN=[];
+/* Sphere Card service (Cloudflare Worker): card id, personal page (QR target), calendar subscription, booth check-in.
+   CARD_API is set at launch; ?api=http://localhost:8787 tests a local copy. Without it the planner works on its own. */
+const CARD_API=(new URLSearchParams(location.search).get('api')||'').replace(/\/$/,'');let CARD=null;
+const SKEY={'The Evidence Summit':'evidence','The Regenerative Frontier':'regenerative','Mastering the Invisible':'invisible','The Latin Booty & Beyond':'latin','L’art du remodelage corporel':'remodelage'};
+function applyCard(c){CARD=c;qr($('qr1'),c.url);$('calAll').href=c.webcal;$('myCard').href=c.url;$('myCard').hidden=false}
+async function registerCard(email){if(!CARD_API)return;try{const r=await fetch(CARD_API+'/api/plan',{method:'POST',headers:{'content-type':'application/json'},
+ body:JSON.stringify({name:who,email,country:$('f-country').value,specialty:($('f-spec')||{}).value||'',topics:topicLabels(),lang,consent:true,sessions:PLAN.map(e=>e.key).filter(Boolean)})});
+ if(r.ok)applyCard(await r.json())}catch(e){}}
 const utc=(D,hm)=>{const [h,m]=hm.split(':').map(Number);return DAYN[D]+'T'+String(h-1).padStart(2,'0')+String(m).padStart(2,'0')+'00Z'};
 const icsEsc=t=>String(t).replace(/\\/g,'\\\\').replace(/[,;]/g,m=>'\\'+m).replace(/\n/g,'\\n');
 function icsText(){const now=new Date().toISOString().replace(/[-:]/g,'').replace(/\.\d+/,'');
  return ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//BioScience GmbH//IMCAS Paris 2027//EN','CALSCALE:GREGORIAN','METHOD:PUBLISH','X-WR-CALNAME:BioScience at IMCAS Paris 2027']
   .concat(...PLAN.map((e,i)=>['BEGIN:VEVENT','UID:imcas27-'+DAYN[e.D]+'-'+i+'@biosciencegmbh.com','DTSTAMP:'+now,'DTSTART:'+utc(e.D,e.a),'DTEND:'+utc(e.D,e.b),'SUMMARY:'+icsEsc(e.title),'LOCATION:'+icsEsc(e.loc),'DESCRIPTION:'+icsEsc(e.desc),'BEGIN:VALARM','ACTION:DISPLAY','DESCRIPTION:'+icsEsc(e.title),'TRIGGER:-PT30M','END:VALARM','END:VEVENT']),['END:VCALENDAR']).join('\r\n')}
 function gcalUrl(e){return 'https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent(e.title)+'&dates='+utc(e.D,e.a)+'/'+utc(e.D,e.b)+'&location='+encodeURIComponent(e.loc)+'&details='+encodeURIComponent(e.desc)+'&ctz=Europe/Paris'}
-document.addEventListener('click',e=>{if(!e.target.closest('#icsBtn'))return;const blob=new Blob([icsText()],{type:'text/calendar;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='bioscience-imcas-2027.ics';document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000)});
+document.addEventListener('click',e=>{if(!e.target.closest('#calAll')||CARD)return;e.preventDefault();const blob=new Blob([icsText()],{type:'text/calendar;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='bioscience-imcas-2027.ics';document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000)});
 function done(){const L=w(),lg=LANGC[$('f-country').value],TL=TOPS[lang]||TOPS.en,day={Thu:L.thu,Fri:L.fri,Sat:L.sat},by={Thu:[],Fri:[],Sat:[]};
- PLAN=[{D:'Fri',a:'14:00',b:'15:30',title:'BioScience Symposium: New Frontiers in Aesthetic Science',loc:'Room 252, Level 2, Palais des Congrès de Paris',desc:'IMCAS Paris 2027 · Face, Body, Intimate · 8 experts, live Genefill DX demo. Visit us at Booth N214, Level 2.'}];
- SUITE.forEach(([D,tm,n,d,sp,l])=>{if((l&&l===lg)||(STAG[n]||[]).some(x=>sel.has(x))){const [a,b]=tm.split('–');PLAN.push({D,a,b,title:n+' · BioScience Expert Session',loc:'BioScience Hospitality Suite, Palais des Congrès de Paris',desc:d+' · '+sp.map(x=>SN[x]).join(', ')+'. Catering & entertainment after the session.'})}});
+ PLAN=[{key:'sym',D:'Fri',a:'14:00',b:'15:30',title:'BioScience Symposium: New Frontiers in Aesthetic Science',loc:'Room 252, Level 2, Palais des Congrès de Paris',desc:'IMCAS Paris 2027 · Face, Body, Intimate · 8 experts, live Genefill DX demo. Visit us at Booth N214, Level 2.'}];
+ SUITE.forEach(([D,tm,n,d,sp,l])=>{if((l&&l===lg)||(STAG[n]||[]).some(x=>sel.has(x))){const [a,b]=tm.split('–');PLAN.push({key:SKEY[n],D,a,b,title:n+' · BioScience Expert Session',loc:'BioScience Hospitality Suite, Palais des Congrès de Paris',desc:d+' · '+sp.map(x=>SN[x]).join(', ')+'. Catering & entertainment after the session.'})}});
  PLAN.sort((x,y)=>(DAYN[x.D]+x.a).localeCompare(DAYN[y.D]+y.a));
  $('gcal').innerHTML='<p>'+esc(L.gcalLead)+'</p><ul>'+PLAN.map(e=>`<li><a href="${gcalUrl(e)}" target="_blank" rel="noopener">${esc(e.title.split(' · ')[0].split(':')[0])} <span>${({Thu:L.thu,Fri:L.fri,Sat:L.sat})[e.D]} · ${e.a}</span></a></li>`).join('')+'</ul>';
  SUITE.forEach(([D,tm,n,,sp,l])=>{if((l&&l===lg)||(STAG[n]||[]).some(x=>sel.has(x)))by[D].push([tm,`<div class="it"><time>${tm}</time><div><b>${esc(n)}</b><span>${L.suite} · ${esc(sp.map(x=>SN[x]).join(' · '))}</span></div></div>`])});
@@ -1099,12 +1107,12 @@ function done(){const L=w(),lg=LANGC[$('f-country').value],TL=TOPS[lang]||TOPS.e
  $('itin').innerHTML=['Thu','Fri','Sat'].filter(D=>by[D].length).map(D=>`<div class="day"><b>${day[D]}</b>${by[D].sort((a,b)=>a[0].localeCompare(b[0])).map(x=>x[1]).join('')}</div>`).join('')
   +`<div class="day"><b>${L.all}</b><div class="it"><time>${L.daily}</time><div><b>${L.booth}</b><span>${L.boothS}</span></div></div></div>`;
  $('cardBox').innerHTML=sphereCard(who,topicLabels(),true);
- qr($('qr1'),'https://biosciencegmbh.com/imcas?card='+encodeURIComponent(who));
+ if(CARD)applyCard(CARD);else{qr($('qr1'),location.origin+location.pathname+'#plan');$('calAll').href='#';$('myCard').hidden=true}
  $('pfg').hidden=true;$('doneV').hidden=false;$('dlgBody').scrollTop=0}
 $('form').addEventListener('submit',e=>{e.preventDefault();const n=$('f-name').value.trim(),m=$('f-email').value.trim(),L=w();
  if(!n||!/^\S+@\S+\.\S+$/.test(m)||!$('f-country').value){$('err').textContent=L.errFields;return}
  if(!$('f-consent').checked){$('err').textContent=L.errConsent;return}
- $('err').textContent='';who=n;$('sentTo').textContent=m;done()});
+ $('err').textContent='';who=n;$('sentTo').textContent=m;CARD=null;done();registerCard(m)});
 $('form').addEventListener('input',()=>{$('err').textContent='';prev()});
 $('edit').onclick=()=>{who='';$('doneV').hidden=true;$('pfg').hidden=false;prev();$('dlgBody').scrollTop=0};
 const MSG={wallet:'In the live page this adds your Sphere Card to Apple or Google Wallet.',replay:'The replay link goes live on the Digital Academy after IMCAS.',academy:'In the live page this opens the BioScience Digital Academy.',contact:'Thank you. Your local BioScience partner will contact you about training.'};
