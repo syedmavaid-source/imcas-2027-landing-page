@@ -710,7 +710,9 @@ html[data-phase=before] [data-ph]:not([data-ph~=before]),html[data-phase=during]
 .acad p{color:var(--soft)}
 .ac-img{box-shadow:0 18px 40px rgba(10,58,65,.2)}
 
-/* suite v3: each day is one stack of sessions in time order */
-.ht .slot.am{flex-direction:column;align-items:stretch;justify-content:flex-start;gap:16px;padding-bottom:0}
-.ht .slot.pm{display:none}
+/* suite v3 (20 Nov): same timeline, a 3rd row for Thursday's third session; no symposium tile, no module list */
+@media(min-width:900px){.ht{grid-template-rows:auto auto auto auto}.hday,.hvid{grid-row:1/5}.hvid .vf{grid-row:2/5}
+ .hday:nth-child(2) .slot.am{grid-row:2;padding-bottom:14px}.hday:nth-child(2) .slot.pm{display:flex}
+ .hday>.slot.pm{padding:0 0 14px}.hday>.slot.p3{grid-row:4;align-items:stretch}}
 .fc span:empty{display:none}
+@media(max-width:899px){.hday .slot:empty{display:none}}

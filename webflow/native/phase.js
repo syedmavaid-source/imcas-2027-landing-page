@@ -1,7 +1,7 @@
-/* Friday column: link card to the symposium between the morning session and the reception (not a CMS item) */
-(function(){var R=document.getElementById('ev-native');if(!R)return;var d=R.querySelectorAll('#suite .hday')[1];var it=d&&d.querySelector('.slot.am .w-dyn-items');if(!it||it.querySelector('.tc.sym'))return;
-var w=document.createElement('div');w.className='w-dyn-item';w.innerHTML='<a class="tc sym" href="#symposium"><div class="tct"><time>14:00–15:30</time></div><h4>BioScience Symposium</h4><p>Room 252 · Level 2 · see the line-up ↑</p></a>';
-var f=it.firstElementChild;it.insertBefore(w,f?f.nextSibling:null)})();
+/* Expert sessions: each day's CMS list holds all its sessions (sorted by Order); place card 2 in the second row and card 3 in a third row, as on the coded page */
+(function(){var R=document.getElementById('ev-native');if(!R)return;R.querySelectorAll('#suite .hday').forEach(function(day){var it=day.querySelector('.slot.am .w-dyn-items');if(!it)return;
+var items=[].slice.call(it.children);var pm=day.querySelector('.slot.pm');var p3=document.createElement('div');p3.className='slot p3';day.appendChild(p3);
+[[items[1],pm],[items[2],p3]].forEach(function(x){if(!x[0]||!x[1])return;[].slice.call(x[1].children).forEach(function(c){c.style.display='none'});var l=document.createElement('div');l.className='w-dyn-list';var li=document.createElement('div');li.className='w-dyn-items';li.appendChild(x[0]);l.appendChild(li);x[1].appendChild(l)})})})();
 /* ===== event phases (native): live section + card states built from the CMS cards on the page ===== */
 (function(){var R=document.getElementById('ev-native');if(!R||getComputedStyle(R).display==='none')return;
 var PH=document.documentElement.dataset.phase||'before';if(PH!=='during')return;
