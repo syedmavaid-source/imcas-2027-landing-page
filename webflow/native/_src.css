@@ -709,3 +709,8 @@ html[data-phase=before] [data-ph]:not([data-ph~=before]),html[data-phase=during]
 .acad h2{color:var(--ink)}
 .acad p{color:var(--soft)}
 .ac-img{box-shadow:0 18px 40px rgba(10,58,65,.2)}
+
+/* suite v3: each day is one stack of sessions in time order */
+.ht .slot.am{flex-direction:column;align-items:stretch;justify-content:flex-start;gap:16px;padding-bottom:0}
+.ht .slot.pm{display:none}
+.fc span:empty{display:none}

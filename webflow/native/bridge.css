@@ -51,3 +51,8 @@
 /* header: kicker "Frontier 0X\nLabel" -> small first line */
 #ev-native .lhd>span{display:block;white-space:pre;flex:1 1 auto;min-width:0}
 #ev-native .lhd>span::first-line{font-size:10px;font-weight:500;letter-spacing:.16em;color:rgba(255,255,255,.8)}
+
+/* suite v3: one stack per day */
+#ev-native .slot.am>.w-dyn-list{flex-direction:column}
+#ev-native .slot.am>.w-dyn-list>.w-dyn-items{flex-direction:column;gap:16px}
+#ev-native .slot.am>.w-dyn-list>.w-dyn-items>.w-dyn-item>.tc{width:100%}

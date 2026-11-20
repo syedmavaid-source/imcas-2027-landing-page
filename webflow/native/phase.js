@@ -1,3 +1,7 @@
+/* Friday column: link card to the symposium between the morning session and the reception (not a CMS item) */
+(function(){var R=document.getElementById('ev-native');if(!R)return;var d=R.querySelectorAll('#suite .hday')[1];var it=d&&d.querySelector('.slot.am .w-dyn-items');if(!it||it.querySelector('.tc.sym'))return;
+var w=document.createElement('div');w.className='w-dyn-item';w.innerHTML='<a class="tc sym" href="#symposium"><div class="tct"><time>14:00–15:30</time></div><h4>BioScience Symposium</h4><p>Room 252 · Level 2 · see the line-up ↑</p></a>';
+var f=it.firstElementChild;it.insertBefore(w,f?f.nextSibling:null)})();
 /* ===== event phases (native): live section + card states built from the CMS cards on the page ===== */
 (function(){var R=document.getElementById('ev-native');if(!R||getComputedStyle(R).display==='none')return;
 var PH=document.documentElement.dataset.phase||'before';if(PH!=='during')return;
@@ -12,7 +16,7 @@ function n(){var t=now();return {d:t.slice(0,10),m:mins(t.slice(11,16))}}
 /* ---- read the programme from the CMS-rendered cards ---- */
 var ev=[],talks=[];
 var suWhere=(function(){var b=R.querySelectorAll('#suite .bar span');return 'Hospitality Suite · '+(b.length>1?b[1].textContent.split('·')[0].trim():'')})();
-R.querySelectorAll('#suite .hday').forEach(function(day,k){day.querySelectorAll('.tc').forEach(function(c){var t=txt(c,'time').split(/[–-]/);if(t.length<2)return;
+R.querySelectorAll('#suite .hday').forEach(function(day,k){day.querySelectorAll('.tc:not(.sym)').forEach(function(c){var t=txt(c,'time').split(/[–-]/);if(t.length<2)return;
   var lg=txt(c,'.lgt');ev.push({k:k,a:t[0].trim(),b:t[1].trim(),title:txt(c,'h4'),where:suWhere+(lg?' · '+lg:''),who:txt(c,'.fc small'),pics:[].map.call(c.querySelectorAll('.fc img'),function(i){return i.src}),link:'#suite',el:c,tag:c.querySelector('.tct')})})});
 var symBar=R.querySelectorAll('#symposium .bar span'),symDay=symBar.length?symBar[0].textContent:'',symW=symBar.length>1?symBar[1].textContent:'';
 var sk=DAYL.findIndex(function(l){return symDay.indexOf(l.split(' ')[1])>=0}),sr=(symW.match(/(\d\d:\d\d)\s*[–-]\s*(\d\d:\d\d)/)||[]);
