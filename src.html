@@ -476,6 +476,7 @@ section{padding-block:clamp(56px,7vw,92px)}
 .lc.live{box-shadow:0 0 0 3px #e0b96a,0 12px 28px rgba(10,58,65,.12)}
 .lhd{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 16px;color:#fff;font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:13px}
 .lhd time{font:700 20px var(--din);letter-spacing:0}
+.lhd span{display:flex;flex-direction:column;gap:1px;min-width:0}.lhd span small{font-size:10px;font-weight:500;letter-spacing:.16em;opacity:.8}
 .lno{position:absolute;right:14px;top:52px;font:700 44px/1 var(--din);color:#d9ecee}
 .lph{display:flex;flex-direction:column;align-items:center;gap:8px;padding:22px 0 6px;background:linear-gradient(180deg,#eef7f7,#fff)}
 .lph img{width:132px;height:132px;border-radius:50%;box-shadow:0 0 0 4px #fff,0 8px 20px rgba(10,58,65,.18)}
@@ -794,7 +795,7 @@ html[data-phase=before] [data-ph]:not([data-ph~=before]),html[data-phase=during]
   <div>
     <span class="pill" data-t="acPill">BioScience Digital Academy</span>
     <h2 data-t="acH">Watch the symposium replay</h2>
-    <p data-t="acP">New Frontiers in Aesthetic Science: all eight talks and the Genefill DX live demo, on the BioScience Digital Academy.</p>
+    <p data-t="acP">New Frontiers in Aesthetic Science: all seven frontiers and the Genefill DX live demo, on the BioScience Digital Academy.</p>
     <a class="cta cyan" href="https://www.bioscience.academy/" target="_blank" rel="noopener" data-t="ctaWatch">Watch now</a>
   </div>
 </div></section>
@@ -832,7 +833,7 @@ html[data-phase=before] [data-ph]:not([data-ph~=before]),html[data-phase=during]
 <section class="sym tone-l" id="symposium" data-ph="before during"><div class="wrap">
   <div class="shead">
     <div>
-      <span class="pill" data-t="symPill">BioScience Symposium · 90 minutes</span>
+      <span class="pill" data-t="symPill">BioScience Symposium · 90 minutes · 7 frontiers</span>
       <span class="kick">Face • Body • Intimate</span>
       <h2 style="margin-top:6px">New Frontiers in Aesthetic Science</h2>
       <p class="sub">Advanced Biostimulation, Combination Strategies &amp; Clinical Evidence</p>
@@ -942,7 +943,7 @@ const T={en:{},fr:{
  dx1:'Hydratation',dx1s:'Hydratation immédiate de la peau',dx2:'Volume & structure',dx2s:'Restaure le volume et la structure',dx3:'Collagène',dx3s:'Stimulation du collagène à long terme',
  liveDemo:'Démo en direct',dxLiveT:'Genefill DX en direct sur scène',dxLiveW:'Dr Ruiz · vendredi 29 janvier · 14:15 · salle 252',ctaDxSym:'À voir en direct au symposium',ctaDxBooth:'Découvrir DX au stand N214',
  pcPill:'Pré-cours · programme de formation IMCAS',pcH:'Remodelage corporel avec HYAcorp',pcSub:'BioScience dans le programme de formation officiel de l’IMCAS : 30 minutes, avec une démonstration en direct guidée par échographie.',pcB1:'Pré-cours · 30 min',pcB2:'Date et salle à confirmer',pcSub2:'Un cours de 30 minutes dans le programme officiel de l’IMCAS, avec une démonstration en direct guidée par échographie.',pcT1:'30 min',liveDemoUS:'Démo en direct sous échographie',pcCap:'Le Dr Miguel Bravo sur scène avec BioScience',
- symPill:'Symposium BioScience · 90 minutes',smDay:'Vendredi 29 janvier 2027',smWhere:'14:00–15:30 · salle 252 · niveau 2',smChair:'Présidé par le Dr Frank',ctaCalSym:'Ajouter à mon agenda',
+ symPill:'Symposium BioScience · 90 minutes · 7 frontières',smDay:'Vendredi 29 janvier 2027',smWhere:'14:00–15:30 · salle 252 · niveau 2',smChair:'Présidé par le Dr Frank',ctaCalSym:'Ajouter à mon agenda',
  suPill:'BioScience Hospitality Suite',suiteH:'Sessions d’experts',suiteP:'Échanges ciblés, preuves cliniques et cas réels.',suDays:'Jeudi 28 – samedi 30 janvier',suWhere:'Suite [no.] · niveau [x] · Palais des Congrès',
  afH:'Après chaque session : buffet et animation',svPill:'La suite l’an dernier · IMCAS 2026',svP:'Interventions d’experts et cas réels, puis buffet, boissons et animation avec les intervenants et vos confrères.',afP2:'Restez pour rencontrer les intervenants et vos confrères.',afP:'Restez après chaque session pour un verre, un buffet et du temps avec les intervenants et vos confrères.',af1:'Interventions d’experts',af2:'Buffet & boissons',af3:'Rencontrez les experts',
  visit:'Retrouvez-nous · jeu. 28 – sam. 30 janvier',boothH:'Explorez l’expérience BioScience',boothB1:'Stand N214',boothB2:'Niveau 2 · ouvert les trois jours',mapC1:'Niveau 2 · à côté de la salle Maillot',mapC2:'Escalators jusqu’au niveau 2',gH:'Votre cadeau exclusif',gP:'Passez au stand N214 et retirez votre cadeau exclusif.',
@@ -959,7 +960,7 @@ const T={en:{},fr:{
  dx1:'Hidratación',dx1s:'Hidratación inmediata de la piel',dx2:'Volumen y estructura',dx2s:'Restaura volumen y estructura',dx3:'Colágeno',dx3s:'Estimulación de colágeno a largo plazo',
  liveDemo:'Demo en directo',dxLiveT:'Genefill DX en directo en el escenario',dxLiveW:'Dr Ruiz · viernes 29 de enero · 14:15 · sala 252',ctaDxSym:'Véalo en directo en el simposio',ctaDxBooth:'Descubra DX en el stand N214',
  pcPill:'Precurso · programa formativo de IMCAS',pcH:'Remodelación corporal con HYAcorp',pcSub:'BioScience en el programa formativo oficial de IMCAS: 30 minutos, con una demostración en directo guiada por ecografía.',pcB1:'Precurso · 30 min',pcB2:'Fecha y sala por confirmar',pcSub2:'Un curso de 30 minutos en el programa oficial de IMCAS, con una demostración en directo guiada por ecografía.',pcT1:'30 min',liveDemoUS:'Demo en directo con ecografía',pcCap:'El Dr Miguel Bravo en el escenario con BioScience',
- symPill:'Simposio BioScience · 90 minutos',smDay:'Viernes 29 de enero de 2027',smWhere:'14:00–15:30 · sala 252 · nivel 2',smChair:'Preside el Dr Frank',ctaCalSym:'Añadir a mi calendario',
+ symPill:'Simposio BioScience · 90 minutos · 7 fronteras',smDay:'Viernes 29 de enero de 2027',smWhere:'14:00–15:30 · sala 252 · nivel 2',smChair:'Preside el Dr Frank',ctaCalSym:'Añadir a mi calendario',
  suPill:'BioScience Hospitality Suite',suiteH:'Sesiones de expertos',suiteP:'Debates enfocados, evidencia clínica y casos reales.',suDays:'Jueves 28 – sábado 30 de enero',suWhere:'Suite [no.] · nivel [x] · Palais des Congrès',
  afH:'Después de cada sesión: catering y entretenimiento',svPill:'La suite el año pasado · IMCAS 2026',svP:'Charlas de expertos y casos reales, y después comida, bebidas y entretenimiento con los ponentes y colegas.',afP2:'Quédese para conocer a los ponentes y colegas.',afP:'Quédese después de cada sesión para comer, tomar algo y conversar con los ponentes y colegas.',af1:'Charlas de expertos',af2:'Catering y bebidas',af3:'Conozca a los expertos',
  visit:'Visítenos · jue. 28 – sáb. 30 de enero',boothH:'Explore la experiencia BioScience',boothB1:'Stand N214',boothB2:'Nivel 2 · abierto los tres días',mapC1:'Nivel 2 · junto a la sala Maillot',mapC2:'Suba por las escaleras mecánicas al nivel 2',gH:'Su regalo exclusivo',gP:'Visite el stand N214 y recoja su regalo exclusivo.',
@@ -982,15 +983,15 @@ const flag=c=>`<svg class="flag" viewBox="0 0 30 20" role="img" aria-label="${c}
 const FAC=[['frank','Dr Frank','DE'],['casabona','Dr Casabona','BR'],['ruiz','Dr Ruiz','ES'],['sundaram','Dr Sundaram','US'],['chacur','Dr Chacur','BR'],['kaye','Dr Kaye','DE'],['brambilla','Dr Brambilla','IT'],['techapichetvanich','Dr Techapichetvanich','TH']];
 const FX=Object.fromEntries(FAC.map(f=>[f[0],f]));
 /* agenda: [clock, title, speaker, topic tags, group] */
-const AG=[['14:00','Welcome: New Frontiers in Face, Body and Intimate Aesthetics','frank',[],'open'],
- ['14:05','From Filling to Stimulating: The Science of Advanced Biostimulation','casabona',['face'],'face'],
- ['14:15','Real-Time Facial Biostimulation: Genefill DX Live on Stage','ruiz',['face'],'face'],
- ['14:30','One Global Standard: The Body HA Consensus','sundaram',['body'],'body'],
- ['14:40','New Combination Strategies for the Body: HYAcorp and Biostimulation','chacur',['body'],'body'],
- ['14:50','The Final Results: Clinical Evidence from the UltraButt Trial with HYAcorp MLF2','kaye',['body','us'],'body'],
- ['15:00','Intimate Frontier: Clinical Results in Labia Majora Restoration','brambilla',['intimate'],'intimate'],
- ['15:10','Evidence, Combinations and Biostimulation: The Expert Round Table','*',[],'close'],
- ['15:20','Responses from the Panel: Expert Q&A and Closing Remarks','frank',[],'close']];
+const AG=[['14:00','Opening Remarks & Scientific Introduction','frank',[],'open'],
+ ['14:05','The New Biology of Aesthetics: From Biostimulation to Strategic Combinations','casabona',['face','body'],'fb'],
+ ['14:15','Precision in Practice: Live Facial Sculpting with Genefill DX: Anatomy, Technique & Safety','ruiz',['face'],'face'],
+ ['14:30','Redefining Body Architecture: HYAcorp & Goldincision in Synergy','chacur',['body'],'body'],
+ ['14:40','Beyond the Injection: 24-Month Outcomes & Ultrasound Evidence with HYAcorp','kaye',['body','us'],'body'],
+ ['14:50','The 1st Global Body HA Practice Advisory: Defining Standards for Clinical Practice','sundaram',['body'],'body'],
+ ['15:00','Expanding Clinical Horizons: Investigational Evidence in Labia Majora Restoration','brambilla',['intimate'],'intimate'],
+ ['15:10','From Innovation to Practice: Anatomy, Hybrid Strategies & Safety','*',[],'panel'],
+ ['15:27','Closing Remarks & Scientific Takeaways','frank',[],'close']];
 /* expert sessions (times are DRAFT: 10:00 / 15:00 starts + Medical Affairs durations) */
 const SN={ruiz:'Dr Ruiz',fantozzi:'Dr Fantozzi',brambilla:'Dr Brambilla',rosh:'Dr Rosh',tsivtsivadze:'Dr Tsivtsivadze',baranska:'Dr Baranska',alfertshofer:'Dr Alfertshofer',bravo:'Dr Bravo',caicedo:'Dr Caicedo',chacur:'Dr Chacur',murillo:'Dr Murillo',hannan:'Dr Hannan',amsellem:'Dr Amsellem',faivre:'Dr Faivre'};
 const SUITE=[['Thu','10:00–11:20','The Evidence Summit','New trial readouts: Genefill DX skin quality, the MLFA-1 hand lift, intimate HA',['ruiz','fantozzi','brambilla'],'',['face','intimate']],
@@ -998,21 +999,21 @@ const SUITE=[['Thu','10:00–11:20','The Evidence Summit','New trial readouts: G
  ['Fri','10:00–11:35','Mastering the Invisible','Anatomy and live ultrasound, face and body: see every plane before you inject',['alfertshofer','bravo'],'',['us']],
  ['Sat','10:00–11:05','The Latin Booty & Beyond','Gluteal sculpting, Genefill DX for the face, and the business of body work',['caicedo','chacur','murillo'],'ES',['es']],
  ['Sat','15:00–16:05','L’art du remodelage corporel','Subcutaneous vectoring, ultrasound safety and combined protocols',['hannan','amsellem','faivre'],'FR',['fr']]];
-const TOPICS={en:[['face','Face','Biostimulation · Genefill DX live demo'],['body','Body','Body HA consensus · UltraButt trial'],['intimate','Intimate','New clinical data'],['us','Ultrasound & anatomy','Live scanning · safer injecting']],
- fr:[['face','Visage','Biostimulation · démo Genefill DX en direct'],['body','Corps','Consensus AH corps · étude UltraButt'],['intimate','Intime','Nouvelles données cliniques'],['us','Échographie & anatomie','Échographie en direct · injecter en sécurité']],
- es:[['face','Rostro','Bioestimulación · demo Genefill DX en directo'],['body','Cuerpo','Consenso HA corporal · estudio UltraButt'],['intimate','Íntimo','Nuevos datos clínicos'],['us','Ecografía y anatomía','Ecografía en directo · inyectar con seguridad']]};
+const TOPICS={en:[['face','Face','Biostimulation · Genefill DX live demo'],['body','Body','Body HA practice advisory · 24-month outcomes'],['intimate','Intimate','New clinical data'],['us','Ultrasound & anatomy','Live scanning · safer injecting']],
+ fr:[['face','Visage','Biostimulation · démo Genefill DX en direct'],['body','Corps','Recommandations AH corps · résultats à 24 mois'],['intimate','Intime','Nouvelles données cliniques'],['us','Échographie & anatomie','Échographie en direct · injecter en sécurité']],
+ es:[['face','Rostro','Bioestimulación · demo Genefill DX en directo'],['body','Cuerpo','Guía práctica HA corporal · resultados a 24 meses'],['intimate','Íntimo','Nuevos datos clínicos'],['us','Ecografía y anatomía','Ecografía en directo · inyectar con seguridad']]};
 const LANGS=[['fr','Session en français','Sat 30 · 15:00'],['es','Sesión en español','Sat 30 · 10:00']];
-const W={en:{wd:['Thursday','Friday','Saturday'],grp:{open:'Opening',face:'Face',body:'Body',intimate:'Intimate',close:'Closing'},qa:'15:20 · Q&A and closing remarks with Dr Frank',allFac:'All faculty',liveDemo:'Live demo',
+const W={en:{wd:['Thursday','Friday','Saturday'],grp:{open:'Opening',fb:'Face · Body',face:'Face',body:'Body',intimate:'Intimate',panel:'Expert panel',close:'Closing'},fr:'Frontier',qa:'15:27 · Closing remarks & scientific takeaways with Dr Frank',allFac:'All faculty',liveDemo:'Live demo',
   addPlan:'+ Add to my plan',added:'✓ In your plan',addedT:'Added to your plan. Open “Plan my visit” to get your Sphere Card.',viaTopic:'This session is in your plan because of a topic you picked.',
   errFields:'Please add your name, a valid email and your country.',gcalLead:'Using Google Calendar? Add each session:',errConsent:'Please tick the box so we can send you your plan.',lgES:'En español',lgFR:'En français',symRoomS:'Room 252 · Level 2 · see the line-up ↑',vidLab:'IMCAS 2026',vidCap:'After every session: catering & entertainment',master:'Master session · 95 min',mods:[['Face','danger zones · Dr Alfertshofer'],['Face','live ultrasound mapping · Dr Bravo'],['Body','gluteal danger zones · Dr Alfertshofer'],['Body','live ultrasound & rescue · Dr Bravo']],vidAria:'Video: the BioScience hospitality suite at IMCAS 2026, sessions and entertainment',next1:'Next: get my Sphere Card →',next2:'Send my plan and card',next3:'Done',back:'← Back',stops:'stops in your plan',yourName:'Your name',qrAfter:'Your QR appears after sending',giftR:'Exclusive gift · Booth N214',
   none:'Pick a topic, or continue with the symposium and the booth.',thu:'Thursday 28 January',fri:'Friday 29 January',sat:'Saturday 30 January',all:'All three days',sym:'BioScience Symposium',symS:'Room 252 · Level 2 · 8 experts, live demo',suite:'Expert session',booth:'Booth N214 · Level 2',boothS:'Visit and collect your exclusive gift',daily:'Open daily',
   zones:[['Product Discovery','HYAcorp, Genefill and Genefill DX up close'],['BioScience Academy','Courses, webinars and workshops near you'],['Sphere Experience','Your portrait inside the sphere'],['Scientific Corner','Studies, and the gel under the microscope']],bar:['Catering & Bar Corner','Coffee, drinks and a place to meet']},
- fr:{wd:['Jeudi','Vendredi','Samedi'],grp:{open:'Ouverture',face:'Visage',body:'Corps',intimate:'Intime',close:'Clôture'},qa:'15:20 · Questions-réponses et clôture avec le Dr Frank',allFac:'Tous les experts',liveDemo:'Démo en direct',
+ fr:{wd:['Jeudi','Vendredi','Samedi'],grp:{open:'Ouverture',fb:'Visage · Corps',face:'Visage',body:'Corps',intimate:'Intime',panel:'Panel d’experts',close:'Clôture'},fr:'Frontière',qa:'15:27 · Clôture et messages clés avec le Dr Frank',allFac:'Tous les experts',liveDemo:'Démo en direct',
   addPlan:'+ Ajouter à mon programme',added:'✓ Dans votre programme',addedT:'Ajouté à votre programme. Ouvrez « Planifier ma visite » pour votre Sphere Card.',viaTopic:'Cette session est dans votre programme grâce à un thème choisi.',
   errFields:'Merci d’indiquer votre nom, un e-mail valide et votre pays.',gcalLead:'Vous utilisez Google Agenda ? Ajoutez chaque session :',errConsent:'Merci de cocher la case pour recevoir votre programme.',lgES:'En espagnol',lgFR:'En français',symRoomS:'Salle 252 · niveau 2 · voir le programme ↑',vidLab:'IMCAS 2026',vidCap:'Après chaque session : buffet et animation',master:'Master session · 95 min',mods:[['Visage','zones à risque · Dr Alfertshofer'],['Visage','cartographie échographique en direct · Dr Bravo'],['Corps','zones à risque fessières · Dr Alfertshofer'],['Corps','échographie en direct et prise en charge · Dr Bravo']],vidAria:'Vidéo : la suite BioScience à l’IMCAS 2026, sessions et animation',next1:'Suivant : ma Sphere Card →',next2:'Envoyer mon programme et ma carte',next3:'Terminé',back:'← Retour',stops:'étapes dans votre programme',yourName:'Votre nom',qrAfter:'Votre QR apparaît après l’envoi',giftR:'Cadeau exclusif · stand N214',
   none:'Choisissez un thème ou continuez avec le symposium et le stand.',thu:'Jeudi 28 janvier',fri:'Vendredi 29 janvier',sat:'Samedi 30 janvier',all:'Les trois jours',sym:'Symposium BioScience',symS:'Salle 252 · niveau 2 · 8 experts, démo en direct',suite:'Session d’experts',booth:'Stand N214 · niveau 2',boothS:'Passez retirer votre cadeau exclusif',daily:'Tous les jours',
   zones:[['Product Discovery','HYAcorp, Genefill et Genefill DX de près'],['BioScience Academy','Cours, webinaires et ateliers près de chez vous'],['Sphere Experience','Votre portrait dans la sphère'],['Scientific Corner','Études, et le gel au microscope']],bar:['Catering & Bar Corner','Café, boissons et un lieu de rencontre']},
- es:{wd:['Jueves','Viernes','Sábado'],grp:{open:'Apertura',face:'Rostro',body:'Cuerpo',intimate:'Íntimo',close:'Cierre'},qa:'15:20 · Preguntas y cierre con el Dr Frank',allFac:'Todos los expertos',liveDemo:'Demo en directo',
+ es:{wd:['Jueves','Viernes','Sábado'],grp:{open:'Apertura',fb:'Rostro · Cuerpo',face:'Rostro',body:'Cuerpo',intimate:'Íntimo',panel:'Panel de expertos',close:'Cierre'},fr:'Frontera',qa:'15:27 · Cierre y conclusiones científicas con el Dr Frank',allFac:'Todos los expertos',liveDemo:'Demo en directo',
   addPlan:'+ Añadir a mi plan',added:'✓ En su plan',addedT:'Añadido a su plan. Abra «Planificar mi visita» para su Sphere Card.',viaTopic:'Esta sesión está en su plan por un tema elegido.',
   errFields:'Indique su nombre, un correo válido y su país.',gcalLead:'¿Usa Google Calendar? Añada cada sesión:',errConsent:'Marque la casilla para que podamos enviarle su plan.',lgES:'En español',lgFR:'En francés',symRoomS:'Sala 252 · nivel 2 · ver el programa ↑',vidLab:'IMCAS 2026',vidCap:'Después de cada sesión: catering y entretenimiento',master:'Sesión magistral · 95 min',mods:[['Rostro','zonas de peligro · Dr Alfertshofer'],['Rostro','mapeo ecográfico en directo · Dr Bravo'],['Cuerpo','zonas de peligro glúteas · Dr Alfertshofer'],['Cuerpo','ecografía en directo y rescate · Dr Bravo']],vidAria:'Vídeo: la suite BioScience en IMCAS 2026, sesiones y entretenimiento',next1:'Siguiente: mi Sphere Card →',next2:'Enviar mi plan y mi tarjeta',next3:'Listo',back:'← Atrás',stops:'paradas en su plan',yourName:'Su nombre',qrAfter:'Su QR aparece tras el envío',giftR:'Regalo exclusivo · stand N214',
   none:'Elija un tema o continúe con el simposio y el stand.',thu:'Jueves 28 de enero',fri:'Viernes 29 de enero',sat:'Sábado 30 de enero',all:'Los tres días',sym:'Simposio BioScience',symS:'Sala 252 · nivel 2 · 8 expertos, demo en directo',suite:'Sesión de expertos',booth:'Stand N214 · nivel 2',boothS:'Visítenos y recoja su regalo exclusivo',daily:'Cada día',
@@ -1037,7 +1038,7 @@ const mins=hm=>{const[h,m]=hm.split(':').map(Number);return h*60+m};
 const nowP=()=>{const t=window.parisNow();return {d:t.slice(0,10),m:mins(t.slice(11,16))}};
 function st(D,a,b){if(PH!=='during')return '';const n=nowP(),dd=DAYS[D];if(dd<n.d)return 'ended';if(dd>n.d)return 'later';return n.m>=mins(b)?'ended':n.m>=mins(a)?'live':'later'}
 const chip=s=>s==='live'?`<span class="stc live"><span class="dot"></span>${PT.live}</span>`:s==='ended'?`<span class="stc">${PT.ended}</span>`:'';
-const AGEND=i=>i<7?AG[i+1][0]:'15:30';
+const AGEND=i=>i<8?AG[i+1][0]:'15:30';
 function renderNow(){if(PH!=='during'||!$('nowCard'))return;const L=w(),n=nowP();
  const D=Object.keys(DAYS).find(k=>DAYS[k]===n.d)||'Fri',k=['Thu','Fri','Sat'].indexOf(D);
  $('nowDay').textContent=PT.today+' · '+[L.thu,L.fri,L.sat][k];
@@ -1048,7 +1049,7 @@ function renderNow(){if(PH!=='during'||!$('nowCard'))return;const L=w(),n=nowP()
  if(h){const lead=live?`<span class="nowb"><span class="dot"></span>${PT.live} · ${PT.until} ${h.b}</span>`:`<span class="nowb next">${PT.upNext} · ${mins(h.a)-n.m<=120?PT.startsIn+' '+(mins(h.a)-n.m)+' '+PT.min:h.a}</span>`;
   c=lead+`<h3>${esc(h.title)}</h3><p class="now-meta"><b>${h.a}–${h.b}</b> · ${esc(h.where)}</p><div class="now-faces"><span>${h.pics.map(p=>`<img src="${p}" alt="">`).join('')}</span><small>${esc(h.who)}</small></div>`;
   if(live&&live.sym){const i=AG.slice(0,8).findIndex((x,j)=>n.m>=mins(x[0])&&n.m<mins(AGEND(j)));if(i>=0){const cur=AG[i],nx=AG[i+1];const pic=x=>x[2]==='*'?'img/fx_frank.png':'img/fx_'+x[2]+'.png',nm=x=>x[2]==='*'?PT.faculty:FX[x[2]][1];
-   c+=`<div class="onstage"><div><img src="${pic(cur)}" alt=""><span><small>${PT.onStage} · ${cur[0]}</small><b>${esc(nm(cur))} · ${esc(cur[1])}</b></span></div>${nx&&i<7?`<div><img src="${pic(nx)}" alt=""><span><small>${PT.upNext} · ${nx[0]}</small><b>${esc(nm(nx))} · ${esc(nx[1])}</b></span></div>`:''}</div>`}}
+   c+=`<div class="onstage"><div><img src="${pic(cur)}" alt=""><span><small>${PT.onStage} · ${cur[0]}</small><b>${esc(nm(cur))} · ${esc(cur[1])}</b></span></div>${nx&&i<8?`<div><img src="${pic(nx)}" alt=""><span><small>${PT.upNext} · ${nx[0]}</small><b>${esc(nm(nx))} · ${esc(nx[1])}</b></span></div>`:''}</div>`}}
   c+=`<a class="cta teal" href="${h.link}">${esc(h.sym?L.sym:L.suite)} →</a>`}
  else{const nd=['Thu','Fri','Sat'][k+1];c=`<span class="nowb next">${PT.doneH}</span><h3>${nd?PT.doneT:PT.doneLast}</h3><p class="now-meta">${nd?esc([L.thu,L.fri,L.sat][k+1])+' · '+esc(SUITE.find(x=>x[0]===nd)[1].split('–')[0]+' · '+SUITE.find(x=>x[0]===nd)[2]):esc(PT.boothT)}</p>`}
  $('nowCard').innerHTML=c;
@@ -1056,11 +1057,11 @@ function renderNow(){if(PH!=='during'||!$('nowCard'))return;const L=w(),n=nowP()
  $('todayList').innerHTML=row(PT.allDay,PT.boothT,PT.boothS,'','')+ev.map(e=>row(e.a+'–'+e.b,e.title,e.where+' · '+e.who,e.s,e===next&&!live?`<span class="stc next">${PT.next}</span>`:chip(e.s))).join('')}
 function renderReplay(){}
 function staticBits(){const L=w();
- const GC={open:'#7aa9ae',face:'#2db3bd',body:'#1f8f99',intimate:'#146b75',close:'#5f8f94'};
+ const GC={open:'#7aa9ae',fb:'#26a3ad',face:'#2db3bd',body:'#1f8f99',intimate:'#146b75',panel:'#0d4750',close:'#5f8f94'};
  $('chap').innerHTML='<ol class="lu">'+AG.slice(0,8).map(([t,title,sp,,g],i)=>{const rt=sp==='*';
   const pic=rt?`<div class="lpan">${FAC.map(([k,n,c])=>`<span><img src="img/fx_${k}.png" alt="${esc(n)}">${flag(c)}</span>`).join('')}</div>`:`<div class="lph"><img src="img/fx_${sp}.png" alt="">${flag(FX[sp][2])}</div>`;
   const s=st('Fri',t,AGEND(i));
-  return `<li class="lc${i===2?' live':''}${s?' st-'+s:''}"><div class="lhd" style="background:${GC[g]}"><span>${esc(L.grp[g])}</span><time>${t}</time></div><span class="lno" aria-hidden="true">${i+1}</span>${pic}<div class="lbd"><small>${esc(rt?L.allFac:FX[sp][1])}</small><b>${esc(title)}</b>${rt?`<em>${esc(L.qa)}</em>`:''}${i===2?`<span class="live2">${esc(L.liveDemo)}</span>`:''}${chip(s)}</div></li>`}).join('')+'</ol>';
+  return `<li class="lc${i===2?' live':''}${s?' st-'+s:''}"><div class="lhd" style="background:${GC[g]}"><span><small>${i>=1&&i<=7?esc(L.fr)+' 0'+i:'&nbsp;'}</small>${esc(L.grp[g])}</span><time>${t}</time></div><span class="lno" aria-hidden="true">${i+1}</span>${pic}<div class="lbd"><small>${esc(rt?L.allFac:FX[sp][1])}</small><b>${esc(title)}</b>${rt?`<em>${esc(L.qa)}</em>`:''}${i===2?`<span class="live2">${esc(L.liveDemo)}</span>`:''}${chip(s)}</div></li>`}).join('')+'</ol>';
  $('zones').innerHTML=L.zones.map(([a,b],k)=>`<div class="zone"><i>${k+1}</i><div><b>${esc(a)}</b><span>${esc(b)}</span></div></div>`).join('')+`<div class="zone mini"><i>☕</i><div><b>${esc(L.bar[0])}</b><span>${esc(L.bar[1])}</span></div></div>`;
 }
 function sessions(){const L=w();

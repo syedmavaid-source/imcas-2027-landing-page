@@ -93,16 +93,44 @@ const TOPS={en:[['face','Face','Biostimulation · live Genefill DX demo'],['body
 const STAG={'The Evidence Summit':['face','intimate'],'The Regenerative Frontier':['face','body'],'Mastering the Invisible':['face','body']};
 const LANGC={France:'FR',Belgium:'FR',Switzerland:'FR',Spain:'ES',Mexico:'ES',Colombia:'ES',Argentina:'ES'};
 function tiles(){$('topics').innerHTML=(TOPS[lang]||TOPS.en).map(([k,l,h])=>`<button type="button" class="tchip" data-k="${k}" aria-pressed="${sel.has(k)}"><i>${sel.has(k)?'✓':''}</i><b>${esc(l)}</b><small>${esc(h)}</small></button>`).join('')}
+
+/* ===== phases: live status during IMCAS, replay after ===== */
+const PH=document.documentElement.dataset.phase;
+const PT={live:'Live now',ended:'Ended',next:'Up next',later:'Later',until:'until',startsIn:'starts in',min:'min',onStage:'On stage now',upNext:'Up next',allDay:'All day',boothT:'Booth N214 · Level 2',boothS:'Visit and collect your exclusive gift',suiteW:'Hospitality Suite · Suite [no.]',symT:'BioScience Symposium',symW:'Room 252 · Level 2',symS:'8 experts · Genefill DX live demo',doneH:'That is all for today',doneT:'See you tomorrow',doneLast:'Thank you for joining us at IMCAS Paris',today:'Today',watch:'▶ Watch',join:'Join us',faculty:'All faculty'};
+const DAYS={Thu:'2027-01-28',Fri:'2027-01-29',Sat:'2027-01-30'};
+const mins=hm=>{const[h,m]=hm.split(':').map(Number);return h*60+m};
+const nowP=()=>{const t=window.parisNow();return {d:t.slice(0,10),m:mins(t.slice(11,16))}};
+function st(D,a,b){if(PH!=='during')return '';const n=nowP(),dd=DAYS[D];if(dd<n.d)return 'ended';if(dd>n.d)return 'later';return n.m>=mins(b)?'ended':n.m>=mins(a)?'live':'later'}
+const chip=s=>s==='live'?`<span class="stc live"><span class="dot"></span>${PT.live}</span>`:s==='ended'?`<span class="stc">${PT.ended}</span>`:'';
+const AGEND=i=>i<7?AG[i+1][0]:'15:30';
+function renderNow(){if(PH!=='during'||!$('nowCard'))return;const L=w(),n=nowP();
+ const D=Object.keys(DAYS).find(k=>DAYS[k]===n.d)||'Fri',k=['Thu','Fri','Sat'].indexOf(D);
+ $('nowDay').textContent=PT.today+' · '+[L.thu,L.fri,L.sat][k];
+ const ev=SUITE.filter(x=>x[0]===D).map(x=>{const[a,b]=x[1].split('–');return {a,b,title:x[2],where:PT.suiteW+(x[5]?' · '+(x[5]==='ES'?L.lgES:L.lgFR):''),who:x[4].map(k=>SN[k]).join(' · '),pics:x[4].map(k=>'img/su_'+k+'.png'),link:'#suite'}});
+ if(D==='Fri')ev.push({a:'14:00',b:'15:30',title:PT.symT,where:PT.symW,who:PT.symS,pics:FAC.slice(0,5).map(f=>'img/fx_'+f[0]+'.png'),link:'#symposium',sym:true});
+ ev.sort((x,y)=>mins(x.a)-mins(y.a));ev.forEach(e=>e.s=n.m>=mins(e.b)?'ended':n.m>=mins(e.a)?'live':'later');
+ const live=ev.find(e=>e.s==='live'),next=ev.find(e=>e.s==='later'),h=live||next;let c='';
+ if(h){const lead=live?`<span class="nowb"><span class="dot"></span>${PT.live} · ${PT.until} ${h.b}</span>`:`<span class="nowb next">${PT.upNext} · ${mins(h.a)-n.m<=120?PT.startsIn+' '+(mins(h.a)-n.m)+' '+PT.min:h.a}</span>`;
+  c=lead+`<h3>${esc(h.title)}</h3><p class="now-meta"><b>${h.a}–${h.b}</b> · ${esc(h.where)}</p><div class="now-faces"><span>${h.pics.map(p=>`<img src="${p}" alt="">`).join('')}</span><small>${esc(h.who)}</small></div>`;
+  if(live&&live.sym){const i=AG.slice(0,8).findIndex((x,j)=>n.m>=mins(x[0])&&n.m<mins(AGEND(j)));if(i>=0){const cur=AG[i],nx=AG[i+1];const pic=x=>x[2]==='*'?'https://cdn.prod.website-files.com/63a16b39edec0d0cb726136e/6afeb12cb99ea9f655135d8d_imcas27-fx_frank.png':'img/fx_'+x[2]+'.png',nm=x=>x[2]==='*'?PT.faculty:FX[x[2]][1];
+   c+=`<div class="onstage"><div><img src="${pic(cur)}" alt=""><span><small>${PT.onStage} · ${cur[0]}</small><b>${esc(nm(cur))} · ${esc(cur[1])}</b></span></div>${nx&&i<7?`<div><img src="${pic(nx)}" alt=""><span><small>${PT.upNext} · ${nx[0]}</small><b>${esc(nm(nx))} · ${esc(nx[1])}</b></span></div>`:''}</div>`}}
+  c+=`<a class="cta teal" href="${h.link}">${esc(h.sym?L.sym:L.suite)} →</a>`}
+ else{const nd=['Thu','Fri','Sat'][k+1];c=`<span class="nowb next">${PT.doneH}</span><h3>${nd?PT.doneT:PT.doneLast}</h3><p class="now-meta">${nd?esc([L.thu,L.fri,L.sat][k+1])+' · '+esc(SUITE.find(x=>x[0]===nd)[1].split('–')[0]+' · '+SUITE.find(x=>x[0]===nd)[2]):esc(PT.boothT)}</p>`}
+ $('nowCard').innerHTML=c;
+ const row=(t,b,s,cls,tag)=>`<li class="${cls}"><time>${t}</time><div><b>${esc(b)}</b><span>${esc(s)}</span></div>${tag}</li>`;
+ $('todayList').innerHTML=row(PT.allDay,PT.boothT,PT.boothS,'','')+ev.map(e=>row(e.a+'–'+e.b,e.title,e.where+' · '+e.who,e.s,e===next&&!live?`<span class="stc next">${PT.next}</span>`:chip(e.s))).join('')}
+function renderReplay(){}
 function staticBits(){const L=w();
  const GC={open:'#7aa9ae',face:'#2db3bd',body:'#1f8f99',intimate:'#146b75',close:'#5f8f94'};
  $('chap').innerHTML='<ol class="lu">'+AG.slice(0,8).map(([t,title,sp,,g],i)=>{const rt=sp==='*';
   const pic=rt?`<div class="lpan">${FAC.map(([k,n,c])=>`<span><img src="${im("fx_"+k+".png")}" alt="${esc(n)}">${flag(c)}</span>`).join('')}</div>`:`<div class="lph"><img src="${im("fx_"+sp+".png")}" alt="">${flag(FX[sp][2])}</div>`;
-  return `<li class="lc${i===2?' live':''}"><div class="lhd" style="background:${GC[g]}"><span>${esc(L.grp[g])}</span><time>${t}</time></div><span class="lno" aria-hidden="true">${i+1}</span>${pic}<div class="lbd"><small>${esc(rt?L.allFac:FX[sp][1])}</small><b>${esc(title)}</b>${rt?`<em>${esc(L.qa)}</em>`:''}${i===2?`<span class="live2">${esc(L.liveDemo)}</span>`:''}</div></li>`}).join('')+'</ol>';
+  const s=st('Fri',t,AGEND(i));
+  return `<li class="lc${i===2?' live':''}${s?' st-'+s:''}"><div class="lhd" style="background:${GC[g]}"><span>${esc(L.grp[g])}</span><time>${t}</time></div><span class="lno" aria-hidden="true">${i+1}</span>${pic}<div class="lbd"><small>${esc(rt?L.allFac:FX[sp][1])}</small><b>${esc(title)}</b>${rt?`<em>${esc(L.qa)}</em>`:''}${i===2?`<span class="live2">${esc(L.liveDemo)}</span>`:''}${chip(s)}</div></li>`}).join('')+'</ol>';
  $('zones').innerHTML=L.zones.map(([a,b],k)=>`<div class="zone"><i>${k+1}</i><div><b>${esc(a)}</b><span>${esc(b)}</span></div></div>`).join('')+`<div class="zone mini"><i>☕</i><div><b>${esc(L.bar[0])}</b><span>${esc(L.bar[1])}</span></div></div>`;
 }
 function sessions(){const L=w();
  const SH={'The Evidence Summit':'New trial data: Genefill DX, hands, intimate','The Regenerative Frontier':'After GLP-1 weight loss · acne scars','Mastering the Invisible':'Live anatomy & ultrasound, face and body','The Latin Booty & Beyond':'Gluteal sculpting & Genefill DX for the face','L’art du remodelage corporel':'Body remodelling: vectoring & combined protocols'};
- const cardS=([D,tm,n,,sp,lg])=>{const ms=n==='Mastering the Invisible';return `<article class="tc${ms?' ms':''}"><div class="tct"><time>${tm}</time>${lg?`<span class="lgt">${lg==='ES'?L.lgES:L.lgFR}</span>`:''}${ms?`<span class="dur">${esc(L.master)}</span>`:''}</div><h4>${esc(n)}</h4><p>${esc(SH[n]||'')}</p>${ms?`<ul class="mods">${L.mods.map(([a,b])=>`<li><b>${esc(a)}</b> · ${esc(b)}</li>`).join('')}</ul>`:''}<div class="fc"><span>${sp.map(x=>`<img src="${im("su_"+x+".png")}" alt="">`).join('')}</span><small>${esc(sp.map(x=>SN[x]).join(' · '))}</small></div></article>`};
+ const cardS=([D,tm,n,,sp,lg])=>{const ms=n==='Mastering the Invisible',s=st(D,...tm.split('–'));return `<article class="tc${ms?' ms':''}${s?' st-'+s:''}"><div class="tct"><time>${tm}</time>${chip(s)}${lg?`<span class="lgt">${lg==='ES'?L.lgES:L.lgFR}</span>`:''}${ms?`<span class="dur">${esc(L.master)}</span>`:''}</div><h4>${esc(n)}</h4><p>${esc(SH[n]||'')}</p>${ms?`<ul class="mods">${L.mods.map(([a,b])=>`<li><b>${esc(a)}</b> · ${esc(b)}</li>`).join('')}</ul>`:''}<div class="fc"><span>${sp.map(x=>`<img src="${im("su_"+x+".png")}" alt="">`).join('')}</span><small>${esc(sp.map(x=>SN[x]).join(' · '))}</small></div></article>`};
  const SYMC=`<a class="tc sym" href="#symposium"><div class="tct"><time>14:00–15:30</time></div><h4>${esc(L.sym)}</h4><p>${esc(L.symRoomS)}</p></a>`;
  $('sessions').innerHTML='<div class="ht">'+['Thu','Fri','Sat'].map((D,k)=>{const am=SUITE.find(x=>x[0]===D&&x[1].startsWith('10')),pm=SUITE.find(x=>x[0]===D&&x[1].startsWith('15'));
   return `<div class="hday"><div class="slot am">${am?cardS(am):''}</div><div class="mk"><span><b>${28+k}</b>${L.wd[k]}</span></div><div class="slot pm">${pm?cardS(pm):''}</div></div>`}).join('')+`<div class="hvid"><div class="mk vk"><span>${esc(L.vidLab)}</span></div><figure class="vf"><video src="https://cdn.prod.website-files.com/63a16b39edec0d0cb726136e/6afeb09f38c9291ca9d9bcb6_imcas27-suite-2026.mp4" poster="https://cdn.prod.website-files.com/63a16b39edec0d0cb726136e/6afeb12c8f790f8e6fc77b7f_imcas27-suite_2026.jpg" autoplay muted loop playsinline preload="metadata" aria-label="${esc(L.vidAria)}"></video><figcaption>${esc(L.vidCap)}</figcaption></figure></div>`+'</div>'}
@@ -115,16 +143,24 @@ const topicLabels=()=>{const TL=TOPS[lang]||TOPS.en;return [...sel].map(k=>(TL.f
 function prev(){$('cardPrev').innerHTML=sphereCard($('f-name').value.trim(),topicLabels(),false)}
 /* personalised calendar: every planned session as its own event (Paris = CET, UTC+1 in January) */
 const DAYN={Thu:'20270128',Fri:'20270129',Sat:'20270130'};let PLAN=[];
+/* Sphere Card service (Cloudflare Worker): card id, personal page (QR target), calendar subscription, booth check-in.
+   Live at imcas27.bioscience.workers.dev; ?api=http://localhost:8787 tests a local copy. If it can't be reached the planner still works on its own. */
+const CARD_API=(new URLSearchParams(location.search).get('api')||'https://imcas27.bioscience.workers.dev').replace(/\/$/,'');let CARD=null;
+const SKEY={'The Evidence Summit':'evidence','The Regenerative Frontier':'regenerative','Mastering the Invisible':'invisible','The Latin Booty & Beyond':'latin','L’art du remodelage corporel':'remodelage'};
+function applyCard(c){CARD=c;qr($('qr1'),c.url);$('calAll').href=c.webcal;$('myCard').href=c.url;$('myCard').hidden=false}
+async function registerCard(email){if(!CARD_API)return;try{const r=await fetch(CARD_API+'/api/plan',{method:'POST',headers:{'content-type':'application/json'},
+ body:JSON.stringify({name:who,email,country:$('f-country').value,specialty:($('f-spec')||{}).value||'',topics:topicLabels(),lang,consent:true,utm:new URLSearchParams(location.search).get('utm_source')||'',sessions:PLAN.map(e=>e.key).filter(Boolean)})});
+ if(r.ok)applyCard(await r.json())}catch(e){}}
 const utc=(D,hm)=>{const [h,m]=hm.split(':').map(Number);return DAYN[D]+'T'+String(h-1).padStart(2,'0')+String(m).padStart(2,'0')+'00Z'};
 const icsEsc=t=>String(t).replace(/\\/g,'\\\\').replace(/[,;]/g,m=>'\\'+m).replace(/\n/g,'\\n');
 function icsText(){const now=new Date().toISOString().replace(/[-:]/g,'').replace(/\.\d+/,'');
  return ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//BioScience GmbH//IMCAS Paris 2027//EN','CALSCALE:GREGORIAN','METHOD:PUBLISH','X-WR-CALNAME:BioScience at IMCAS Paris 2027']
   .concat(...PLAN.map((e,i)=>['BEGIN:VEVENT','UID:imcas27-'+DAYN[e.D]+'-'+i+'@biosciencegmbh.com','DTSTAMP:'+now,'DTSTART:'+utc(e.D,e.a),'DTEND:'+utc(e.D,e.b),'SUMMARY:'+icsEsc(e.title),'LOCATION:'+icsEsc(e.loc),'DESCRIPTION:'+icsEsc(e.desc),'BEGIN:VALARM','ACTION:DISPLAY','DESCRIPTION:'+icsEsc(e.title),'TRIGGER:-PT30M','END:VALARM','END:VEVENT']),['END:VCALENDAR']).join('\r\n')}
 function gcalUrl(e){return 'https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent(e.title)+'&dates='+utc(e.D,e.a)+'/'+utc(e.D,e.b)+'&location='+encodeURIComponent(e.loc)+'&details='+encodeURIComponent(e.desc)+'&ctz=Europe/Paris'}
-document.addEventListener('click',e=>{if(!e.target.closest('#icsBtn'))return;const blob=new Blob([icsText()],{type:'text/calendar;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='bioscience-imcas-2027.ics';document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000)});
+document.addEventListener('click',e=>{if(!e.target.closest('#calAll')||CARD)return;e.preventDefault();const blob=new Blob([icsText()],{type:'text/calendar;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='bioscience-imcas-2027.ics';document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000)});
 function done(){const L=w(),lg=LANGC[$('f-country').value],TL=TOPS[lang]||TOPS.en,day={Thu:L.thu,Fri:L.fri,Sat:L.sat},by={Thu:[],Fri:[],Sat:[]};
- PLAN=[{D:'Fri',a:'14:00',b:'15:30',title:'BioScience Symposium: New Frontiers in Aesthetic Science',loc:'Room 252, Level 2, Palais des Congrès de Paris',desc:'IMCAS Paris 2027 · Face, Body, Intimate · 8 experts, live Genefill DX demo. Visit us at Booth N214, Level 2.'}];
- SUITE.forEach(([D,tm,n,d,sp,l])=>{if((l&&l===lg)||(STAG[n]||[]).some(x=>sel.has(x))){const [a,b]=tm.split('–');PLAN.push({D,a,b,title:n+' · BioScience Expert Session',loc:'BioScience Hospitality Suite, Palais des Congrès de Paris',desc:d+' · '+sp.map(x=>SN[x]).join(', ')+'. Catering & entertainment after the session.'})}});
+ PLAN=[{key:'sym',D:'Fri',a:'14:00',b:'15:30',title:'BioScience Symposium: New Frontiers in Aesthetic Science',loc:'Room 252, Level 2, Palais des Congrès de Paris',desc:'IMCAS Paris 2027 · Face, Body, Intimate · 8 experts, live Genefill DX demo. Visit us at Booth N214, Level 2.'}];
+ SUITE.forEach(([D,tm,n,d,sp,l])=>{if((l&&l===lg)||(STAG[n]||[]).some(x=>sel.has(x))){const [a,b]=tm.split('–');PLAN.push({key:SKEY[n],D,a,b,title:n+' · BioScience Expert Session',loc:'BioScience Hospitality Suite, Palais des Congrès de Paris',desc:d+' · '+sp.map(x=>SN[x]).join(', ')+'. Catering & entertainment after the session.'})}});
  PLAN.sort((x,y)=>(DAYN[x.D]+x.a).localeCompare(DAYN[y.D]+y.a));
  $('gcal').innerHTML='<p>'+esc(L.gcalLead)+'</p><ul>'+PLAN.map(e=>`<li><a href="${gcalUrl(e)}" target="_blank" rel="noopener">${esc(e.title.split(' · ')[0].split(':')[0])} <span>${({Thu:L.thu,Fri:L.fri,Sat:L.sat})[e.D]} · ${e.a}</span></a></li>`).join('')+'</ul>';
  SUITE.forEach(([D,tm,n,,sp,l])=>{if((l&&l===lg)||(STAG[n]||[]).some(x=>sel.has(x)))by[D].push([tm,`<div class="it"><time>${tm}</time><div><b>${esc(n)}</b><span>${L.suite} · ${esc(sp.map(x=>SN[x]).join(' · '))}</span></div></div>`])});
@@ -132,28 +168,29 @@ function done(){const L=w(),lg=LANGC[$('f-country').value],TL=TOPS[lang]||TOPS.e
  $('itin').innerHTML=['Thu','Fri','Sat'].filter(D=>by[D].length).map(D=>`<div class="day"><b>${day[D]}</b>${by[D].sort((a,b)=>a[0].localeCompare(b[0])).map(x=>x[1]).join('')}</div>`).join('')
   +`<div class="day"><b>${L.all}</b><div class="it"><time>${L.daily}</time><div><b>${L.booth}</b><span>${L.boothS}</span></div></div></div>`;
  $('cardBox').innerHTML=sphereCard(who,topicLabels(),true);
- qr($('qr1'),'https://biosciencegmbh.com/imcas?card='+encodeURIComponent(who));
+ if(CARD)applyCard(CARD);else{qr($('qr1'),location.origin+location.pathname+'#plan');$('calAll').href='#';$('myCard').hidden=true}
  $('pfg').hidden=true;$('doneV').hidden=false;$('dlgBody').scrollTop=0}
 $('form').addEventListener('submit',e=>{e.preventDefault();const n=$('f-name').value.trim(),m=$('f-email').value.trim(),L=w();
  if(!n||!/^\S+@\S+\.\S+$/.test(m)||!$('f-country').value){$('err').textContent=L.errFields;return}
  if(!$('f-consent').checked){$('err').textContent=L.errConsent;return}
- $('err').textContent='';who=n;$('sentTo').textContent=m;done()});
+ $('err').textContent='';who=n;$('sentTo').textContent=m;CARD=null;done();registerCard(m)});
 $('form').addEventListener('input',()=>{$('err').textContent='';prev()});
 $('edit').onclick=()=>{who='';$('doneV').hidden=true;$('pfg').hidden=false;prev();$('dlgBody').scrollTop=0};
-const MSG={wallet:'In the live page this adds your Sphere Card to Apple or Google Wallet.'};
+const MSG={wallet:'In the live page this adds your Sphere Card to Apple or Google Wallet.',replay:'The replay link goes live on the Digital Academy after IMCAS.',academy:'In the live page this opens the BioScience Digital Academy.',contact:'Thank you. Your local BioScience partner will contact you about training.'};
 document.addEventListener('click',e=>{const b=e.target.closest('[data-toast]');if(b)toast(MSG[b.dataset.toast]);
  if(e.target.closest('[data-plan]')){const d=$('planner');if(!d.open)d.showModal();$('dlgBody').scrollTop=0}
  if(e.target.closest('[data-close]'))$('planner').close()});
 $('planner').addEventListener('click',e=>{if(e.target===$('planner'))$('planner').close()});
 let tt;function toast(m){const t=$('toast');t.textContent=m;t.hidden=false;clearTimeout(tt);tt=setTimeout(()=>t.hidden=true,3400)}
 function setLang(l){lang=l;document.documentElement.lang=l;document.querySelectorAll('.lang').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===l));
- document.querySelectorAll('[data-t]').forEach(el=>{const v=(T[l]||{})[el.dataset.t]??T.en[el.dataset.t];if(v!=null)el.textContent=v});tiles();staticBits();sessions();render()}
+ document.querySelectorAll('[data-t]').forEach(el=>{const v=(T[l]||{})[el.dataset.t]??T.en[el.dataset.t];if(v!=null)el.textContent=v});tiles();staticBits();sessions();render();renderNow();renderReplay()}
 document.querySelectorAll('.lang').forEach(b=>b.onclick=()=>setLang(b.dataset.l));
 /* header: transparent on the banner, solid once you scroll; menu highlights the current section */
-const top_=$('top'),secs=['overview','dx','programme','booth'].map(id=>$(id));
+const top_=$('top'),secs=['overview','recap','photos','replay','dx','programme','booth'].map(id=>$(id)).filter(e=>e&&e.offsetParent!==null);
 function onScroll(){top_.classList.toggle('solid',scrollY>40);let cur='overview';secs.forEach(s=>{if(s.getBoundingClientRect().top<120)cur=s.id});
  if(['symposium','suite'].some(id=>{const r=$(id).getBoundingClientRect();return r.top<120&&r.bottom>120}))cur='programme';
  document.querySelectorAll('.menu a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur))}
 addEventListener('scroll',onScroll,{passive:true});onScroll();
-tiles();staticBits();sessions();prev();
+tiles();staticBits();sessions();prev();renderNow();renderReplay();
+if(PH==='during')setInterval(renderNow,60000);
 })();</script>

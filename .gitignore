@@ -1,3 +1,5 @@
 _shot*.html
 src_v1_*.html
 .DS_Store
+img_old/
+src_speakers/*.png

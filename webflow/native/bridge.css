@@ -1,0 +1,49 @@
+/* --- native (Webflow CMS) bridge: maps CMS-driven markup onto the coded design --- */
+#ev-native .shead h2{margin-top:6px}
+#ev-native .shead .bar{margin:0}
+#ev-native .w-dyn-bind-empty{display:none!important}
+#ev-native .w-dyn-list,#ev-native .w-dyn-items{display:block}
+#ev-native .chap .lu{display:grid}
+#ev-native .lhd[data-ch="Opening"]{background:#7aa9ae}
+#ev-native .lhd[data-ch="Face"]{background:#2db3bd}
+#ev-native .lhd[data-ch="Body"]{background:#1f8f99}
+#ev-native .lhd[data-ch="Intimate"]{background:#146b75}
+#ev-native .lhd[data-ch="Closing"]{background:#5f8f94}
+#ev-native .lc:has(.live2:not(.w-condition-invisible)){box-shadow:0 0 0 3px #e0b96a,0 12px 28px rgba(10,58,65,.12)}
+#ev-native .lc[data-ch="Closing"] .lph{display:none}
+#ev-native .lc:not([data-ch="Closing"]) .lpan-w{display:none}
+#ev-native .lc .w-dyn-list .lpan{display:grid}
+#ev-native .lpan .lps{display:flex;flex-direction:column;align-items:center;gap:3px}
+#ev-native img.flag{display:block;border-radius:2px;box-shadow:0 1px 4px rgba(0,0,0,.35);object-fit:cover}
+#ev-native .lph img.flag{width:28px;height:19px;border-radius:2px;box-shadow:0 1px 4px rgba(0,0,0,.35)}
+#ev-native .lpan img.flag{width:16px;height:11px;border-radius:2px;box-shadow:0 1px 4px rgba(0,0,0,.35)}
+@media(max-width:640px){#ev-native .lph img.flag{width:22px;height:15px}#ev-native .lpan img.flag{width:12px;height:8px}}
+/* expert sessions */
+#ev-native .w-dyn-empty{display:none!important}
+#ev-native .suite .bar{margin:0 0 28px}
+#ev-native .slot>.w-dyn-list,#ev-native .slot>.w-dyn-list>.w-dyn-items,#ev-native .slot>.w-dyn-list>.w-dyn-items>.w-dyn-item{display:flex;width:100%}
+#ev-native .tc .mods.w-richtext::before,#ev-native .tc .mods.w-richtext::after{content:none;display:none}
+#ev-native .tc .mods ul{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+#ev-native .tc .mods strong{color:var(--ink);font-weight:700}
+#ev-native .tc:has(.dur:not(.w-dyn-bind-empty)) .fc{margin-top:auto;padding-top:8px}
+#ev-native .tc .fc>.w-dyn-list{flex:none}
+#ev-native .tc .fc>.w-dyn-list>.w-dyn-items{display:flex;flex:none}
+#ev-native .tc .fc .w-dyn-item img{margin-left:0}
+#ev-native .tc .fc .w-dyn-item+.w-dyn-item img{margin-left:-8px}
+@media(max-width:899px){#ev-native .hday .slot:not(:has(.w-dyn-item)){display:none}}
+/* header / hero / dx / pre-course / booth / plan / footer */
+#ev-native .vf figcaption{text-align:left}
+#ev-native .hfacts img{flex:none;width:30px;height:30px;margin-top:2px}
+#ev-native .pc2s .w-dyn-list,#ev-native .pc2s .w-dyn-items,#ev-native .pc2s .w-dyn-item{display:block}
+#ev-native .boothsec .bar{margin:0 0 28px}
+#ev-native .boothsec .grid2{align-items:start}
+#ev-native .planband .pbtn{margin-top:20px}
+#ev-native footer img{height:28px;width:auto;max-width:180px}
+#ev-native .htxt,#ev-native .htxt h1{text-align:left}
+#ev-native bdi[data-sp="1"]::before{content:" "}
+#ev-native bdi[data-sp="2"]::before,#ev-native bdi[data-sp="2"]::after{content:" "}
+#ev-native bdi[data-sp="3"]::after{content:" "}
+/* during / after (v7) */
+#ev-native .rc-vid .w-video,#ev-native .rc-vid .w-embed{position:absolute!important;inset:0;padding-top:0!important;width:100%;height:100%}
+#ev-native .rc-vid iframe{position:absolute;inset:0;width:100%!important;height:100%!important;border:0}
+#ev-native .ac-img img{display:block}
