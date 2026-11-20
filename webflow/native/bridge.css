@@ -10,7 +10,6 @@
 #ev-native .lhd[data-ch="Intimate"]{background:#146b75}
 #ev-native .lhd[data-ch="Closing"]{background:#0d4750}
 #ev-native .lc:has(.live2:not(.w-condition-invisible)){box-shadow:0 0 0 3px #e0b96a,0 12px 28px rgba(10,58,65,.12)}
-#ev-native .lc[data-ch="Closing"] .lph{display:none}
 #ev-native .lc:not([data-ch="Closing"]) .lpan-w{display:none}
 #ev-native .lc .w-dyn-list .lpan{display:grid}
 #ev-native .lpan .lps{display:flex;flex-direction:column;align-items:center;gap:3px}
@@ -57,3 +56,9 @@
 #ev-native .tc .fc:not(:has(img)) .w-dyn-list{display:none}
 /* pre-course date bar (Webflow element has class bar only) */
 #ev-native .pcb>.bar{margin:14px 0 0}
+
+/* 20 Nov (Ruba): expert panel led by Dr Techapichetvanich (big photo), the rest of the faculty as a small row */
+#ev-native .lc[data-ch="Closing"] .w-dyn-list .lpan{display:flex;justify-content:center;gap:0;margin:2px 0 4px}
+#ev-native .lc[data-ch="Closing"] .lpan .lps img.flag{display:none}
+#ev-native .lc[data-ch="Closing"] .lpan .lps img:not(.flag){width:30px;height:30px;border-radius:50%;object-fit:cover;background:#e9f3f4;border:2px solid #fff;margin-left:-9px;box-shadow:0 2px 6px rgba(10,58,65,.18)}
+#ev-native .lc[data-ch="Closing"] .lpan .lps:first-child img:not(.flag){margin-left:0}
