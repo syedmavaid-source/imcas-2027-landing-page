@@ -1079,8 +1079,8 @@ function prev(){$('cardPrev').innerHTML=sphereCard($('f-name').value.trim(),topi
 /* personalised calendar: every planned session as its own event (Paris = CET, UTC+1 in January) */
 const DAYN={Thu:'20270128',Fri:'20270129',Sat:'20270130'};let PLAN=[];
 /* Sphere Card service (Cloudflare Worker): card id, personal page (QR target), calendar subscription, booth check-in.
-   CARD_API is set at launch; ?api=http://localhost:8787 tests a local copy. Without it the planner works on its own. */
-const CARD_API=(new URLSearchParams(location.search).get('api')||'').replace(/\/$/,'');let CARD=null;
+   Live at imcas27.bioscience.workers.dev; ?api=http://localhost:8787 tests a local copy. If it can't be reached the planner still works on its own. */
+const CARD_API=(new URLSearchParams(location.search).get('api')||'https://imcas27.bioscience.workers.dev').replace(/\/$/,'');let CARD=null;
 const SKEY={'The Evidence Summit':'evidence','The Regenerative Frontier':'regenerative','Mastering the Invisible':'invisible','The Latin Booty & Beyond':'latin','L’art du remodelage corporel':'remodelage'};
 function applyCard(c){CARD=c;qr($('qr1'),c.url);$('calAll').href=c.webcal;$('myCard').href=c.url;$('myCard').hidden=false}
 async function registerCard(email){if(!CARD_API)return;try{const r=await fetch(CARD_API+'/api/plan',{method:'POST',headers:{'content-type':'application/json'},
