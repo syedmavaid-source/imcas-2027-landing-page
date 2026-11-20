@@ -55,3 +55,5 @@
 /* suite v3: card 2/3 moved by script into .slot.pm / .slot.p3 */
 #ev-native .slot.p3>.w-dyn-list,#ev-native .slot.p3>.w-dyn-list>.w-dyn-items,#ev-native .slot.p3>.w-dyn-list>.w-dyn-items>.w-dyn-item{display:flex;width:100%}
 #ev-native .tc .fc:not(:has(img)) .w-dyn-list{display:none}
+/* pre-course date bar (Webflow element has class bar only) */
+#ev-native .pcb>.bar{margin:14px 0 0}

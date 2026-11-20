@@ -727,6 +727,9 @@ html[data-phase=before] [data-ph]:not([data-ph~=before]),html[data-phase=during]
  .hday>.slot.pm{padding:0 0 14px}.hday>.slot.p3{grid-row:4;align-items:stretch}}
 .fc span:empty{display:none}
 @media(max-width:899px){.hday .slot:empty{display:none}}
+
+/* pre-course date bar (20 Nov) */
+.pcbar{margin:14px 0 0}
 </style>
 <script>/* event phase: before / during / after, from the date in Paris. Preview: ?phase=during (simulates Fri 29 Jan, 14:20) or ?phase=after; ?now=2027-01-28T10:30 sets a time */
 (function(){var q=new URLSearchParams(location.search),t=q.get('now'),p=q.get('phase');
@@ -834,7 +837,8 @@ html[data-phase=before] [data-ph]:not([data-ph~=before]),html[data-phase=during]
       <span class="pill" data-t="pcPill">Pre-course · IMCAS educational programme</span>
       <h2 data-t="pcH">Body remodelling with HYAcorp</h2>
       <p data-t="pcSub2">A 30-minute course in the official IMCAS programme, with a live ultrasound-guided demonstration.</p>
-      <ul class="pctags"><li data-t="pcT1">30 min</li><li class="live2" data-t="liveDemoUS">Live demo with ultrasound</li><li data-t="pcB2">Date &amp; room to be announced</li></ul>
+      <ul class="pctags"><li data-t="pcT1">30 min</li><li class="live2" data-t="liveDemoUS">Live demo with ultrasound</li></ul>
+      <p class="bar pcbar"><span data-t="pcDay">Wednesday 27 January 2027</span><span data-t="pcWhere">15:00–15:30 · Le Méridien · Room 1</span></p>
       <p class="pcwho"><b>Dr Miguel Bravo</b> · <span data-t="pcRole">Plastic surgeon</span></p>
     </div>
   </article>
@@ -953,7 +957,7 @@ const T={en:{},fr:{
  dxPill:'Innovation à l’honneur · Genefill DX',dxSub:'Le premier filler hybride à biostimulation d’origine naturelle, appuyé par des études cliniques et in vitro. Innovation esthétique allemande en AH et technologie de filler hybride.',
  dx1:'Hydratation',dx1s:'Hydratation immédiate de la peau',dx2:'Volume & structure',dx2s:'Restaure le volume et la structure',dx3:'Collagène',dx3s:'Stimulation du collagène à long terme',
  liveDemo:'Démo en direct',dxLiveT:'Genefill DX en direct sur scène',dxLiveW:'Dr Ruiz · vendredi 29 janvier · 14:15 · salle 252',ctaDxSym:'À voir en direct au symposium',ctaDxBooth:'Découvrir DX au stand N214',
- pcPill:'Pré-cours · programme de formation IMCAS',pcH:'Remodelage corporel avec HYAcorp',pcSub:'BioScience dans le programme de formation officiel de l’IMCAS : 30 minutes, avec une démonstration en direct guidée par échographie.',pcB1:'Pré-cours · 30 min',pcB2:'Date et salle à confirmer',pcSub2:'Un cours de 30 minutes dans le programme officiel de l’IMCAS, avec une démonstration en direct guidée par échographie.',pcT1:'30 min',liveDemoUS:'Démo en direct sous échographie',pcCap:'Le Dr Miguel Bravo sur scène avec BioScience',
+ pcPill:'Pré-cours · programme de formation IMCAS',pcH:'Remodelage corporel avec HYAcorp',pcSub:'BioScience dans le programme de formation officiel de l’IMCAS : 30 minutes, avec une démonstration en direct guidée par échographie.',pcB1:'Pré-cours · 30 min',pcB2:'Date et salle à confirmer',pcDay:'Mercredi 27 janvier 2027',pcWhere:'15:00–15:30 · Le Méridien · salle 1',pcSub2:'Un cours de 30 minutes dans le programme officiel de l’IMCAS, avec une démonstration en direct guidée par échographie.',pcT1:'30 min',liveDemoUS:'Démo en direct sous échographie',pcCap:'Le Dr Miguel Bravo sur scène avec BioScience',
  symPill:'Symposium BioScience · 90 minutes · 7 frontières',smDay:'Vendredi 29 janvier 2027',smWhere:'14:00–15:30 · salle 252 · niveau 2',smChair:'Présidé par le Dr Frank',ctaCalSym:'Ajouter à mon agenda',
  suPill:'BioScience Hospitality Suite',suiteH:'Sessions d’experts',suiteP:'Échanges ciblés, preuves cliniques et cas réels.',suDays:'Jeudi 28 – samedi 30 janvier',suWhere:'Suite [no.] · niveau [x] · Palais des Congrès',
  afH:'Après chaque session : buffet et animation',svPill:'La suite l’an dernier · IMCAS 2026',svP:'Interventions d’experts et cas réels, puis buffet, boissons et animation avec les intervenants et vos confrères.',afP2:'Restez pour rencontrer les intervenants et vos confrères.',afP:'Restez après chaque session pour un verre, un buffet et du temps avec les intervenants et vos confrères.',af1:'Interventions d’experts',af2:'Buffet & boissons',af3:'Rencontrez les experts',
@@ -970,7 +974,7 @@ const T={en:{},fr:{
  dxPill:'Innovación destacada · Genefill DX',dxSub:'El primer relleno híbrido con bioestimulación de origen natural, respaldado por estudios clínicos e in vitro. Innovación estética alemana en HA y tecnología de relleno híbrido.',
  dx1:'Hidratación',dx1s:'Hidratación inmediata de la piel',dx2:'Volumen y estructura',dx2s:'Restaura volumen y estructura',dx3:'Colágeno',dx3s:'Estimulación de colágeno a largo plazo',
  liveDemo:'Demo en directo',dxLiveT:'Genefill DX en directo en el escenario',dxLiveW:'Dr Ruiz · viernes 29 de enero · 14:15 · sala 252',ctaDxSym:'Véalo en directo en el simposio',ctaDxBooth:'Descubra DX en el stand N214',
- pcPill:'Precurso · programa formativo de IMCAS',pcH:'Remodelación corporal con HYAcorp',pcSub:'BioScience en el programa formativo oficial de IMCAS: 30 minutos, con una demostración en directo guiada por ecografía.',pcB1:'Precurso · 30 min',pcB2:'Fecha y sala por confirmar',pcSub2:'Un curso de 30 minutos en el programa oficial de IMCAS, con una demostración en directo guiada por ecografía.',pcT1:'30 min',liveDemoUS:'Demo en directo con ecografía',pcCap:'El Dr Miguel Bravo en el escenario con BioScience',
+ pcPill:'Precurso · programa formativo de IMCAS',pcH:'Remodelación corporal con HYAcorp',pcSub:'BioScience en el programa formativo oficial de IMCAS: 30 minutos, con una demostración en directo guiada por ecografía.',pcB1:'Precurso · 30 min',pcB2:'Fecha y sala por confirmar',pcDay:'Miércoles 27 de enero de 2027',pcWhere:'15:00–15:30 · Le Méridien · sala 1',pcSub2:'Un curso de 30 minutos en el programa oficial de IMCAS, con una demostración en directo guiada por ecografía.',pcT1:'30 min',liveDemoUS:'Demo en directo con ecografía',pcCap:'El Dr Miguel Bravo en el escenario con BioScience',
  symPill:'Simposio BioScience · 90 minutos · 7 fronteras',smDay:'Viernes 29 de enero de 2027',smWhere:'14:00–15:30 · sala 252 · nivel 2',smChair:'Preside el Dr Frank',ctaCalSym:'Añadir a mi calendario',
  suPill:'BioScience Hospitality Suite',suiteH:'Sesiones de expertos',suiteP:'Debates enfocados, evidencia clínica y casos reales.',suDays:'Jueves 28 – sábado 30 de enero',suWhere:'Suite [no.] · nivel [x] · Palais des Congrès',
  afH:'Después de cada sesión: catering y entretenimiento',svPill:'La suite el año pasado · IMCAS 2026',svP:'Charlas de expertos y casos reales, y después comida, bebidas y entretenimiento con los ponentes y colegas.',afP2:'Quédese para conocer a los ponentes y colegas.',afP:'Quédese después de cada sesión para comer, tomar algo y conversar con los ponentes y colegas.',af1:'Charlas de expertos',af2:'Catering y bebidas',af3:'Conozca a los expertos',

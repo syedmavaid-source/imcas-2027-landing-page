@@ -716,3 +716,6 @@ html[data-phase=before] [data-ph]:not([data-ph~=before]),html[data-phase=during]
  .hday>.slot.pm{padding:0 0 14px}.hday>.slot.p3{grid-row:4;align-items:stretch}}
 .fc span:empty{display:none}
 @media(max-width:899px){.hday .slot:empty{display:none}}
+
+/* pre-course date bar (20 Nov) */
+.pcbar{margin:14px 0 0}
