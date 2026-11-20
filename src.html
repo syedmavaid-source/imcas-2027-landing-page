@@ -1057,7 +1057,7 @@ function renderNow(){if(PH!=='during'||!$('nowCard'))return;const L=w(),n=nowP()
  $('todayList').innerHTML=row(PT.allDay,PT.boothT,PT.boothS,'','')+ev.map(e=>row(e.a+'–'+e.b,e.title,e.where+' · '+e.who,e.s,e===next&&!live?`<span class="stc next">${PT.next}</span>`:chip(e.s))).join('')}
 function renderReplay(){}
 function staticBits(){const L=w();
- const GC={open:'#7aa9ae',fb:'#26a3ad',face:'#2db3bd',body:'#1f8f99',intimate:'#146b75',panel:'#0d4750',close:'#5f8f94'};
+ const GC={open:'#7aa9ae',fb:'#2db3bd',face:'#2db3bd',body:'#1f8f99',intimate:'#146b75',panel:'#0d4750',close:'#5f8f94'};
  $('chap').innerHTML='<ol class="lu">'+AG.slice(0,8).map(([t,title,sp,,g],i)=>{const rt=sp==='*';
   const pic=rt?`<div class="lpan">${FAC.map(([k,n,c])=>`<span><img src="img/fx_${k}.png" alt="${esc(n)}">${flag(c)}</span>`).join('')}</div>`:`<div class="lph"><img src="img/fx_${sp}.png" alt="">${flag(FX[sp][2])}</div>`;
   const s=st('Fri',t,AGEND(i));

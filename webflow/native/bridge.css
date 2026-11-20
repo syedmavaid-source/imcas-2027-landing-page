@@ -8,7 +8,7 @@
 #ev-native .lhd[data-ch="Face"]{background:#2db3bd}
 #ev-native .lhd[data-ch="Body"]{background:#1f8f99}
 #ev-native .lhd[data-ch="Intimate"]{background:#146b75}
-#ev-native .lhd[data-ch="Closing"]{background:#5f8f94}
+#ev-native .lhd[data-ch="Closing"]{background:#0d4750}
 #ev-native .lc:has(.live2:not(.w-condition-invisible)){box-shadow:0 0 0 3px #e0b96a,0 12px 28px rgba(10,58,65,.12)}
 #ev-native .lc[data-ch="Closing"] .lph{display:none}
 #ev-native .lc:not([data-ch="Closing"]) .lpan-w{display:none}
@@ -47,3 +47,7 @@
 #ev-native .rc-vid .w-video,#ev-native .rc-vid .w-embed{position:absolute!important;inset:0;padding-top:0!important;width:100%;height:100%}
 #ev-native .rc-vid iframe{position:absolute;inset:0;width:100%!important;height:100%!important;border:0}
 #ev-native .ac-img img{display:block}
+
+/* header: kicker "Frontier 0X\nLabel" -> small first line */
+#ev-native .lhd>span{display:block;white-space:pre;flex:1 1 auto;min-width:0}
+#ev-native .lhd>span::first-line{font-size:10px;font-weight:500;letter-spacing:.16em;color:rgba(255,255,255,.8)}
