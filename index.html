@@ -721,10 +721,12 @@ html[data-phase=before] [data-ph]:not([data-ph~=before]),html[data-phase=during]
 .acad p{color:var(--soft)}
 .ac-img{box-shadow:0 18px 40px rgba(10,58,65,.2)}
 
-/* suite v3: each day is one stack of sessions in time order */
-.ht .slot.am{flex-direction:column;align-items:stretch;justify-content:flex-start;gap:16px;padding-bottom:0}
-.ht .slot.pm{display:none}
+/* suite v3 (20 Nov): same timeline, a 3rd row for Thursday's third session; no symposium tile, no module list */
+@media(min-width:900px){.ht{grid-template-rows:auto auto auto auto}.hday,.hvid{grid-row:1/5}.hvid .vf{grid-row:2/5}
+ .hday:nth-child(2) .slot.am{grid-row:2;padding-bottom:14px}.hday:nth-child(2) .slot.pm{display:flex}
+ .hday>.slot.pm{padding:0 0 14px}.hday>.slot.p3{grid-row:4;align-items:stretch}}
 .fc span:empty{display:none}
+@media(max-width:899px){.hday .slot:empty{display:none}}
 </style>
 <script>/* event phase: before / during / after, from the date in Paris. Preview: ?phase=during (simulates Fri 29 Jan, 14:20) or ?phase=after; ?now=2027-01-28T10:30 sets a time */
 (function(){var q=new URLSearchParams(location.search),t=q.get('now'),p=q.get('phase');
@@ -1079,10 +1081,10 @@ function staticBits(){const L=w();
 }
 function sessions(){const L=w();
  const SH={'Mastering the Invisible':'Anatomy & live ultrasound, face and body','Masterclass LATAM':'Body contouring & Genefill DX, in Spanish','APAC Clinical Mastery':'Facial vectoring with Genefill DX for Asian morphotypes','Body & Regenerative Architecture':'High-volume contouring & GLP-1 rescue','Meet the Speakers':'Reception after the symposium: Q&A with the faculty','The Global Safety Summit':'Body HA consensus & complications','L’Art du Remodelage Corporel Raisonné':'Body remodelling: vectoring & risk management'};
- const cardS=([D,tm,n,,sp,lg])=>{const ms=n==='Mastering the Invisible',s=st(D,...tm.split('–'));return `<article class="tc${ms?' ms':''}${s?' st-'+s:''}"><div class="tct"><time>${tm}</time>${chip(s)}${lg?`<span class="lgt">${lg==='ES'?L.lgES:L.lgFR}</span>`:''}${ms?`<span class="dur">${esc(L.master)}</span>`:''}</div><h4>${esc(n)}</h4><p>${esc(SH[n]||'')}</p>${ms?`<ul class="mods">${L.mods.map(([a,b])=>`<li><b>${esc(a)}</b> · ${esc(b)}</li>`).join('')}</ul>`:''}<div class="fc"><span>${sp.map(x=>`<img src="img/su_${x}.png" alt="">`).join('')}</span><small>${esc(sp.length?sp.map(x=>SN[x]).join(' · '):L.symFac)}</small></div></article>`};
+ const cardS=([D,tm,n,,sp,lg])=>{const ms=n==='Mastering the Invisible',s=st(D,...tm.split('–'));return `<article class="tc${ms?' ms':''}${s?' st-'+s:''}"><div class="tct"><time>${tm}</time>${chip(s)}${lg?`<span class="lgt">${lg==='ES'?L.lgES:L.lgFR}</span>`:''}${ms?`<span class="dur">${esc(L.master)}</span>`:''}</div><h4>${esc(n)}</h4><p>${esc(SH[n]||'')}</p><div class="fc"><span>${sp.map(x=>`<img src="img/su_${x}.png" alt="">`).join('')}</span><small>${esc(sp.length?sp.map(x=>SN[x]).join(' · '):L.symFac)}</small></div></article>`};
  const SYMC=`<a class="tc sym" href="#symposium"><div class="tct"><time>14:00–15:30</time></div><h4>${esc(L.sym)}</h4><p>${esc(L.symRoomS)}</p></a>`;
- $('sessions').innerHTML='<div class="ht">'+['Thu','Fri','Sat'].map((D,k)=>{const cs=SUITE.filter(x=>x[0]===D).map(x=>[x[1],cardS(x)]);if(D==='Fri')cs.push(['14:00',SYMC]);cs.sort((x,y)=>x[0].localeCompare(y[0]));
-  return `<div class="hday"><div class="slot am">${cs.map(x=>x[1]).join('')}</div><div class="mk"><span><b>${28+k}</b>${L.wd[k]}</span></div><div class="slot pm"></div></div>`}).join('')+`<div class="hvid"><div class="mk vk"><span>${esc(L.vidLab)}</span></div><figure class="vf"><video src="img/suite_2026.mp4" poster="img/suite_2026.jpg" autoplay muted loop playsinline preload="metadata" aria-label="${esc(L.vidAria)}"></video><figcaption>${esc(L.vidCap)}</figcaption></figure></div>`+'</div>'}
+ $('sessions').innerHTML='<div class="ht">'+['Thu','Fri','Sat'].map((D,k)=>{const cs=SUITE.filter(x=>x[0]===D).map(cardS);
+  return `<div class="hday"><div class="slot am">${cs[0]||''}</div><div class="mk"><span><b>${28+k}</b>${L.wd[k]}</span></div><div class="slot pm">${cs[1]||''}</div><div class="slot p3">${cs[2]||''}</div></div>`}).join('')+`<div class="hvid"><div class="mk vk"><span>${esc(L.vidLab)}</span></div><figure class="vf"><video src="img/suite_2026.mp4" poster="img/suite_2026.jpg" autoplay muted loop playsinline preload="metadata" aria-label="${esc(L.vidAria)}"></video><figcaption>${esc(L.vidCap)}</figcaption></figure></div>`+'</div>'}
 function render(){if(who)done();else if($('cardPrev'))prev()}
 document.addEventListener('click',e=>{const c=e.target.closest('.tchip');if(!c)return;const k=c.dataset.k;sel.has(k)?sel.delete(k):sel.add(k);tiles();prev()});
 function qr(el,txt){el.replaceChildren();if(window.QRCode){new QRCode(el,{text:txt,width:104,height:104,colorDark:'#0f3d44',colorLight:'#ffffff'})}else{el.textContent='QR'}}
